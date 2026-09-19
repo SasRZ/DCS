@@ -304,5 +304,14 @@
     "url": "docs/mapas/marianas/pgum/cartas.pdf",
     "refs": ["mapas/marianas"],
     "etiquetas": ["cartas", "pgum"]
+  },
+  {
+    "id": "sead-reference-guide",
+    "titulo": "SEAD Reference Guide v1.3",
+    "tipo": "PDF",
+    "nota": "Guía de referencia de defensas aéreas: identificación rápida de objetivos y sistemas de origen ruso, estadounidense y del resto del mundo. Rocket Mission Works, noviembre de 2024.",
+    "url": "docs/misiones/sead/sead-reference-guide-v1-3.pdf",
+    "refs": ["misiones/sead"],
+    "etiquetas": ["SEAD", "DEAD", "SAM", "defensa aérea"]
   }
 ]
