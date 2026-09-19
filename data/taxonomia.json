@@ -99,6 +99,7 @@
     "desc": "Radio, procedimientos comunes y configuración. Pendiente de desarrollar.",
     "grupos": [
       { "nombre": "", "items": [
+        {"id":"sop","nombre":"SOP y procedimientos"},
         {"id":"pendiente","nombre":"Por definir"}
       ]}
     ]

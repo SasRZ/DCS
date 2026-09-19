@@ -117,6 +117,15 @@
     "etiquetas": ["cartas", "osap"]
   },
   {
+    "id": "armada-sop-fox3",
+    "titulo": "SOP Armada Española · FOX3",
+    "tipo": "PDF",
+    "nota": "Procedimientos operativos estándar (SOP) de la Armada Española, FOX3.",
+    "url": "docs/modulos/av8b/sop-armada-fox3.pdf",
+    "refs": ["modulos/av8b", "general/sop"],
+    "etiquetas": ["SOP", "Armada", "FOX3", "Harrier"]
+  },
+  {
     "id": "siria-osdi-cartas",
     "titulo": "Damasco (OSDI) · cartas de aproximación",
     "tipo": "PDF",
