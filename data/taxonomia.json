@@ -100,6 +100,7 @@
     "grupos": [
       { "nombre": "", "items": [
         {"id":"sop","nombre":"SOP y procedimientos"},
+        {"id":"navegacion","nombre":"Navegación y radioayudas"},
         {"id":"pendiente","nombre":"Por definir"}
       ]}
     ]

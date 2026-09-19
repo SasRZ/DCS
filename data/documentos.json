@@ -322,5 +322,14 @@
     "url": "docs/misiones/cas/manual-basico-cas.pdf",
     "refs": ["misiones/cas"],
     "etiquetas": ["CAS", "9 líneas", "manual"]
+  },
+  {
+    "id": "vor-tacan-frecuencias",
+    "titulo": "Lista de frecuencias VOR y canales TACAN",
+    "tipo": "PDF",
+    "nota": "Tabla de equivalencia entre frecuencias VOR y canales TACAN/DME emparejados.",
+    "url": "docs/general/navegacion/vor-tacan-frecuencias.pdf",
+    "refs": ["general/navegacion"],
+    "etiquetas": ["VOR", "TACAN", "DME", "frecuencias"]
   }
 ]
