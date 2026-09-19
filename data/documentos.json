@@ -1,21 +1,48 @@
 [
   {
-    "id": "f16c-harm",
-    "titulo": "F-16C · HARM en modo POS y HAD",
-    "tipo": "Nota",
-    "nota": "Documento de ejemplo: aparece en dos categorías sin duplicar el archivo.",
-    "url": "docs/modulos/f16c/harm.md",
-    "refs": ["modulos/f16c", "misiones/sead"],
-    "etiquetas": ["HARM", "RWR", "ejemplo"]
+    "id": "caucaso-georgia-fip",
+    "titulo": "Georgia · Flight Information Publication",
+    "tipo": "PDF",
+    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de Georgia. 474th vFighter Group, versión 2.0.",
+    "url": "docs/mapas/caucaso/georgia-fip.pdf",
+    "refs": ["mapas/caucaso"],
+    "etiquetas": ["cartas", "Georgia", "FIP"]
   },
   {
-    "id": "caucaso-cartas",
-    "titulo": "Cáucaso · cartas de aproximación",
-    "tipo": "Nota",
-    "nota": "Documento de ejemplo. Sustitúyelo por tu propio PDF.",
-    "url": "docs/mapas/caucaso/cartas.md",
+    "id": "caucaso-rusia-fip",
+    "titulo": "Rusia · Flight Information Publication",
+    "tipo": "PDF",
+    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de la parte rusa del mapa. 474th vFighter Group, versión 1.6.",
+    "url": "docs/mapas/caucaso/rusia-fip.pdf",
     "refs": ["mapas/caucaso"],
-    "etiquetas": ["cartas", "ejemplo"]
+    "etiquetas": ["cartas", "Rusia", "FIP"]
+  },
+  {
+    "id": "caucaso-cartas-navegacion",
+    "titulo": "Cáucaso · cartas de navegación",
+    "tipo": "PDF",
+    "nota": "Procedimientos de aproximación y salida visuales (jet) y cartas de aeródromo para DCS World. vJaBoG32, rev. 4.0.5.",
+    "url": "docs/mapas/caucaso/cartas-navegacion.pdf",
+    "refs": ["mapas/caucaso"],
+    "etiquetas": ["cartas", "navegación", "vjabog32"]
+  },
+  {
+    "id": "caucaso-ugko-cartas",
+    "titulo": "Kutaisi (UGKO) · SID y STAR",
+    "tipo": "PDF",
+    "nota": "Salidas (SID) y llegadas (STAR) instrumentales de Kutaisi (Georgia), recopiladas en un único PDF.",
+    "url": "docs/mapas/caucaso/ugko/cartas.pdf",
+    "refs": ["mapas/caucaso"],
+    "etiquetas": ["cartas", "ugko", "SID", "STAR"]
+  },
+  {
+    "id": "caucaso-urss-cartas",
+    "titulo": "Sochi (URSS) · SID",
+    "tipo": "PDF",
+    "nota": "Salida instrumental (SID) de Sochi (Rusia).",
+    "url": "docs/mapas/caucaso/urss/cartas.pdf",
+    "refs": ["mapas/caucaso"],
+    "etiquetas": ["cartas", "urss", "SID"]
   },
   {
     "id": "siria-lcen-cartas",
@@ -241,5 +268,41 @@
     "url": "docs/mapas/golfo/omsj/cartas.pdf",
     "refs": ["mapas/golfo"],
     "etiquetas": ["cartas", "omsj"]
+  },
+  {
+    "id": "marianas-pgwt-cartas",
+    "titulo": "Tinian (PGWT) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Tinian (Islas Marianas del Norte), recopiladas en un único PDF.",
+    "url": "docs/mapas/marianas/pgwt/cartas.pdf",
+    "refs": ["mapas/marianas"],
+    "etiquetas": ["cartas", "pgwt"]
+  },
+  {
+    "id": "marianas-pgro-cartas",
+    "titulo": "Rota (PGRO) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Rota (Islas Marianas del Norte), recopiladas en un único PDF.",
+    "url": "docs/mapas/marianas/pgro/cartas.pdf",
+    "refs": ["mapas/marianas"],
+    "etiquetas": ["cartas", "pgro"]
+  },
+  {
+    "id": "marianas-pgsn-cartas",
+    "titulo": "Saipán (PGSN) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Saipán (Islas Marianas del Norte), recopiladas en un único PDF.",
+    "url": "docs/mapas/marianas/pgsn/cartas.pdf",
+    "refs": ["mapas/marianas"],
+    "etiquetas": ["cartas", "pgsn"]
+  },
+  {
+    "id": "marianas-pgum-cartas",
+    "titulo": "Guam (PGUM) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo internacional de Guam, recopiladas en un único PDF.",
+    "url": "docs/mapas/marianas/pgum/cartas.pdf",
+    "refs": ["mapas/marianas"],
+    "etiquetas": ["cartas", "pgum"]
   }
 ]
