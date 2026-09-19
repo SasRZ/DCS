@@ -133,5 +133,104 @@
     "url": "docs/mapas/siria/oslk/cartas.pdf",
     "refs": ["mapas/siria"],
     "etiquetas": ["cartas", "oslk"]
+  },
+    {
+    "id": "golfo-oibv-cartas",
+    "titulo": "Lavan Island (OIBV) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Lavan Island (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oibv/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oibv"]
+  },
+  {
+    "id": "golfo-oikb-cartas",
+    "titulo": "Bandar Abbas (OIKB) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Bandar Abbas (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oikb/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oikb"]
+  },
+  {
+    "id": "golfo-oikk-cartas",
+    "titulo": "Kerman (OIKK) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Kerman (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oikk/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oikk"]
+  },
+  {
+    "id": "golfo-omaa-cartas",
+    "titulo": "Abu Dabi (OMAA) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Abu Dabi (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omaa/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omaa"]
+  },
+  {
+    "id": "golfo-omal-cartas",
+    "titulo": "Al Ain (OMAL) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Al Ain (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omal/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omal"]
+  },
+  {
+    "id": "golfo-omdb-cartas",
+    "titulo": "Dubái (OMDB) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Dubái (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omdb/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omdb"]
+  },
+  {
+    "id": "golfo-omfj-cartas",
+    "titulo": "Fujairah (OMFJ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Fujairah (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omfj/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omfj"]
+  },
+  {
+    "id": "golfo-omrk-cartas",
+    "titulo": "Ras Al Khaimah (OMRK) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Ras Al Khaimah (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omrk/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omrk"]
+  },
+  {
+    "id": "golfo-oibk-cartas",
+    "titulo": "Kish Island (OIBK) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Kish Island (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oibk/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oibk"]
+  },
+  {
+    "id": "golfo-oiss-cartas",
+    "titulo": "Shiraz (OISS) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Shiraz (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oiss/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oiss"]
+  },
+  {
+    "id": "golfo-omsj-cartas",
+    "titulo": "Sharjah (OMSJ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Sharjah (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omsj/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omsj"]
   }
 ]
