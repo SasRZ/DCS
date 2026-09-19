@@ -313,5 +313,14 @@
     "url": "docs/misiones/sead/sead-reference-guide-v1-3.pdf",
     "refs": ["misiones/sead"],
     "etiquetas": ["SEAD", "DEAD", "SAM", "defensa aérea"]
+  },
+  {
+    "id": "cas-manual-basico",
+    "titulo": "Manual básico CAS · Soporte Aéreo Cercano",
+    "tipo": "PDF",
+    "nota": "Planificación y desarrollo de misiones CAS: punto de contacto, IP, plantilla keyhole, 9 líneas y comunicaciones de ataque. Isaac Ascacibar.",
+    "url": "docs/misiones/cas/manual-basico-cas.pdf",
+    "refs": ["misiones/cas"],
+    "etiquetas": ["CAS", "9 líneas", "manual"]
   }
 ]
