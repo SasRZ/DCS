@@ -16,5 +16,122 @@
     "url": "docs/mapas/caucaso/cartas.md",
     "refs": ["mapas/caucaso"],
     "etiquetas": ["cartas", "ejemplo"]
+  },
+  {
+    "id": "siria-lcen-cartas",
+    "titulo": "Ercan (LCEN) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Ercan (Chipre Norte), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/lcen/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "lcen"]
+  },
+  {
+    "id": "siria-lclk-cartas",
+    "titulo": "Larnaca (LCLK) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Larnaca (Chipre), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/lclk/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "lclk"]
+  },
+  {
+    "id": "siria-lcph-cartas",
+    "titulo": "Pafos (LCPH) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Pafos (Chipre), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/lcph/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "lcph"]
+  },
+  {
+    "id": "siria-lcra-cartas",
+    "titulo": "Akrotiri (LCRA) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Akrotiri (Chipre), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/lcra/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "lcra"]
+  },
+  {
+    "id": "siria-ltaf-cartas",
+    "titulo": "Adana (LTAF) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Adana (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltaf/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltaf"]
+  },
+  {
+    "id": "siria-ltag-cartas",
+    "titulo": "Incirlik (LTAG) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Incirlik (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltag/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltag"]
+  },
+  {
+    "id": "siria-ltaj-cartas",
+    "titulo": "Gaziantep (LTAJ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Gaziantep (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltaj/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltaj"]
+  },
+  {
+    "id": "siria-ltda-cartas",
+    "titulo": "Hatay (LTDA) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Hatay (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltda/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltda"]
+  },
+  {
+    "id": "siria-ltfg-cartas",
+    "titulo": "Gazipasa (LTFG) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Gazipasa (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltfg/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltfg"]
+  },
+  {
+    "id": "siria-olba-cartas",
+    "titulo": "Beirut (OLBA) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Beirut (Líbano), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/olba/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "olba"]
+  },
+  {
+    "id": "siria-osap-cartas",
+    "titulo": "Alepo (OSAP) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Alepo (Siria), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/osap/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "osap"]
+  },
+  {
+    "id": "siria-osdi-cartas",
+    "titulo": "Damasco (OSDI) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Damasco (Siria), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/osdi/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "osdi"]
+  },
+  {
+    "id": "siria-oslk-cartas",
+    "titulo": "Latakia (OSLK) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Latakia (Siria), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/oslk/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "oslk"]
   }
 ]
