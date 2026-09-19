@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Biblioteca DCS</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--acero:#151C23;--acero2:#1D272F;--linea:#2C3942;--texto:#DCE4E8;--tenue:#8A9AA5;
+ --ambar:#E0A73C;--chart:#69A6A0;--alerta:#C9705A;box-sizing:border-box;
+ padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--acero);color:var(--texto);
+ font:400 16px/1.55 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.env{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+a{color:inherit;text-decoration:none}
+h1{font:600 clamp(28px,6vw,44px)/1 "Barlow Condensed",sans-serif;margin:0 0 6px}
+h2{font:600 22px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;color:var(--chart);
+ margin:34px 0 0;padding-bottom:8px;border-bottom:1px solid var(--linea)}
+header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
+.lema{color:var(--tenue);margin:0;max-width:62ch}
+.barra{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 0}
+#buscar{flex:1 1 240px;min-width:0;background:var(--acero2);border:1px solid var(--linea);
+ border-radius:3px;color:var(--texto);font:inherit;padding:10px 13px}
+#buscar::placeholder{color:var(--tenue)}
+#buscar:focus{outline:2px solid var(--ambar);outline-offset:1px;border-color:transparent}
+.cuenta{color:var(--tenue);font-size:14px;white-space:nowrap}
+.miga{margin:22px 0 0;font-size:14px;color:var(--tenue)}
+.miga a:hover{color:var(--ambar)}
+.miga span.sep{margin:0 8px}
+
+#avisos{margin-top:22px;border:1px solid var(--alerta);border-left-width:3px;padding:14px 16px;
+ background:var(--acero2);font-size:14.5px}
+#avisos h3{font:600 17px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;
+ color:var(--alerta);margin:0 0 8px}
+#avisos ul{margin:0;padding-left:20px;color:var(--tenue)}
+#avisos[hidden]{display:none}
+
+.portada{display:grid;gap:1px;background:var(--linea);border:1px solid var(--linea);margin-top:30px}
+.portada a{background:var(--acero);padding:26px 22px;display:grid;
+ grid-template-columns:1fr auto;gap:6px 20px;align-items:baseline}
+.portada a:hover,.portada a:focus-visible{background:var(--acero2);outline:none}
+.portada a:hover .pt,.portada a:focus-visible .pt{color:var(--ambar)}
+.pt{font:600 28px/1 "Barlow Condensed",sans-serif}
+.pd{grid-column:1;color:var(--tenue);max-width:60ch}
+.pn{grid-row:1;grid-column:2;color:var(--tenue);font-size:14px;white-space:nowrap}
+
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;
+ background:var(--linea);border:1px solid var(--linea);margin-top:14px}
+.rejilla a{background:var(--acero);padding:15px 16px;display:flex;justify-content:space-between;
+ gap:10px;align-items:baseline}
+.rejilla a:hover,.rejilla a:focus-visible{background:var(--acero2);outline:none;color:var(--ambar)}
+.rejilla .n{color:var(--tenue);font-size:13px}
+
+.doc{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
+ padding:14px 4px;border-bottom:1px solid var(--linea)}
+.doc:hover,.doc:focus-visible{background:var(--acero2);outline:none}
+.doc:hover .tit,.doc:focus-visible .tit{color:var(--ambar)}
+.tit{font-weight:500}
+.nota{grid-column:1;color:var(--tenue);font-size:14.5px;max-width:72ch}
+.meta{grid-column:1;color:var(--tenue);font-size:13.5px}
+.meta b{font-weight:400;color:var(--chart)}
+.tipo{grid-row:1;grid-column:2;color:var(--tenue);font-size:13px;letter-spacing:.08em;
+ border:1px solid var(--linea);border-radius:2px;padding:2px 7px}
+.ruta{grid-row:1;grid-column:2;color:var(--tenue);font-size:13px;text-align:right;max-width:34ch}
+.vacio{color:var(--tenue);padding:40px 4px}
+footer{color:var(--tenue);font-size:14px;margin-top:48px;border-top:1px solid var(--linea);padding-top:16px}
+code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
+@media (prefers-reduced-motion:no-preference){.doc,.rejilla a,.portada a{transition:background .12s}}
+</style>
+</head>
+<body>
+<div class="env">
+<header>
+  <h1><a href="#/">Biblioteca DCS</a></h1>
+  <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
+  <div class="barra">
+    <input id="buscar" type="search" placeholder="Buscar en todo: Viper, Kola, SEAD, TACAN…" autocomplete="off" disabled>
+    <span class="cuenta" id="cuenta"></span>
+  </div>
+</header>
+
+<section id="avisos" hidden><h3>Revisar el catálogo</h3><ul id="avisos-lista"></ul></section>
+<nav class="miga" id="miga"></nav>
+<main id="vista"><p class="vacio">Cargando catálogo…</p></main>
+<footer>Los datos viven en <code>data/taxonomia.json</code> y <code>data/documentos.json</code>.
+Esta página debe servirse por HTTP; abriéndola con doble clic (<code>file://</code>) el navegador bloquea la carga de los JSON.</footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
+
+let arbol = {}, documentos = [], idx = {}, porRef = new Map(), filtro = "";
+
+/* ── Carga ── */
+Promise.all([
+  fetch("data/taxonomia.json").then(r => r.ok ? r.json() : Promise.reject("taxonomia.json: HTTP " + r.status)),
+  fetch("data/documentos.json").then(r => r.ok ? r.json() : Promise.reject("documentos.json: HTTP " + r.status))
+]).then(([t, d]) => {
+  arbol = t; documentos = d;
+  construirIndice();
+  validar();
+  $("buscar").disabled = false;
+  pintar();
+}).catch(err => {
+  $("vista").innerHTML = '<p class="vacio">No se ha podido cargar el catálogo (' + esc(String(err)) +
+    ').<br>Comprueba que sirves la carpeta por HTTP y que los JSON están en <code>data/</code> y son válidos.</p>';
+});
+
+/* ── Índice: una sola copia de cada documento, referenciada desde varios sitios ── */
+function construirIndice(){
+  idx = {}; porRef = new Map();
+  for (const c in arbol)
+    for (const g of arbol[c].grupos)
+      for (const it of g.items) idx[c + "/" + it.id] = it.nombre;
+
+  for (const doc of documentos)
+    for (const ref of (doc.refs || [])) {
+      if (!porRef.has(ref)) porRef.set(ref, []);
+      porRef.get(ref).push(doc);
+    }
+}
+
+/* ── Validación: duplicados y referencias rotas ── */
+function validar(){
+  const avisos = [], ids = new Set(), urls = new Map(), titulos = new Map();
+  for (const d of documentos) {
+    if (!d.id) { avisos.push("Un documento no tiene <code>id</code>: " + esc(d.titulo || d.url || "?")); continue; }
+    if (ids.has(d.id)) avisos.push("Id repetido: <code>" + esc(d.id) + "</code>");
+    ids.add(d.id);
+
+    const u = (d.url || "").toLowerCase();
+    if (u) { if (urls.has(u)) avisos.push("El archivo <code>" + esc(d.url) + "</code> está en dos fichas: <code>" +
+      esc(urls.get(u)) + "</code> y <code>" + esc(d.id) + "</code>. Usa una sola ficha con varias <code>refs</code>.");
+      else urls.set(u, d.id); }
+
+    const tt = (d.titulo || "").trim().toLowerCase();
+    if (tt) { if (titulos.has(tt)) avisos.push("Dos documentos con el mismo título: <code>" +
+      esc(titulos.get(tt)) + "</code> y <code>" + esc(d.id) + "</code>");
+      else titulos.set(tt, d.id); }
+
+    const vistas = new Set();
+    for (const r of (d.refs || [])) {
+      if (!(r in idx)) avisos.push("<code>" + esc(d.id) + "</code> apunta a una subcategoría inexistente: <code>" + esc(r) + "</code>");
+      if (vistas.has(r)) avisos.push("<code>" + esc(d.id) + "</code> repite la referencia <code>" + esc(r) + "</code>");
+      vistas.add(r);
+    }
+    if (!(d.refs || []).length) avisos.push("<code>" + esc(d.id) + "</code> no está en ninguna categoría (<code>refs</code> vacío)");
+  }
+  if (avisos.length) {
+    $("avisos-lista").innerHTML = avisos.map(a => "<li>" + a + "</li>").join("");
+    $("avisos").hidden = false;
+  }
+}
+
+/* ── Pintado ── */
+const cuentaCat = c => documentos.filter(d => (d.refs || []).some(r => r.startsWith(c + "/"))).length;
+const cuentaSub = ref => (porRef.get(ref) || []).length;
+
+function fila(d, refActual){
+  const otras = (d.refs || []).filter(r => r !== refActual && idx[r]);
+  const der = refActual
+    ? '<span class="tipo">' + esc(d.tipo) + '</span>'
+    : '<span class="ruta">' + (d.refs || []).filter(r => idx[r]).map(r => esc(idx[r])).join(" · ") + '</span>';
+  const ext = /^https?:/.test(d.url) ? ' target="_blank" rel="noopener"' : '';
+  return '<a class="doc" href="' + esc(d.url) + '"' + ext + '><span class="tit">' + esc(d.titulo) + '</span>' + der +
+    (d.nota ? '<span class="nota">' + esc(d.nota) + '</span>' : '') +
+    (refActual && otras.length ? '<span class="meta">También en <b>' + otras.map(r => esc(idx[r])).join("</b>, <b>") + '</b></span>' : '') +
+    '</a>';
+}
+
+function pintar(){
+  const v = $("vista"), miga = $("miga");
+  const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
+  const sep = '<span class="sep">›</span>';
+
+  if (filtro) {
+    const r = documentos.filter(d => (
+      d.titulo + " " + (d.nota || "") + " " + (d.etiquetas || []).join(" ") + " " +
+      (d.refs || []).map(x => idx[x] || "").join(" ")).toLowerCase().includes(filtro));
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Resultados';
+    $("cuenta").textContent = r.length + (r.length === 1 ? " resultado" : " resultados");
+    v.innerHTML = r.length ? r.map(d => fila(d, null)).join("")
+      : '<p class="vacio">Sin resultados. Prueba con el aparato, el mapa, el tipo de misión o una etiqueta.</p>';
+    return;
+  }
+
+  const [c, s] = ruta;
+
+  if (c && arbol[c] && s) {
+    const ref = c + "/" + s, r = porRef.get(ref) || [];
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + '<a href="#/' + c + '">' + esc(arbol[c].nombre) + '</a>' +
+                     sep + esc(idx[ref] || s);
+    $("cuenta").textContent = r.length + (r.length === 1 ? " documento" : " documentos");
+    v.innerHTML = '<h2>' + esc(idx[ref] || s) + '</h2>' + (r.length ? r.map(d => fila(d, ref)).join("")
+      : '<p class="vacio">Todavía no hay nada aquí. Añade una ficha con <code>"refs": ["' + esc(ref) + '"]</code>.</p>');
+    return;
+  }
+
+  if (c && arbol[c]) {
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + esc(arbol[c].nombre);
+    $("cuenta").textContent = cuentaCat(c) + " documentos";
+    v.innerHTML = arbol[c].grupos.map(g =>
+      (g.nombre ? '<h2>' + esc(g.nombre) + '</h2>' : '') + '<div class="rejilla">' +
+      g.items.map(it => '<a href="#/' + c + '/' + it.id + '">' + esc(it.nombre) +
+        '<span class="n">' + cuentaSub(c + "/" + it.id) + '</span></a>').join("") + '</div>').join("");
+    return;
+  }
+
+  miga.innerHTML = "";
+  $("cuenta").textContent = documentos.length + " documentos";
+  v.innerHTML = '<div class="portada">' + Object.entries(arbol).map(([k, a]) => {
+    const subs = a.grupos.reduce((t, g) => t + g.items.length, 0);
+    return '<a href="#/' + k + '"><span class="pt">' + esc(a.nombre) + '</span>' +
+      '<span class="pn">' + subs + ' apartados · ' + cuentaCat(k) + ' doc.</span>' +
+      '<span class="pd">' + esc(a.desc) + '</span></a>';
+  }).join("") + '</div>';
+}
+
+$("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };
+addEventListener("hashchange", () => { $("buscar").value = ""; filtro = ""; pintar(); scrollTo(0, 0); });
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "modulos": {
+    "nombre": "Módulos",
+    "desc": "Arranque, sistemas, armamento y checklists de cada aparato.",
+    "grupos": [
+      { "nombre": "Cazas y multirrol", "items": [
+        {"id":"f16c","nombre":"F-16C Viper"},
+        {"id":"fa18c","nombre":"F/A-18C Hornet"},
+        {"id":"f15e","nombre":"F-15E Strike Eagle"},
+        {"id":"f14","nombre":"F-14A/B Tomcat"},
+        {"id":"f4e","nombre":"F-4E Phantom II"},
+        {"id":"typhoon","nombre":"Eurofighter Typhoon"},
+        {"id":"jf17","nombre":"JF-17 Thunder"},
+        {"id":"m2000c","nombre":"Mirage 2000C"},
+        {"id":"mirf1","nombre":"Mirage F1"},
+        {"id":"mig21","nombre":"MiG-21bis"},
+        {"id":"mig29","nombre":"MiG-29A"},
+        {"id":"su27","nombre":"Su-27"},
+        {"id":"su33","nombre":"Su-33"},
+        {"id":"f15c","nombre":"F-15C"},
+        {"id":"f5e","nombre":"F-5E Tiger II"},
+        {"id":"f86","nombre":"F-86F Sabre"},
+        {"id":"mig15","nombre":"MiG-15bis"},
+        {"id":"mig19","nombre":"MiG-19P"}
+      ]},
+      { "nombre": "Ataque", "items": [
+        {"id":"a10c","nombre":"A-10C II Warthog"},
+        {"id":"av8b","nombre":"AV-8B Harrier"},
+        {"id":"ajs37","nombre":"AJS-37 Viggen"},
+        {"id":"su25","nombre":"Su-25A"},
+        {"id":"su25t","nombre":"Su-25T"}
+      ]},
+      { "nombre": "Helicópteros", "items": [
+        {"id":"ah64d","nombre":"AH-64D Apache"},
+        {"id":"ka50","nombre":"Ka-50 Black Shark 3"},
+        {"id":"mi24p","nombre":"Mi-24P Hind"},
+        {"id":"mi8","nombre":"Mi-8MTV2"},
+        {"id":"uh1h","nombre":"UH-1H Huey"},
+        {"id":"sa342","nombre":"SA-342 Gazelle"},
+        {"id":"oh58d","nombre":"OH-58D Kiowa"},
+        {"id":"ch47f","nombre":"CH-47F Chinook"}
+      ]},
+      { "nombre": "Segunda Guerra Mundial", "items": [
+        {"id":"p51d","nombre":"P-51D Mustang"},
+        {"id":"p47d","nombre":"P-47D Thunderbolt"},
+        {"id":"spitfire","nombre":"Spitfire LF Mk IX"},
+        {"id":"bf109","nombre":"Bf 109 K-4"},
+        {"id":"fw190","nombre":"Fw 190 A-8 / D-9"},
+        {"id":"mossie","nombre":"Mosquito FB Mk VI"},
+        {"id":"a20g","nombre":"A-20G Havoc"},
+        {"id":"i16","nombre":"I-16"}
+      ]},
+      { "nombre": "Entrenadores y hélice", "items": [
+        {"id":"l39","nombre":"L-39 Albatros"},
+        {"id":"c101","nombre":"C-101 Aviojet"},
+        {"id":"mb339","nombre":"MB-339"},
+        {"id":"yak52","nombre":"Yak-52"},
+        {"id":"eagle2","nombre":"Christen Eagle II"}
+      ]}
+    ]
+  },
+  "mapas": {
+    "nombre": "Mapas",
+    "desc": "Aeródromos, frecuencias, navegación y particularidades de cada teatro.",
+    "grupos": [
+      { "nombre": "Teatros modernos", "items": [
+        {"id":"caucaso","nombre":"Cáucaso"},
+        {"id":"siria","nombre":"Siria"},
+        {"id":"golfo","nombre":"Golfo Pérsico"},
+        {"id":"sinai","nombre":"Sinaí"},
+        {"id":"irak","nombre":"Irak"},
+        {"id":"afganistan","nombre":"Afganistán"},
+        {"id":"kola","nombre":"Kola"},
+        {"id":"nevada","nombre":"Nevada (NTTR)"},
+        {"id":"marianas","nombre":"Islas Marianas"},
+        {"id":"atlantico","nombre":"Atlántico Sur"},
+        {"id":"alemania","nombre":"Alemania Guerra Fría"}
+      ]},
+      { "nombre": "Teatros históricos", "items": [
+        {"id":"normandia","nombre":"Normandía 2"},
+        {"id":"canal","nombre":"The Channel"}
+      ]}
+    ]
+  },
+  "misiones": {
+    "nombre": "Tipos de misión",
+    "desc": "Doctrina, planificación y plantillas por tipo de salida.",
+    "grupos": [
+      { "nombre": "", "items": [
+        {"id":"cas","nombre":"CAS"},
+        {"id":"cap","nombre":"CAP"},
+        {"id":"sead","nombre":"SEAD / DEAD"},
+        {"id":"strike","nombre":"STRIKE"}
+      ]}
+    ]
+  },
+  "general": {
+    "nombre": "General",
+    "desc": "Radio, procedimientos comunes y configuración. Pendiente de desarrollar.",
+    "grupos": [
+      { "nombre": "", "items": [
+        {"id":"pendiente","nombre":"Por definir"}
+      ]}
+    ]
+  }
+}

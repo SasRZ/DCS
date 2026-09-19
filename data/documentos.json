@@ -1,0 +1,20 @@
+[
+  {
+    "id": "f16c-harm",
+    "titulo": "F-16C · HARM en modo POS y HAD",
+    "tipo": "Nota",
+    "nota": "Documento de ejemplo: aparece en dos categorías sin duplicar el archivo.",
+    "url": "docs/modulos/f16c/harm.md",
+    "refs": ["modulos/f16c", "misiones/sead"],
+    "etiquetas": ["HARM", "RWR", "ejemplo"]
+  },
+  {
+    "id": "caucaso-cartas",
+    "titulo": "Cáucaso · cartas de aproximación",
+    "tipo": "Nota",
+    "nota": "Documento de ejemplo. Sustitúyelo por tu propio PDF.",
+    "url": "docs/mapas/caucaso/cartas.md",
+    "refs": ["mapas/caucaso"],
+    "etiquetas": ["cartas", "ejemplo"]
+  }
+]
