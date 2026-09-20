@@ -331,5 +331,122 @@
     "url": "docs/general/navegacion/vor-tacan-frecuencias.pdf",
     "refs": ["general/navegacion"],
     "etiquetas": ["VOR", "TACAN", "DME", "frecuencias"]
+  },
+  {
+    "id": "476vfg-tacan-yardstick",
+    "titulo": "TACAN Yardstick · 476th vFG",
+    "tipo": "PDF",
+    "nota": "Uso del TACAN como regla para medir la distancia entre dos aeronaves. Stuka, 476th vFighter Group, 11 de junio de 2012.",
+    "url": "docs/general/navegacion/476vfg-tacan-yardstick.pdf",
+    "refs": ["general/navegacion"],
+    "etiquetas": ["TACAN", "476 vFG", "navegación"]
+  },
+  {
+    "id": "476vfg-tacan-hsi",
+    "titulo": "Navegación TACAN / HSI · 476th vFG",
+    "tipo": "PDF",
+    "nota": "Navegación con TACAN y HSI: homing, directo a la estación, interceptar un radial y navegación punto a punto. Basado en el A-10C, por NARC.",
+    "url": "docs/general/navegacion/476vfg-tacan-hsi-navigation.pdf",
+    "refs": ["general/navegacion"],
+    "etiquetas": ["TACAN", "HSI", "476 vFG", "navegación"]
+  },
+  {
+    "id": "golfo-cw-aerodromos",
+    "titulo": "Golfo Pérsico · diagramas de aeródromos (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Diagramas de los aeródromos regionales del Golfo Pérsico, con ICAO, coordenadas, pistas, frecuencias UHF/VHF, TACAN y elevación.",
+    "url": "docs/mapas/golfo/combatwombat-diagramas-aerodromos.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["aeródromos", "CombatWombat", "frecuencias"]
+  },
+  {
+    "id": "golfo-cw-enruta",
+    "titulo": "Golfo Pérsico · carta en ruta (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Carta en ruta de baja cota (hasta FL200) del Golfo Pérsico. Versión 1.0, AIRAC de agosto de 2020.",
+    "url": "docs/mapas/golfo/combatwombat-carta-enruta.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["en ruta", "CombatWombat", "aerovías"]
+  },
+  {
+    "id": "siria-cw-aerodromos",
+    "titulo": "Siria · diagramas de aeródromos (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Diagramas de los aeródromos del teatro sirio: Turquía, Siria, Líbano, Israel, Jordania y Chipre. Versión 5.0, julio de 2021.",
+    "url": "docs/mapas/siria/combatwombat-diagramas-aerodromos.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["aeródromos", "CombatWombat"]
+  },
+  {
+    "id": "siria-cw-enruta",
+    "titulo": "Siria · carta en ruta (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Carta en ruta del teatro sirio. Versión 2.2, abril de 2021.",
+    "url": "docs/mapas/siria/combatwombat-carta-enruta.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["en ruta", "CombatWombat", "aerovías"]
+  },
+  {
+    "id": "siria-cw-rotary",
+    "titulo": "Siria · suplemento de helicópteros (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Helipuertos y zonas de aterrizaje regionales para ala rotatoria (Adana, Dörtyol, Hatay, Alepo). Versión 1.6, abril de 2021.",
+    "url": "docs/mapas/siria/combatwombat-suplemento-rotary.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["helicópteros", "helipuertos", "CombatWombat"]
+  },
+  {
+    "id": "marianas-cw-aerodromos",
+    "titulo": "Islas Marianas · diagramas de aeródromos (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Diagramas de los aeródromos de las Islas Marianas, con Guam, Tinian, Rota y Saipán. Versión 1.0, julio de 2021.",
+    "url": "docs/mapas/marianas/combatwombat-diagramas-aerodromos.pdf",
+    "refs": ["mapas/marianas"],
+    "etiquetas": ["aeródromos", "CombatWombat"]
+  },
+  {
+    "id": "cw-fence-checks",
+    "titulo": "Fence checks y resúmenes de amenazas (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Lista de comprobaciones antes de entrar en zona hostil (sistemas de control de tiro, ECM, armamento, navegación) y resumen de amenazas.",
+    "url": "docs/general/sop/combatwombat-fence-checks.pdf",
+    "refs": ["general/sop"],
+    "etiquetas": ["fence check", "amenazas", "CombatWombat"]
+  },
+  {
+    "id": "cw-briefing-formats",
+    "titulo": "Formatos de briefing (CombatWombat)",
+    "tipo": "PDF",
+    "nota": "Plantillas de plan de misión, paquete y plan de vuelo para los briefings. Versión 1.0, septiembre de 2020.",
+    "url": "docs/general/sop/combatwombat-briefing-formats.pdf",
+    "refs": ["general/sop"],
+    "etiquetas": ["briefing", "plantillas", "CombatWombat"]
+  },
+  {
+    "id": "coms-lider-punto",
+    "titulo": "Comunicaciones Líder – Punto(s)",
+    "tipo": "PDF",
+    "nota": "Comunicaciones entre el líder y sus punto(s) y procedimientos que se realizan en conjunto.",
+    "url": "docs/general/comunicaciones/comunicaciones-lider-punto.pdf",
+    "refs": ["general/comunicaciones"],
+    "etiquetas": ["comunicaciones", "líder", "punto"]
+  },
+  {
+    "id": "coms-piloto-atc",
+    "titulo": "Comunicaciones Piloto – ATC",
+    "tipo": "PDF",
+    "nota": "Comunicaciones con Magic, Centro, APP, TWR y GND: por qué deben ser claras, concisas y correctas.",
+    "url": "docs/general/comunicaciones/comunicaciones-piloto-atc.pdf",
+    "refs": ["general/comunicaciones"],
+    "etiquetas": ["comunicaciones", "ATC"]
+  },
+  {
+    "id": "manual-basico-procedimientos-coms",
+    "titulo": "Manual básico de procedimientos y comunicaciones",
+    "tipo": "PDF",
+    "nota": "Estandariza los procedimientos y las comunicaciones para volar misiones. Las demostraciones se hacen con el F/A-18.",
+    "url": "docs/general/comunicaciones/manual-basico-fox3-procedimientos-coms.pdf",
+    "refs": ["general/comunicaciones", "general/sop"],
+    "etiquetas": ["procedimientos", "comunicaciones", "FOX3", "manual"]
   }
 ]

@@ -101,6 +101,7 @@
       { "nombre": "", "items": [
         {"id":"sop","nombre":"SOP y procedimientos"},
         {"id":"navegacion","nombre":"Navegación y radioayudas"},
+        {"id":"comunicaciones","nombre":"Comunicaciones y radio"},
         {"id":"pendiente","nombre":"Por definir"}
       ]}
     ]
