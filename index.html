@@ -57,14 +57,28 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .tarjeta{position:relative;display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-content:start;
  background:var(--acero2);border:1px solid var(--linea);border-radius:10px;padding:14px 16px 16px 28px}
 .tarjeta::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:6px;background:var(--c)}
-.tarjeta:hover,.tarjeta:focus-visible{border-color:var(--c);outline:none}
-.tarjeta:hover .tn,.tarjeta:focus-visible .tn{color:var(--ambar)}
-.tn{font:600 25px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.01em}
+.tarjeta:hover,.tarjeta:focus-within{border-color:var(--c)}
+.tarjeta:hover .tn,.tarjeta:focus-within .tn{color:var(--ambar)}
+.tn{font:600 25px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.01em;outline:none}
+.tn::after{content:"";position:absolute;inset:0;border-radius:10px}
+.tn:focus-visible::after{outline:2px solid var(--ambar);outline-offset:2px}
+.tarjetas.ancha{grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr))}
+.mision .tn{font-size:36px;letter-spacing:.03em}
+.vacia{opacity:.5}
 .der{display:flex;gap:8px;align-items:center}
 .chip{color:var(--c);border:1px solid var(--c);border-radius:4px;font-size:11px;font-weight:600;
  letter-spacing:.08em;padding:1px 7px;line-height:1.5}
 .tarjeta .n{color:var(--tenue);font-size:13px;white-space:nowrap}
 .rol{grid-column:1/-1;color:var(--tenue);font-size:14.5px;line-height:1.4}
+.completo{grid-column:1/-1;color:var(--c);font-size:13.5px;font-weight:500;letter-spacing:.03em;margin-top:-2px}
+.ads{grid-column:1/-1;font-size:14px}
+.ads b{color:var(--c);font-weight:600}
+.avs{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+.avs .lbl{width:100%;color:var(--tenue);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
+.av{position:relative;z-index:1;font-size:12.5px;border:1px solid var(--linea);border-radius:4px;padding:1px 8px;
+ background:var(--acero);color:var(--texto)}
+a.av:hover,a.av:focus-visible{border-color:var(--ambar);color:var(--ambar);outline:none}
+.av.off{color:var(--tenue)}
 
 .doc{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
  padding:14px 4px;border-bottom:1px solid var(--linea)}
@@ -116,7 +130,9 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
 
-let arbol = {}, documentos = [], creditos = [], idx = {}, porRef = new Map(), filtro = "";
+let arbol = {}, documentos = [], todos = [], creditos = [], idx = {}, porRef = new Map(), filtro = "";
+/* ?todo en la dirección enseña también los apartados vacíos (atenuados) y los grupos ocultos, para revisar el catálogo */
+const VER_TODO = /[?&]todo\b/.test(location.search);
 
 /* ── Carga ── */
 Promise.all([
@@ -124,9 +140,14 @@ Promise.all([
   fetch("data/documentos.json").then(r => r.ok ? r.json() : Promise.reject("documentos.json: HTTP " + r.status)),
   fetch("data/creditos.json").then(r => r.ok ? r.json() : []).catch(() => [])
 ]).then(([t, d, c]) => {
-  arbol = t; documentos = d; creditos = c;
+  arbol = t; todos = d; creditos = c;
+  /* un grupo con "oculto": true no se pinta, y sus documentos no salen en búsqueda, recuentos ni créditos (siguen en los JSON) */
+  const ocultos = new Set();
+  if (!VER_TODO) for (const k in arbol) for (const g of arbol[k].grupos)
+    if (g.oculto) for (const it of g.items) ocultos.add(k + "/" + it.id);
+  documentos = todos.filter(x => !(x.refs || []).length || (x.refs || []).some(r => !ocultos.has(r)));
   construirIndice();
-  validar();
+  validar(todos);
   $("buscar").disabled = false;
   pintar();
 }).catch(err => {
@@ -149,9 +170,9 @@ function construirIndice(){
 }
 
 /* ── Validación: duplicados y referencias rotas ── */
-function validar(){
+function validar(lista){
   const avisos = [], ids = new Set(), urls = new Map(), titulos = new Map();
-  for (const d of documentos) {
+  for (const d of lista) {
     if (!d.id) { avisos.push("Un documento no tiene <code>id</code>: " + esc(d.titulo || d.url || "?")); continue; }
     if (ids.has(d.id)) avisos.push("Id repetido: <code>" + esc(d.id) + "</code>");
     ids.add(d.id);
@@ -188,11 +209,35 @@ const cuentaSub = ref => (porRef.get(ref) || []).length;
 const COLOR = {azul: "var(--azul)", ambar: "var(--ambar)", rojo: "var(--alerta)", teal: "var(--chart)",
                verde: "var(--verde)", lila: "var(--lila)"};
 
+/* Mapas: cuántos aeródromos tienen cartas (docs/mapas/<mapa>/<icao>/cartas.pdf) y qué tipo de contenido hay, calculado de las fichas */
+function extrasMapa(id){
+  const ds = documentos.filter(d => (d.refs || []).includes("mapas/" + id));
+  const aer = ds.filter(d => new RegExp("^docs/mapas/" + id + "/[a-z0-9]{4}/cartas\\.pdf$").test(d.url)).length;
+  const tags = new Set(ds.flatMap(d => (d.etiquetas || []).map(t => t.toLowerCase())));
+  const chips = [["cartas", "CARTAS"], ["en ruta", "EN RUTA"], ["aeródromos", "DIAGRAMAS"], ["helipuertos", "HELIPUERTOS"], ["fip", "FIP"]]
+    .filter(([t]) => tags.has(t)).map(([, n]) => '<span class="chip">' + n + '</span>');
+  return (aer ? '<span class="ads"><b>' + aer + '</b> ' + (aer === 1 ? 'aeródromo' : 'aeródromos') + ' con cartas</span>' : '') +
+    (chips.length ? '<span class="avs">' + chips.join("") + '</span>' : '');
+}
+
+/* Tipos de misión: aviones típicos, enlazados a su módulo cuando ese módulo tiene documentos */
+function extrasMision(it){
+  const av = (it.modulos || []).filter(m => idx["modulos/" + m]).map(m => cuentaSub("modulos/" + m) > 0
+    ? '<a class="av" href="#/modulos/' + m + '">' + esc(idx["modulos/" + m]) + '</a>'
+    : '<span class="av off">' + esc(idx["modulos/" + m]) + '</span>');
+  return av.length ? '<span class="avs"><span class="lbl">Aviones típicos</span>' + av.join("") + '</span>' : "";
+}
+
+/* La tarjeta entera es clicable a través del enlace del nombre (::after), para poder llevar otros enlaces dentro */
 function tarjeta(c, it){
-  return '<a class="tarjeta" href="#/' + c + '/' + it.id + '"><span class="tn">' + esc(it.nombre) + '</span>' +
+  const ref = c + "/" + it.id, n = cuentaSub(ref);
+  const extra = c === "mapas" ? extrasMapa(it.id) : c === "misiones" ? extrasMision(it) : "";
+  return '<div class="tarjeta' + (c === "misiones" ? ' mision' : '') + (n ? '' : ' vacia') + '">' +
+    '<a class="tn" href="#/' + ref + '">' + esc(it.nombre) + '</a>' +
     '<span class="der">' + (it.chip ? '<span class="chip">' + esc(it.chip) + '</span>' : '') +
-    '<span class="n">' + cuentaSub(c + "/" + it.id) + ' doc.</span></span>' +
-    (it.rol ? '<span class="rol">' + esc(it.rol) + '</span>' : '') + '</a>';
+    '<span class="n">' + n + ' doc.</span></span>' +
+    (it.completo ? '<span class="completo">' + esc(it.completo) + '</span>' : '') +
+    (it.rol ? '<span class="rol">' + esc(it.rol) + '</span>' : '') + extra + '</div>';
 }
 
 function fila(d, refActual){
@@ -272,13 +317,13 @@ function pintar(){
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + esc(arbol[c].nombre);
     $("cuenta").textContent = cuentaCat(c) + " documentos";
     /* los apartados sin documentos no se pintan (siguen en taxonomia.json y reaparecen al añadir una ficha) */
-    v.innerHTML = arbol[c].grupos.map(g => {
-      const its = g.items.filter(it => cuentaSub(c + "/" + it.id) > 0);
+    v.innerHTML = arbol[c].grupos.filter(g => VER_TODO || !g.oculto).map(g => {
+      const its = g.items.filter(it => VER_TODO || cuentaSub(c + "/" + it.id) > 0);
       if (!its.length) return "";
       const col = COLOR[g.color] || "var(--chart)";
       const cab = g.nombre ? '<div class="gcab"><h3>' + esc(g.nombre) + '</h3><span class="gn">' + its.length + '</span>' +
         (g.desc ? '<p>' + esc(g.desc) + '</p>' : '') + '</div>' : '';
-      return '<section style="--c:' + col + '">' + cab + '<div class="tarjetas">' +
+      return '<section style="--c:' + col + '">' + cab + '<div class="tarjetas' + (c === "modulos" ? '' : ' ancha') + '">' +
         its.map(it => tarjeta(c, it)).join("") + '</div></section>';
     }).join("") || '<p class="vacio">Todavía no hay documentos en esta categoría.</p>';
     return;
@@ -287,7 +332,8 @@ function pintar(){
   miga.innerHTML = "";
   $("cuenta").textContent = documentos.length + " documentos";
   v.innerHTML = '<div class="portada">' + Object.entries(arbol).map(([k, a]) => {
-    const subs = a.grupos.reduce((t, g) => t + g.items.filter(it => cuentaSub(k + "/" + it.id) > 0).length, 0);
+    const subs = a.grupos.filter(g => VER_TODO || !g.oculto)
+      .reduce((t, g) => t + g.items.filter(it => VER_TODO || cuentaSub(k + "/" + it.id) > 0).length, 0);
     return '<a href="#/' + k + '"><span class="pt">' + esc(a.nombre) + '</span>' +
       '<span class="pn">' + subs + ' apartados · ' + cuentaCat(k) + ' doc.</span>' +
       '<span class="pd">' + esc(a.desc) + '</span></a>';

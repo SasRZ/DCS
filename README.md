@@ -50,6 +50,24 @@ misión y general. Sin backend — solo HTML, CSS y JSON.
 6. Si añades un módulo, mapa o tipo de misión que no existe todavía,
    créalo primero en `data/taxonomia.json`.
 
+## Cómo se pintan las categorías (`data/taxonomia.json`)
+
+Todos los campos siguientes son opcionales:
+
+- En un **grupo**: `desc` (línea bajo el título), `color` (`azul`, `ambar`,
+  `rojo`, `teal`, `verde` o `lila`) y `"oculto": true`. Un grupo oculto no se
+  ve, y tampoco sus documentos en la búsqueda, los recuentos y Créditos, pero no
+  se borra nada: quita la marca y vuelve a aparecer.
+- En un **apartado**: `rol` (descripción corta), `chip` (etiqueta arriba a la
+  derecha, como FC o MOD), `completo` (nombre completo, para los tipos de
+  misión) y `modulos` (lista de ids de módulos típicos de ese tipo de misión,
+  que se muestran como enlaces cuando ese módulo tiene documentos).
+- En **Mapas**, el número de aeródromos y las etiquetas de contenido (CARTAS,
+  EN RUTA…) se calculan solos a partir de las fichas.
+- Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
+  grupos ocultos, abre la web con `?todo` (por ejemplo
+  `http://localhost:8080/?todo`).
+
 ## Validar antes de subir
 
 ```bash

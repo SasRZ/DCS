@@ -40,7 +40,7 @@
         {"id":"oh58d","nombre":"OH-58D Kiowa","rol":"Reconocimiento y ataque ligero armado.","chip":"RECON."},
         {"id":"ch47f","nombre":"CH-47F Chinook","rol":"Transporte pesado de tropas y carga.","chip":"TRANSPORTE"}
       ]},
-      { "nombre": "Segunda Guerra Mundial", "desc": "Combate a hélice: cañones, cohetes y bombas, sin ayudas electrónicas.", "color": "lila", "items": [
+      { "nombre": "Segunda Guerra Mundial", "oculto": true, "desc": "Combate a hélice: cañones, cohetes y bombas, sin ayudas electrónicas.", "color": "lila", "items": [
         {"id":"p51d","nombre":"P-51D Mustang","rol":"Caza de escolta de largo alcance.","chip":"CAZA"},
         {"id":"p47d","nombre":"P-47D Thunderbolt","rol":"Caza pesado de escolta y ataque a tierra.","chip":"ATAQUE"},
         {"id":"spitfire","nombre":"Spitfire LF Mk IX","rol":"Caza británico ágil de defensa y superioridad.","chip":"CAZA"},
@@ -64,22 +64,26 @@
     "nombre": "Mapas",
     "desc": "Aeródromos, frecuencias, navegación y particularidades de cada teatro.",
     "grupos": [
-      { "nombre": "Teatros modernos", "color": "teal", "items": [
-        {"id":"caucaso","nombre":"Cáucaso"},
-        {"id":"siria","nombre":"Siria"},
-        {"id":"golfo","nombre":"Golfo Pérsico"},
-        {"id":"sinai","nombre":"Sinaí"},
-        {"id":"irak","nombre":"Irak"},
-        {"id":"afganistan","nombre":"Afganistán"},
-        {"id":"kola","nombre":"Kola"},
-        {"id":"nevada","nombre":"Nevada (NTTR)"},
-        {"id":"marianas","nombre":"Islas Marianas"},
-        {"id":"atlantico","nombre":"Atlántico Sur"},
-        {"id":"alemania","nombre":"Alemania Guerra Fría"}
+      { "nombre": "Oriente Medio y Asia Central", "desc": "Desierto, costa y montaña: los teatros de la actualidad.", "color": "ambar", "items": [
+        {"id":"siria","nombre":"Siria","rol":"Chipre, sur de Turquía, Líbano, Siria e Israel: muchos aeródromos y fronteras muy cercanas.","chip":"MODERNO"},
+        {"id":"golfo","nombre":"Golfo Pérsico","rol":"Estrecho de Ormuz: Emiratos, Irán y Omán, con aeródromos en el desierto y en islas.","chip":"MODERNO"},
+        {"id":"sinai","nombre":"Sinaí","rol":"Península del Sinaí y delta del Nilo: desierto abierto, el canal de Suez y el Mediterráneo oriental.","chip":"MODERNO"},
+        {"id":"irak","nombre":"Irak","rol":"Irak y sus ciudades a lo largo del Tigris y el Éufrates.","chip":"MODERNO"},
+        {"id":"afganistan","nombre":"Afganistán","rol":"Montañas y valles de gran altitud.","chip":"MODERNO"}
       ]},
-      { "nombre": "Teatros históricos", "color": "lila", "items": [
-        {"id":"normandia","nombre":"Normandía 2"},
-        {"id":"canal","nombre":"The Channel"}
+      { "nombre": "Cáucaso y Europa", "desc": "Del mar Negro y el Ártico ruso a la Alemania de la Guerra Fría.", "color": "azul", "items": [
+        {"id":"caucaso","nombre":"Cáucaso","rol":"Georgia y sur de Rusia, entre el mar Negro y las montañas: el mapa clásico de DCS.","chip":"MODERNO"},
+        {"id":"kola","nombre":"Kola","rol":"Península de Kola: Ártico ruso y norte de Noruega y Finlandia.","chip":"MODERNO"},
+        {"id":"alemania","nombre":"Alemania Guerra Fría","rol":"Alemania en los años 80, con la frontera del Telón de Acero.","chip":"GUERRA FRÍA"}
+      ]},
+      { "nombre": "América y océanos", "desc": "Nevada, el Pacífico y el Atlántico Sur.", "color": "teal", "items": [
+        {"id":"nevada","nombre":"Nevada (NTTR)","rol":"Desierto de Nevada y el polígono de pruebas y entrenamiento NTTR.","chip":"MODERNO"},
+        {"id":"marianas","nombre":"Islas Marianas","rol":"Guam, Saipán, Tinian y Rota: archipiélago del Pacífico, ideal para operaciones navales.","chip":"MODERNO"},
+        {"id":"atlantico","nombre":"Atlántico Sur","rol":"Patagonia, Tierra del Fuego y las islas Malvinas (Falkland): viento, mar y mal tiempo.","chip":"MODERNO"}
+      ]},
+      { "nombre": "Europa 1944", "desc": "Mapas de la Segunda Guerra Mundial.", "color": "lila", "items": [
+        {"id":"normandia","nombre":"Normandía 2","rol":"Costa de Normandía en 1944: el desembarco y los campos aliados.","chip":"WWII"},
+        {"id":"canal","nombre":"The Channel","rol":"El Canal de la Mancha y el sureste de Inglaterra en 1944.","chip":"WWII"}
       ]}
     ]
   },
@@ -87,11 +91,24 @@
     "nombre": "Tipos de misión",
     "desc": "Doctrina, planificación y plantillas por tipo de salida.",
     "grupos": [
-      { "nombre": "", "items": [
-        {"id":"cas","nombre":"CAS"},
-        {"id":"cap","nombre":"CAP"},
-        {"id":"sead","nombre":"SEAD / DEAD"},
-        {"id":"strike","nombre":"STRIKE"}
+      { "nombre": "Aire-aire", "desc": "Ganar y mantener el control del cielo.", "color": "azul", "items": [
+        {"id":"cap","nombre":"CAP","completo":"Combat Air Patrol · Patrulla aérea de combate","rol":"Vigilar una zona para interceptar cualquier amenaza aérea antes de que llegue a lo que proteges.","modulos":["f15c", "f14", "f16c", "fa18c", "m2000c", "mig29", "su27", "jf17"]},
+        {"id":"escolta","nombre":"ESCOLTA","completo":"Escolta · Protección de otros aviones","rol":"Acompañar y proteger bombarderos, transportes o aviones de ataque frente a cazas enemigos.","modulos":["f15c", "f16c", "fa18c", "p51d"]},
+        {"id":"intercepcion","nombre":"INTERCEPCIÓN","completo":"Intercepción · Reacción rápida contra intrusos","rol":"Despegar en alerta para salir al encuentro de un aparato desconocido o de un ataque entrante.","modulos":["f14", "m2000c", "mig21", "mig29", "su27", "f15c"]}
+      ]},
+      { "nombre": "Aire-tierra", "desc": "Atacar blancos en el suelo y abrir paso a los demás.", "color": "rojo", "items": [
+        {"id":"cas","nombre":"CAS","completo":"Close Air Support · Apoyo aéreo cercano","rol":"Atacar blancos enemigos muy cerca de tus tropas, coordinado con el controlador y con la llamada de 9 líneas.","modulos":["a10c", "su25t", "av8b", "ah64d", "ka50", "mi24p", "f16c", "fa18c"]},
+        {"id":"strike","nombre":"STRIKE","completo":"Strike · Ataque de precisión a objetivos fijos","rol":"Destruir objetivos de valor como puentes, depósitos, aeródromos o instalaciones, con armas guiadas y planificación previa.","modulos":["f15e", "f16c", "fa18c", "f4e", "ajs37"]},
+        {"id":"sead","nombre":"SEAD / DEAD","completo":"Supresión y destrucción de defensas aéreas enemigas","rol":"Abrir paso a los demás neutralizando radares y misiles antiaéreos, normalmente con misiles antirradiación como el HARM.","modulos":["f16c", "fa18c", "su25t"]}
+      ]},
+      { "nombre": "Naval", "desc": "Operaciones contra buques y sobre el mar.", "color": "teal", "items": [
+        {"id":"antibuque","nombre":"ANTIBUQUE","completo":"Antibuque (ASuW) · Ataque a buques","rol":"Localizar y hundir buques con misiles antibuque, casi siempre a muy baja altura sobre el mar.","modulos":["fa18c", "ajs37", "jf17"]}
+      ]},
+      { "nombre": "Apoyo", "desc": "Lo que hace posible el resto: repostar, rescatar, transportar y observar.", "color": "verde", "items": [
+        {"id":"aar","nombre":"AAR","completo":"Reabastecimiento en vuelo (AAR)","rol":"Repostar en el aire desde un avión cisterna, con cesta o pértiga, para alargar la misión.","modulos":["f16c", "fa18c", "a10c", "av8b", "f15e"]},
+        {"id":"csar","nombre":"CSAR","completo":"Búsqueda y rescate en combate","rol":"Localizar y recoger a tripulantes derribados en territorio hostil, con helicópteros y escolta.","modulos":["uh1h", "mi8", "ch47f", "a10c"]},
+        {"id":"transporte","nombre":"TRANSPORTE","completo":"Transporte y asalto aéreo","rol":"Llevar tropas y carga al frente, con aterrizajes en zonas improvisadas y escolta.","modulos":["mi8", "uh1h", "ch47f"]},
+        {"id":"recon","nombre":"RECONOCIMIENTO","completo":"Reconocimiento","rol":"Obtener información sobre el enemigo: observar, fotografiar y transmitir posiciones.","modulos":["oh58d", "sa342", "ajs37"]}
       ]}
     ]
   },
