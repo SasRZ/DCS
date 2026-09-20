@@ -46,10 +46,10 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .pd{grid-column:1;color:var(--tenue);max-width:60ch}
 .pn{grid-row:1;grid-column:2;color:var(--tenue);font-size:14px;white-space:nowrap}
 
-.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;
- background:var(--linea);border:1px solid var(--linea);margin-top:14px}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+ border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:14px}
 .rejilla a{background:var(--acero);padding:15px 16px;display:flex;justify-content:space-between;
- gap:10px;align-items:baseline}
+ gap:10px;align-items:baseline;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
 .rejilla a:hover,.rejilla a:focus-visible{background:var(--acero2);outline:none;color:var(--ambar)}
 .rejilla .n{color:var(--tenue);font-size:13px}
 
@@ -247,17 +247,20 @@ function pintar(){
   if (c && arbol[c]) {
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + esc(arbol[c].nombre);
     $("cuenta").textContent = cuentaCat(c) + " documentos";
-    v.innerHTML = arbol[c].grupos.map(g =>
-      (g.nombre ? '<h2>' + esc(g.nombre) + '</h2>' : '') + '<div class="rejilla">' +
-      g.items.map(it => '<a href="#/' + c + '/' + it.id + '">' + esc(it.nombre) +
-        '<span class="n">' + cuentaSub(c + "/" + it.id) + '</span></a>').join("") + '</div>').join("");
+    /* los apartados sin documentos no se pintan (siguen en taxonomia.json y reaparecen al añadir una ficha) */
+    v.innerHTML = arbol[c].grupos.map(g => {
+      const its = g.items.filter(it => cuentaSub(c + "/" + it.id) > 0);
+      return its.length ? (g.nombre ? '<h2>' + esc(g.nombre) + '</h2>' : '') + '<div class="rejilla">' +
+        its.map(it => '<a href="#/' + c + '/' + it.id + '">' + esc(it.nombre) +
+          '<span class="n">' + cuentaSub(c + "/" + it.id) + '</span></a>').join("") + '</div>' : "";
+    }).join("") || '<p class="vacio">Todavía no hay documentos en esta categoría.</p>';
     return;
   }
 
   miga.innerHTML = "";
   $("cuenta").textContent = documentos.length + " documentos";
   v.innerHTML = '<div class="portada">' + Object.entries(arbol).map(([k, a]) => {
-    const subs = a.grupos.reduce((t, g) => t + g.items.length, 0);
+    const subs = a.grupos.reduce((t, g) => t + g.items.filter(it => cuentaSub(k + "/" + it.id) > 0).length, 0);
     return '<a href="#/' + k + '"><span class="pt">' + esc(a.nombre) + '</span>' +
       '<span class="pn">' + subs + ' apartados · ' + cuentaCat(k) + ' doc.</span>' +
       '<span class="pd">' + esc(a.desc) + '</span></a>';
