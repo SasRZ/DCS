@@ -472,14 +472,14 @@ const destacadosPrimero = lista => lista.slice().sort((a, b) => !!b.destacado - 
 
 function fila(d, refActual){
   const refs = (d.refs || []).filter(r => idx[r]), otras = refs.filter(r => r !== refActual);
-  const ext = ' target="_blank" rel="noopener"';  /* todo documento se abre en pestaña nueva, para no salir de la biblioteca */
+  const en = KB.enlace(d);  /* fuera del modo kneeboard todo documento se abre en pestaña nueva, para no salir de la biblioteca; en kneeboard, los PDF abren el visor */
   /* con una categoría abierta, los enlaces son a las demás; en la búsqueda, a todas donde está el documento */
   const enlaces = (refActual ? otras : refs).map(r => '<a class="av" href="#/' + r + '">' + esc(idx[r]) + '</a>').join("");
   /* la tarjeta entera es clicable a través del título (::after), para poder llevar botones y enlaces dentro; KB.botones añade Guardar y Leer a los PDF */
   /* "destacado": true en la ficha marca un documento especialmente relevante: sale primero, a todo el ancho y en ámbar */
   return '<div class="doc' + (KB.guardado(d.id) ? ' gd' : '') + (d.destacado ? ' dest' : '') + '" style="--c:' + (d.destacado ? 'var(--ambar)' : colorRef(refActual || refs[0])) + '">' +
-    '<a class="tit" href="' + esc(d.url) + '"' + ext + '>' + esc(d.titulo) + '</a>' +
-    '<div class="dtop">' + (d.destacado ? '<span class="dst">Destacado</span>' : '') + '<span class="tipo">' + esc(d.tipo) + '</span><span class="dgo" aria-hidden="true">↗</span></div>' +
+    '<a class="tit" href="' + esc(en.href) + '"' + en.ext + '>' + esc(d.titulo) + '</a>' +
+    '<div class="dtop">' + (d.destacado ? '<span class="dst">Destacado</span>' : '') + '<span class="tipo">' + esc(d.tipo) + '</span><span class="dgo" aria-hidden="true">' + en.icono + '</span></div>' +
     (d.nota ? '<span class="nota">' + esc(d.nota) + '</span>' : '') +
     (d.autor ? '<span class="meta">Autor: <b>' + esc(d.autor) + '</b></span>' : '') +
     (enlaces ? '<span class="rel"><span class="lbl">' + (refActual ? 'También en' : 'En') + '</span>' + enlaces + '</span>' : '') +
@@ -494,7 +494,7 @@ function paginaCreditos(){
 
   const bloques = autores.map(a => {
     const ds = documentos.filter(d => d.autor === a.nombre);
-    const lista = '<ul>' + ds.map(d => '<li><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.titulo) + '</a></li>').join("") + '</ul>';
+    const lista = '<ul>' + ds.map(d => { const en = KB.enlace(d); return '<li><a href="' + esc(en.href) + '"' + en.ext + '>' + esc(d.titulo) + '</a></li>'; }).join("") + '</ul>';
     const nombre = a.url
       ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.nombre) + ' <span class="ext">↗</span></a>'
       : esc(a.nombre);

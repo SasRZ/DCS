@@ -4,7 +4,7 @@
    - Los PDF guardados en «Mi kneeboard» viven en otra caché (kneeboard-pdf) que gestiona la página, no este archivo;
      aquí solo se usan como respaldo cuando un PDF se pide sin conexión.
    Al cambiar algún archivo de la lista PRECACHE, sube VERSION para que los móviles y tablets lo renueven. */
-const VERSION = "v1";
+const VERSION = "v2";
 const SHELL = "shell-" + VERSION;
 const PDFS = "kneeboard-pdf";
 const PRECACHE = [

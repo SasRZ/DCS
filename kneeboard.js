@@ -91,6 +91,13 @@ const KB = (() => {
       '<a class="bt" href="#/leer/' + encodeURIComponent(d.id) + '">Leer</a></span>';
   }
 
+  /* En modo kneeboard, un clic en cualquier PDF propio abre el visor en vez de una pestaña nueva (que en la tablet lo descarga) */
+  function enlace(d){
+    return ACTIVO && esPdf(d)
+      ? {href: "#/leer/" + encodeURIComponent(d.id), ext: "", icono: "›"}
+      : {href: d.url, ext: ' target="_blank" rel="noopener"', icono: "↗"};
+  }
+
   function refrescar(id){
     document.querySelectorAll('[data-kb="fijar"][data-id="' + CSS.escape(id) + '"]').forEach(b => {
       b.textContent = rotulo(id); b.classList.toggle("on", guardado(id)); b.setAttribute("aria-pressed", guardado(id)); b.disabled = false;
@@ -477,5 +484,5 @@ const KB = (() => {
   addEventListener("online", actualizarRed); addEventListener("offline", actualizarRed);
   document.addEventListener("DOMContentLoaded", () => { actualizarRed(); refrescarNav(); });
 
-  return {activo: ACTIVO, botones, guardado, pagina, abrir, cerrar, refrescarNav, abierto: () => L.abierto};
+  return {activo: ACTIVO, botones, enlace, guardado, pagina, abrir, cerrar, refrescarNav, abierto: () => L.abierto};
 })();
