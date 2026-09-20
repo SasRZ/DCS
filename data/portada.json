@@ -1,0 +1,56 @@
+{
+ "categorias": {
+  "modulos": {
+   "color": "azul",
+   "kicker": "Aeronaves",
+   "foto": {
+    "archivo": "F-16 June 2008.jpg",
+    "autor": "Master Sgt. Andy Dunaway",
+    "licencia": "Public domain",
+    "licencia_url": "",
+    "alt": "F-16C de la USAF"
+   }
+  },
+  "mapas": {
+   "color": "ambar",
+   "kicker": "Teatros de operaciones",
+   "foto": {
+    "archivo": "Strait of Hormuz and Musandam Peninsula (MODIS 2018-12-10).jpg",
+    "autor": "NASA / MODIS Land Rapid Response Team",
+    "licencia": "Public domain",
+    "licencia_url": "",
+    "alt": "Estrecho de Ormuz visto por satélite"
+   }
+  },
+  "misiones": {
+   "color": "rojo",
+   "kicker": "Doctrina y planificación",
+   "foto": {
+    "archivo": "Close Air Support training at the Nevada Test and Training Range 110923-F-MQ656-179.jpg",
+    "autor": "Tech. Sgt. Michael Holzworth, USAF",
+    "licencia": "Public domain",
+    "licencia_url": "",
+    "alt": "Apoyo aéreo cercano en un ejercicio"
+   }
+  },
+  "general": {
+   "color": "verde",
+   "kicker": "Radio, navegación y procedimientos",
+   "foto": {
+    "archivo": "Aviano ATC conducts first landing from alternate tower during joint exercise (9895132).jpg",
+    "autor": "U.S. Air Force",
+    "licencia": "Public domain",
+    "licencia_url": "",
+    "alt": "Controlador con radio en la torre de Aviano"
+   }
+  }
+ },
+ "busquedas": [
+  "Viper",
+  "SEAD",
+  "TACAN",
+  "Siria",
+  "CAS",
+  "Checklist"
+ ]
+}

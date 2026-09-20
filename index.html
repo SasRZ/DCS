@@ -59,6 +59,50 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .reto:hover .rb,.reto:focus-visible .rb{background:var(--ambar);color:var(--acero)}
 @media (max-width:640px){.reto{grid-template-columns:1fr;padding:18px 18px 18px 20px}.rb{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}}
 
+/* Cabecera de la portada: más grande, con anillos de radar de fondo */
+header{position:relative;isolation:isolate}
+.cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.rapidas{display:none}
+.inicio header{padding:60px 0 34px}
+.inicio header::before{content:"";position:absolute;inset:0 -20px;z-index:-1;pointer-events:none;
+ background:radial-gradient(circle at 86% 40%,rgba(105,166,160,.20),transparent 46%),
+  repeating-radial-gradient(circle at 86% 40%,transparent 0 44px,rgba(105,166,160,.085) 44px 45px);
+ -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 65%);mask-image:linear-gradient(90deg,transparent 8%,#000 65%)}
+.inicio h1{font-size:clamp(46px,10vw,78px);letter-spacing:.01em}
+.inicio .lema{font-size:18px;max-width:56ch;margin-top:12px}
+.inicio .barra{margin-top:28px}
+.inicio #buscar{padding:15px 18px;font-size:17px;border-radius:8px}
+.inicio .rapidas{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.rapidas button{font:inherit;font-size:13.5px;color:var(--tenue);background:transparent;border:1px solid var(--linea);
+ border-radius:999px;padding:3px 14px;cursor:pointer}
+.rapidas button:hover,.rapidas button:focus-visible{color:var(--ambar);border-color:var(--ambar);outline:none}
+
+/* Portada: categorías con foto */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px;margin-top:30px}
+.cat{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px;overflow:hidden;
+ border:1px solid var(--linea);border-radius:12px;background:var(--acero2)}
+.cat .img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;z-index:2;background:var(--c)}
+.cat::after{content:"";position:absolute;inset:0;
+ background:linear-gradient(to top,rgba(11,16,21,.95) 0%,rgba(11,16,21,.78) 40%,rgba(11,16,21,.30) 100%)}
+.cat:hover,.cat:focus-within{border-color:var(--c)}
+.ctx{position:relative;z-index:1;padding:22px 26px 20px 32px}
+.ck{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.cn{display:inline-block;margin-top:4px;font:600 clamp(34px,6vw,46px)/1.05 "Barlow Condensed",sans-serif;letter-spacing:.01em;outline:none}
+.cn::after{content:"";position:absolute;inset:0;z-index:1}
+.cat:hover .cn,.cat:focus-within .cn{color:var(--ambar)}
+.cn:focus-visible::after{outline:2px solid var(--ambar);outline-offset:-4px;border-radius:12px}
+.cd{display:block;margin-top:6px;color:#b7c4cc;max-width:52ch}
+.cm{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;color:var(--texto)}
+.cm b{font-weight:600;color:var(--c)}
+.cm .flecha{margin-left:auto;font-size:20px;color:var(--c)}
+.cred{position:absolute;right:12px;top:10px;z-index:3;font-size:10.5px;color:rgba(230,238,242,.72);
+ background:rgba(11,16,21,.55);padding:2px 8px;border-radius:999px}
+.cred a{text-decoration:underline;text-underline-offset:2px}
+.novedades{margin-top:12px}
+.novedades .nota{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:640px){.cat{min-height:230px}.ctx{padding:18px 18px 16px 24px}.inicio header{padding:38px 0 26px}}
+
 /* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
 .gcab{position:relative;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 16px;
  margin-top:42px;padding:2px 0 2px 18px}
@@ -145,19 +189,22 @@ a.arma:hover,a.arma:focus-visible{border-color:var(--ambar);color:var(--ambar);o
 .autor summary{cursor:pointer;color:var(--chart);font-size:14.5px;margin-top:10px}
 footer{color:var(--tenue);font-size:14px;margin-top:48px;border-top:1px solid var(--linea);padding-top:16px}
 code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
-@media (prefers-reduced-motion:no-preference){.doc,.portada a{transition:background .12s}.tarjeta{transition:border-color .12s}}
+@media (prefers-reduced-motion:no-preference){.doc,.portada a{transition:background .12s}.tarjeta,.cat{transition:border-color .15s}.cat .img{transition:transform .6s ease}.cat:hover .img{transform:scale(1.045)}}
 </style>
 </head>
 <body>
 <div class="env">
 <header>
-  <h1><a href="#/">Biblioteca DCS</a></h1>
-  <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
-  <div class="barra">
-    <input id="buscar" type="search" placeholder="Buscar en todo: Viper, Kola, SEAD, TACAN…" autocomplete="off" disabled>
-    <span class="cuenta" id="cuenta"></span>
+  <div class="cab">
+    <h1><a href="#/">Biblioteca DCS</a></h1>
     <a class="creditos" href="#/creditos">Créditos</a>
   </div>
+  <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
+  <div class="barra">
+    <input id="buscar" type="search" placeholder="Buscar en todo: Viper, Kola, SEAD, TACAN…   ( / )" autocomplete="off" disabled>
+    <span class="cuenta" id="cuenta"></span>
+  </div>
+  <div class="rapidas" id="rapidas"></div>
 </header>
 
 <section id="avisos" hidden><h3>Revisar el catálogo</h3><ul id="avisos-lista"></ul></section>
@@ -170,7 +217,7 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
 
-let arbol = {}, documentos = [], todos = [], creditos = [], datosMod = {}, datosMapa = {}, datosMision = {}, idx = {}, porRef = new Map(), filtro = "";
+let arbol = {}, documentos = [], todos = [], creditos = [], datosMod = {}, datosMapa = {}, datosMision = {}, datosPortada = {}, idx = {}, porRef = new Map(), filtro = "";
 /* ?todo en la dirección enseña también los apartados vacíos (atenuados) y los grupos ocultos, para revisar el catálogo */
 const VER_TODO = /[?&]todo\b/.test(location.search);
 
@@ -181,9 +228,10 @@ Promise.all([
   fetch("data/creditos.json").then(r => r.ok ? r.json() : []).catch(() => []),
   fetch("data/modulos.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("data/mapas.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-  fetch("data/misiones.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
-]).then(([t, d, c, dm, dp, di]) => {
-  arbol = t; todos = d; creditos = c; datosMod = dm || {}; datosMapa = dp || {}; datosMision = di || {};
+  fetch("data/misiones.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+  fetch("data/portada.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+]).then(([t, d, c, dm, dp, di, po]) => {
+  arbol = t; todos = d; creditos = c; datosMod = dm || {}; datosMapa = dp || {}; datosMision = di || {}; datosPortada = po || {};
   /* un grupo con "oculto": true no se pinta, y sus documentos no salen en búsqueda, recuentos ni créditos (siguen en los JSON) */
   const ocultos = new Set();
   if (!VER_TODO) for (const k in arbol) for (const g of arbol[k].grupos)
@@ -397,6 +445,9 @@ function pintar(){
   const v = $("vista"), miga = $("miga");
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
   const sep = '<span class="sep">›</span>';
+  const enInicio = !ruta.length;
+  document.body.classList.toggle("inicio", enInicio);
+  $("rapidas").innerHTML = enInicio ? (datosPortada.busquedas || []).map(b => '<button type="button" data-q="' + esc(b) + '">' + esc(b) + '</button>').join("") : "";
 
   if (filtro) {
     const r = documentos.filter(d => (
@@ -448,16 +499,34 @@ function pintar(){
 
   miga.innerHTML = "";
   $("cuenta").textContent = documentos.length + " documentos";
-  v.innerHTML = '<div class="portada">' + Object.entries(arbol).map(([k, a]) => {
+  const cats = Object.entries(arbol).map(([k, a]) => {
+    const d = (datosPortada.categorias || {})[k] || {};
+    const col = COLOR[d.color] || "var(--chart)";
     const subs = a.grupos.filter(g => VER_TODO || !g.oculto)
       .reduce((t, g) => t + g.items.filter(it => VER_TODO || cuentaSub(k + "/" + it.id) > 0).length, 0);
-    return '<a href="#/' + k + '"><span class="pt">' + esc(a.nombre) + '</span>' +
-      '<span class="pn">' + subs + ' apartados · ' + cuentaCat(k) + ' doc.</span>' +
-      '<span class="pd">' + esc(a.desc) + '</span></a>';
-  }).join("") + '</div>' + reto();
+    const f = d.foto;
+    const foto = f ? '<img class="img" src="https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f.archivo) +
+      '?width=1000" alt="" loading="lazy" referrerpolicy="no-referrer">' : '';
+    const cred = f ? '<span class="cred">Foto: ' + esc(f.autor) + ' · <a href="https://commons.wikimedia.org/wiki/File:' +
+      encodeURIComponent(f.archivo.replace(/ /g, "_")) + '" target="_blank" rel="noopener">Wikimedia</a></span>' : '';
+    return '<div class="cat" style="--c:' + col + '">' + foto + cred + '<div class="ctx">' +
+      (d.kicker ? '<span class="ck">' + esc(d.kicker) + '</span>' : '') +
+      '<a class="cn" href="#/' + k + '">' + esc(a.nombre) + '</a>' +
+      '<span class="cd">' + esc(a.desc) + '</span>' +
+      '<span class="cm"><span><b>' + cuentaCat(k) + '</b> documentos</span><span class="pto">·</span><span><b>' + subs +
+      '</b> apartados</span><span class="flecha">→</span></span></div></div>';
+  });
+  /* novedades: los últimos documentos añadidos al catálogo (el orden de documentos.json es el de incorporación) */
+  const nuevos = documentos.filter(d => d.tipo !== "WEB" && (d.refs || []).length).slice(-6).reverse();
+  v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto() +
+    (nuevos.length ? '<div class="novedades"><h3 class="subt">Últimas incorporaciones</h3>' + nuevos.map(d => fila(d, null)).join("") + '</div>' : '');
 }
 
 $("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };
+$("rapidas").onclick = e => { const b = e.target.closest("button[data-q]"); if (!b) return;
+  $("buscar").value = b.dataset.q; filtro = b.dataset.q.toLowerCase(); pintar(); };
+addEventListener("keydown", e => { if (e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey &&
+  !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && !$("buscar").disabled) { e.preventDefault(); $("buscar").focus(); } });
 addEventListener("hashchange", () => { $("buscar").value = ""; filtro = ""; pintar(); scrollTo(0, 0); });
 </script>
 </body>

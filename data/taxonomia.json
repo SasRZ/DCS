@@ -114,7 +114,7 @@
   },
   "general": {
     "nombre": "General",
-    "desc": "Radio, procedimientos comunes y configuración. Pendiente de desarrollar.",
+    "desc": "Procedimientos, comunicaciones, navegación, armamento y sistemas de uso común.",
     "grupos": [
       { "nombre": "", "items": [
         {"id":"sop","nombre":"SOP y procedimientos"},
