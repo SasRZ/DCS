@@ -59,6 +59,27 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .reto:hover .rb,.reto:focus-visible .rb{background:var(--ambar);color:var(--acero)}
 @media (max-width:640px){.reto{grid-template-columns:1fr;padding:18px 18px 18px 20px}.rb{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}}
 
+/* Banner grande de invitación al escuadrón (ver FOX3 en el script) */
+.fox{position:relative;overflow:hidden;margin-top:26px;padding:46px 42px 42px;border:1px solid var(--linea);border-radius:14px;
+ background:radial-gradient(circle at 90% 50%,rgba(224,167,60,.17),transparent 55%),
+  repeating-radial-gradient(circle at 90% 50%,transparent 0 40px,rgba(224,167,60,.075) 40px 41px),var(--acero2)}
+.fox::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--ambar)}
+.fox:hover,.fox:focus-within{border-color:var(--ambar)}
+.fk{display:block;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambar)}
+.ft{display:inline-block;max-width:11.5em;margin-top:10px;font:600 clamp(40px,8vw,68px)/.98 "Barlow Condensed",sans-serif;letter-spacing:.01em;outline:none}
+.ft::after{content:"";position:absolute;inset:0;z-index:1}
+.fox:hover .ft,.fox:focus-within .ft{color:var(--ambar)}
+.fs{display:block;margin-top:6px;font:500 clamp(24px,4.5vw,34px)/1.15 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:var(--ambar)}
+.fd{display:block;max-width:54ch;margin-top:16px;color:#b7c4cc;font-size:17px}
+.fb{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.fb a{border:1px solid var(--ambar);border-radius:8px;padding:12px 24px;font-weight:600;letter-spacing:.03em;color:var(--ambar)}
+.fb a:hover,.fb a:focus-visible{background:var(--ambar);color:var(--acero);outline:none}
+.fb .b1{background:var(--ambar);color:var(--acero)}
+.fb .b1:hover,.fb .b1:focus-visible{background:#f0b94d;border-color:#f0b94d}
+.fmarca{position:absolute;right:26px;bottom:-26px;z-index:0;pointer-events:none;user-select:none;
+ font:600 clamp(120px,22vw,250px)/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2px rgba(224,167,60,.22)}
+@media (max-width:760px){.fox{padding:32px 22px 30px 26px}.fmarca{display:none}.fb a{flex:1 1 auto;text-align:center}}
+
 /* Cabecera de la portada: más grande, con anillos de radar de fondo */
 header{position:relative;isolation:isolate}
 .cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
@@ -306,6 +327,24 @@ const reto = () => '<a class="reto" href="' + esc(RETO.url) + '" target="_blank"
   '<span class="rk">' + esc(RETO.kicker) + '</span><span class="rt">' + esc(RETO.titulo) + '</span>' +
   '<span class="rd">' + esc(RETO.texto) + '</span><span class="rb">' + esc(RETO.boton) + ' ↗</span></a>';
 
+/* Banner grande del final de la portada: invita a unirse al escuadrón. Para cambiar frases o enlaces, edita este objeto. */
+const FOX3 = {
+  url: "https://escuadronfox3.com",
+  kicker: "Escuadrón FOX3 · simulación de combate aéreo en habla hispana",
+  titulo: "Todo cambia cuando no vuelas solo",
+  subtitulo: "Únete a nosotros",
+  texto: "Misiones y vuelos oficiales, cursos de formación, procedimientos y comunicaciones, y tres servidores de DCS. Todo en español.",
+  boton: "Conoce el escuadrón",
+  discord: "https://discord.gg/uGaFdpZhNh",
+  botonDiscord: "Únete al Discord"
+};
+const fox3 = () => '<div class="fox"><span class="fk">' + esc(FOX3.kicker) + '</span>' +
+  '<a class="ft" href="' + esc(FOX3.url) + '" target="_blank" rel="noopener">' + esc(FOX3.titulo) + '</a>' +
+  '<span class="fs">' + esc(FOX3.subtitulo) + '</span><span class="fd">' + esc(FOX3.texto) + '</span>' +
+  '<span class="fb"><a class="b1" href="' + esc(FOX3.url) + '" target="_blank" rel="noopener">' + esc(FOX3.boton) + ' ↗</a>' +
+  '<a href="' + esc(FOX3.discord) + '" target="_blank" rel="noopener">' + esc(FOX3.botonDiscord) + ' ↗</a></span>' +
+  '<span class="fmarca" aria-hidden="true">FOX3</span></div>';
+
 /* Colores de grupo: el campo "color" de la taxonomía usa estos nombres */
 const COLOR = {azul: "var(--azul)", ambar: "var(--ambar)", rojo: "var(--alerta)", teal: "var(--chart)",
                verde: "var(--verde)", lila: "var(--lila)"};
@@ -514,7 +553,7 @@ function pintar(){
       '<span class="cm"><span><b>' + cuentaCat(k) + '</b> documentos</span><span class="pto">·</span><span><b>' + subs +
       '</b> apartados</span><span class="flecha">→</span></span></div></div>';
   });
-  v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto();
+  v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto() + fox3();
 }
 
 $("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };

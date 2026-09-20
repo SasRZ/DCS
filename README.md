@@ -82,8 +82,10 @@ Todos los campos siguientes son opcionales:
 - La **portada** sale de `data/portada.json`: para cada categoría, su `color`, el
   texto pequeño de arriba (`kicker`) y la `foto` de fondo (Wikimedia Commons, con
   autor y licencia), más la lista de `busquedas` rápidas que salen como botones
-  bajo el buscador. La tecla `/` enfoca el buscador. El mensaje de «Ponte a
-  prueba» está en el objeto `RETO` de `index.html`.
+  bajo el buscador. La tecla `/` enfoca el buscador. Los mensajes del final de
+  la portada están en `index.html`: el objeto `RETO` («Ponte a prueba») y el
+  objeto `FOX3` (el banner grande de invitación al escuadrón, con sus dos
+  enlaces).
 - Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
   grupos ocultos, abre la web con `?todo` (por ejemplo
   `http://localhost:8080/?todo`).
