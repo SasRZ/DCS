@@ -10,6 +10,7 @@ Comprueba:
   - cada "ref" de un documento existe en la taxonomía
   - cada documento tiene al menos una "ref"
   - los archivos locales referenciados (docs/...) existen de verdad en el repo
+  - cada "autor" de una ficha figura en data/creditos.json (aviso, no bloquea)
 
 Uso:
   python3 scripts/validar_catalogo.py
@@ -25,6 +26,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 TAXONOMIA = RAIZ / "data" / "taxonomia.json"
 DOCUMENTOS = RAIZ / "data" / "documentos.json"
+CREDITOS = RAIZ / "data" / "creditos.json"
 
 errores = []
 avisos = []
@@ -113,6 +115,10 @@ def main():
 
     if arbol is not None and documentos is not None:
         validar(arbol, documentos)
+        creditos = cargar_json(CREDITOS) if CREDITOS.exists() else []
+        conocidos = {c.get("nombre") for c in (creditos or [])}
+        for autor in sorted({d.get("autor") for d in documentos if d.get("autor")} - conocidos):
+            avisos.append(f"El autor '{autor}' no está en data/creditos.json (saldrá en Créditos sin enlace ni descripción)")
 
     if avisos:
         print(f"⚠  {len(avisos)} aviso(s):")

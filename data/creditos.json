@@ -1,0 +1,33 @@
+[
+  {
+    "nombre": "CORSAIR V.E.A.F",
+    "url": "https://files.digitalcombatsimulator.com/en/files/filter/user-is-CORSAIR%20V.E.A.F/apply/",
+    "desc": "Cartas de aproximación de aeródromos de Siria, Golfo Pérsico, Marianas y Atlántico Sur, adaptadas al universo DCS y legibles en VR. Sus originales están en la página de archivos de usuario de DCS."
+  },
+  {
+    "nombre": "CombatWombat",
+    "desc": "Diagramas de aeródromos y cartas en ruta de Siria, Golfo Pérsico y Marianas, suplemento de helicópteros, fence checks y formatos de briefing."
+  },
+  {
+    "nombre": "476th vFighter Group",
+    "url": "http://www.476vfightergroup.com",
+    "desc": "Flight Information Publications de Georgia y Rusia y las guías de TACAN: Yardstick (por Stuka) y TACAN/HSI (por NARC)."
+  },
+  {
+    "nombre": "vJaBoG32",
+    "url": "http://www.virtual-jabog32.de",
+    "desc": "Virtuelles Jagdbombergeschwader 32. Cartas de aeródromo y procedimientos visuales del Cáucaso para DCS World."
+  },
+  {
+    "nombre": "Rocket Mission Works",
+    "desc": "SEAD Reference Guide."
+  },
+  {
+    "nombre": "Isaac Ascacibar",
+    "desc": "Manual básico CAS (Soporte Aéreo Cercano)."
+  },
+  {
+    "nombre": "Sebastian Benner",
+    "desc": "DCS Aircraft Weapon Overview."
+  }
+]

@@ -3,19 +3,21 @@
     "id": "caucaso-georgia-fip",
     "titulo": "Georgia · Flight Information Publication",
     "tipo": "PDF",
-    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de Georgia. 474th vFighter Group, versión 2.0.",
+    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de Georgia. 476th vFighter Group, versión 2.0.",
     "url": "docs/mapas/caucaso/georgia-fip.pdf",
     "refs": ["mapas/caucaso"],
-    "etiquetas": ["cartas", "Georgia", "FIP"]
+    "etiquetas": ["cartas", "Georgia", "FIP"],
+    "autor": "476th vFighter Group"
   },
   {
     "id": "caucaso-rusia-fip",
     "titulo": "Rusia · Flight Information Publication",
     "tipo": "PDF",
-    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de la parte rusa del mapa. 474th vFighter Group, versión 1.6.",
+    "nota": "Procedimientos de aproximación instrumental, SID y diagramas de aeródromo de la parte rusa del mapa. 476th vFighter Group, versión 1.6.",
     "url": "docs/mapas/caucaso/rusia-fip.pdf",
     "refs": ["mapas/caucaso"],
-    "etiquetas": ["cartas", "Rusia", "FIP"]
+    "etiquetas": ["cartas", "Rusia", "FIP"],
+    "autor": "476th vFighter Group"
   },
   {
     "id": "caucaso-cartas-navegacion",
@@ -24,7 +26,8 @@
     "nota": "Procedimientos de aproximación y salida visuales (jet) y cartas de aeródromo para DCS World. vJaBoG32, rev. 4.0.5.",
     "url": "docs/mapas/caucaso/cartas-navegacion.pdf",
     "refs": ["mapas/caucaso"],
-    "etiquetas": ["cartas", "navegación", "vjabog32"]
+    "etiquetas": ["cartas", "navegación", "vjabog32"],
+    "autor": "vJaBoG32"
   },
   {
     "id": "caucaso-ugko-cartas",
@@ -340,7 +343,8 @@
     "nota": "Guía de referencia de defensas aéreas: identificación rápida de objetivos y sistemas de origen ruso, estadounidense y del resto del mundo. Rocket Mission Works, noviembre de 2024.",
     "url": "docs/misiones/sead/sead-reference-guide-v1-3.pdf",
     "refs": ["misiones/sead"],
-    "etiquetas": ["SEAD", "DEAD", "SAM", "defensa aérea"]
+    "etiquetas": ["SEAD", "DEAD", "SAM", "defensa aérea"],
+    "autor": "Rocket Mission Works"
   },
   {
     "id": "cas-manual-basico",
@@ -349,7 +353,8 @@
     "nota": "Planificación y desarrollo de misiones CAS: punto de contacto, IP, plantilla keyhole, 9 líneas y comunicaciones de ataque. Isaac Ascacibar.",
     "url": "docs/misiones/cas/manual-basico-cas.pdf",
     "refs": ["misiones/cas"],
-    "etiquetas": ["CAS", "9 líneas", "manual"]
+    "etiquetas": ["CAS", "9 líneas", "manual"],
+    "autor": "Isaac Ascacibar"
   },
   {
     "id": "vor-tacan-frecuencias",
@@ -367,7 +372,8 @@
     "nota": "Uso del TACAN como regla para medir la distancia entre dos aeronaves. Stuka, 476th vFighter Group, 11 de junio de 2012.",
     "url": "docs/general/navegacion/476vfg-tacan-yardstick.pdf",
     "refs": ["general/navegacion"],
-    "etiquetas": ["TACAN", "476 vFG", "navegación"]
+    "etiquetas": ["TACAN", "476 vFG", "navegación"],
+    "autor": "476th vFighter Group"
   },
   {
     "id": "476vfg-tacan-hsi",
@@ -376,7 +382,8 @@
     "nota": "Navegación con TACAN y HSI: homing, directo a la estación, interceptar un radial y navegación punto a punto. Basado en el A-10C, por NARC.",
     "url": "docs/general/navegacion/476vfg-tacan-hsi-navigation.pdf",
     "refs": ["general/navegacion"],
-    "etiquetas": ["TACAN", "HSI", "476 vFG", "navegación"]
+    "etiquetas": ["TACAN", "HSI", "476 vFG", "navegación"],
+    "autor": "476th vFighter Group"
   },
   {
     "id": "golfo-cw-aerodromos",
@@ -385,7 +392,8 @@
     "nota": "Diagramas de los aeródromos regionales del Golfo Pérsico, con ICAO, coordenadas, pistas, frecuencias UHF/VHF, TACAN y elevación.",
     "url": "docs/mapas/golfo/combatwombat-diagramas-aerodromos.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["aeródromos", "CombatWombat", "frecuencias"]
+    "etiquetas": ["aeródromos", "CombatWombat", "frecuencias"],
+    "autor": "CombatWombat"
   },
   {
     "id": "golfo-cw-enruta",
@@ -394,7 +402,8 @@
     "nota": "Carta en ruta de baja cota (hasta FL200) del Golfo Pérsico. Versión 1.0, AIRAC de agosto de 2020.",
     "url": "docs/mapas/golfo/combatwombat-carta-enruta.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["en ruta", "CombatWombat", "aerovías"]
+    "etiquetas": ["en ruta", "CombatWombat", "aerovías"],
+    "autor": "CombatWombat"
   },
   {
     "id": "siria-cw-aerodromos",
@@ -403,7 +412,8 @@
     "nota": "Diagramas de los aeródromos del teatro sirio: Turquía, Siria, Líbano, Israel, Jordania y Chipre. Versión 5.0, julio de 2021.",
     "url": "docs/mapas/siria/combatwombat-diagramas-aerodromos.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["aeródromos", "CombatWombat"]
+    "etiquetas": ["aeródromos", "CombatWombat"],
+    "autor": "CombatWombat"
   },
   {
     "id": "siria-cw-enruta",
@@ -412,7 +422,8 @@
     "nota": "Carta en ruta del teatro sirio. Versión 2.2, abril de 2021.",
     "url": "docs/mapas/siria/combatwombat-carta-enruta.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["en ruta", "CombatWombat", "aerovías"]
+    "etiquetas": ["en ruta", "CombatWombat", "aerovías"],
+    "autor": "CombatWombat"
   },
   {
     "id": "siria-cw-rotary",
@@ -421,7 +432,8 @@
     "nota": "Helipuertos y zonas de aterrizaje regionales para ala rotatoria (Adana, Dörtyol, Hatay, Alepo). Versión 1.6, abril de 2021.",
     "url": "docs/mapas/siria/combatwombat-suplemento-rotary.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["helicópteros", "helipuertos", "CombatWombat"]
+    "etiquetas": ["helicópteros", "helipuertos", "CombatWombat"],
+    "autor": "CombatWombat"
   },
   {
     "id": "marianas-cw-aerodromos",
@@ -430,7 +442,8 @@
     "nota": "Diagramas de los aeródromos de las Islas Marianas, con Guam, Tinian, Rota y Saipán. Versión 1.0, julio de 2021.",
     "url": "docs/mapas/marianas/combatwombat-diagramas-aerodromos.pdf",
     "refs": ["mapas/marianas"],
-    "etiquetas": ["aeródromos", "CombatWombat"]
+    "etiquetas": ["aeródromos", "CombatWombat"],
+    "autor": "CombatWombat"
   },
   {
     "id": "cw-fence-checks",
@@ -439,7 +452,8 @@
     "nota": "Lista de comprobaciones antes de entrar en zona hostil (sistemas de control de tiro, ECM, armamento, navegación) y resumen de amenazas.",
     "url": "docs/general/sop/combatwombat-fence-checks.pdf",
     "refs": ["general/sop"],
-    "etiquetas": ["fence check", "amenazas", "CombatWombat"]
+    "etiquetas": ["fence check", "amenazas", "CombatWombat"],
+    "autor": "CombatWombat"
   },
   {
     "id": "cw-briefing-formats",
@@ -448,7 +462,8 @@
     "nota": "Plantillas de plan de misión, paquete y plan de vuelo para los briefings. Versión 1.0, septiembre de 2020.",
     "url": "docs/general/sop/combatwombat-briefing-formats.pdf",
     "refs": ["general/sop"],
-    "etiquetas": ["briefing", "plantillas", "CombatWombat"]
+    "etiquetas": ["briefing", "plantillas", "CombatWombat"],
+    "autor": "CombatWombat"
   },
   {
     "id": "coms-lider-punto",
@@ -484,7 +499,8 @@
     "nota": "Resumen del armamento de DCS por tipo: cañones, pods de cañón, aire-aire de corto y medio alcance y más, con aeronaves, alcance y notas. Sebastian Benner.",
     "url": "docs/general/armamento/dcs-aircraft-weapon-overview.pdf",
     "refs": ["general/armamento"],
-    "etiquetas": ["armamento", "cañones", "misiles", "referencia"]
+    "etiquetas": ["armamento", "cañones", "misiles", "referencia"],
+    "autor": "Sebastian Benner"
   },
   {
     "id": "golfo-oibs-cartas",

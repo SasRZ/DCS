@@ -65,6 +65,17 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
  border:1px solid var(--linea);border-radius:2px;padding:2px 7px}
 .ruta{grid-row:1;grid-column:2;color:var(--tenue);font-size:13px;text-align:right;max-width:34ch}
 .vacio{color:var(--tenue);padding:40px 4px}
+.creditos{color:var(--tenue);font-size:14px;border:1px solid var(--linea);border-radius:3px;padding:6px 12px}
+.creditos:hover,.creditos:focus-visible{color:var(--ambar);border-color:var(--ambar);outline:none}
+.intro{color:var(--tenue);max-width:68ch;margin:18px 0 0}
+.autor{padding:22px 4px;border-bottom:1px solid var(--linea)}
+.autor h3{font:600 26px/1.1 "Barlow Condensed",sans-serif;margin:0}
+.autor h3 a:hover{color:var(--ambar)}
+.autor h3 .ext{color:var(--tenue);font-size:17px}
+.autor p{color:var(--tenue);margin:6px 0 0;max-width:68ch}
+.autor ul{margin:10px 0 0;padding-left:20px;font-size:14.5px}
+.autor li a:hover{color:var(--ambar)}
+.autor summary{cursor:pointer;color:var(--chart);font-size:14.5px;margin-top:10px}
 footer{color:var(--tenue);font-size:14px;margin-top:48px;border-top:1px solid var(--linea);padding-top:16px}
 code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 @media (prefers-reduced-motion:no-preference){.doc,.rejilla a,.portada a{transition:background .12s}}
@@ -78,27 +89,29 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
   <div class="barra">
     <input id="buscar" type="search" placeholder="Buscar en todo: Viper, Kola, SEAD, TACAN…" autocomplete="off" disabled>
     <span class="cuenta" id="cuenta"></span>
+    <a class="creditos" href="#/creditos">Créditos</a>
   </div>
 </header>
 
 <section id="avisos" hidden><h3>Revisar el catálogo</h3><ul id="avisos-lista"></ul></section>
 <nav class="miga" id="miga"></nav>
 <main id="vista"><p class="vacio">Cargando catálogo…</p></main>
-<footer>Esta página está actualizada por Sas - <a href="https://escuadronfox3.com" target="_blank" rel="noopener">Escuadrón FOX3</a>. <a href="https://discord.gg/uGaFdpZhNh" target="_blank" rel="noopener">ÚNETE AQUÍ</a><br>Las cartas de aproximación de Siria, Golfo Pérsico, Marianas y Atlántico Sur son obra de <a href="https://files.digitalcombatsimulator.com/en/files/filter/user-is-CORSAIR%20V.E.A.F/apply/" target="_blank" rel="noopener">CORSAIR V.E.A.F</a>, autor original. Todos los derechos son suyos.</footer>
+<footer>Esta página está actualizada por Sas - <a href="https://escuadronfox3.com" target="_blank" rel="noopener">Escuadrón FOX3</a>. <a href="https://discord.gg/uGaFdpZhNh" target="_blank" rel="noopener">ÚNETE AQUÍ</a></footer>
 </div>
 
 <script>
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
 
-let arbol = {}, documentos = [], idx = {}, porRef = new Map(), filtro = "";
+let arbol = {}, documentos = [], creditos = [], idx = {}, porRef = new Map(), filtro = "";
 
 /* ── Carga ── */
 Promise.all([
   fetch("data/taxonomia.json").then(r => r.ok ? r.json() : Promise.reject("taxonomia.json: HTTP " + r.status)),
-  fetch("data/documentos.json").then(r => r.ok ? r.json() : Promise.reject("documentos.json: HTTP " + r.status))
-]).then(([t, d]) => {
-  arbol = t; documentos = d;
+  fetch("data/documentos.json").then(r => r.ok ? r.json() : Promise.reject("documentos.json: HTTP " + r.status)),
+  fetch("data/creditos.json").then(r => r.ok ? r.json() : []).catch(() => [])
+]).then(([t, d, c]) => {
+  arbol = t; documentos = d; creditos = c;
   construirIndice();
   validar();
   $("buscar").disabled = false;
@@ -173,6 +186,29 @@ function fila(d, refActual){
     '</a>';
 }
 
+/* ── Créditos: autores de creditos.json + cualquier "autor" que aparezca en las fichas ── */
+function paginaCreditos(){
+  const autores = creditos.slice();
+  for (const n of new Set(documentos.map(d => d.autor).filter(Boolean)))
+    if (!autores.some(a => a.nombre === n)) autores.push({nombre: n});
+
+  const bloques = autores.map(a => {
+    const ds = documentos.filter(d => d.autor === a.nombre);
+    const lista = '<ul>' + ds.map(d => '<li><a href="' + esc(d.url) + '">' + esc(d.titulo) + '</a></li>').join("") + '</ul>';
+    const nombre = a.url
+      ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.nombre) + ' <span class="ext">↗</span></a>'
+      : esc(a.nombre);
+    return '<article class="autor"><h3>' + nombre + '</h3>' +
+      (a.desc ? '<p>' + esc(a.desc) + '</p>' : '') +
+      (!ds.length ? '' : ds.length <= 4 ? lista
+        : '<details><summary>' + ds.length + ' documentos</summary>' + lista + '</details>') +
+      '</article>';
+  });
+  return '<h2>Créditos</h2>' +
+    '<p class="intro">Esta biblioteca es una recopilación de consulta personal. Los documentos son obra de sus autores, ' +
+    'que aparecen aquí con su nombre y su enlace cuando lo hay. Todos los derechos son suyos.</p>' + bloques.join("");
+}
+
 function pintar(){
   const v = $("vista"), miga = $("miga");
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
@@ -190,6 +226,13 @@ function pintar(){
   }
 
   const [c, s] = ruta;
+
+  if (c === "creditos") {
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Créditos';
+    $("cuenta").textContent = "";
+    v.innerHTML = paginaCreditos();
+    return;
+  }
 
   if (c && arbol[c] && s) {
     const ref = c + "/" + s, r = porRef.get(ref) || [];
