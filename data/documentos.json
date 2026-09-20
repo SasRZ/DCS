@@ -1151,5 +1151,24 @@
     "refs": ["general/sop"],
     "etiquetas": ["aire-aire", "sección", "WVR", "VID", "ACM", "teoría"],
     "autor": "Escuadrón San Andrés"
+  },
+  {
+    "id": "brevity-basico",
+    "titulo": "Brevity básico · comunicaciones para multijugador",
+    "tipo": "PDF",
+    "nota": "Códigos de brevity en una sola hoja: armas (FOX 1/2/3, MAGNUM, RIFLE, PICKLE), conciencia situacional (CONTACT, TALLY, NO JOY, VISUAL, BLIND), identificación (BOGEY, BANDIT, HOSTILE), avisos del RWR (NAILS, SPIKE, MUD SPIKE) y AWACS (PICTURE, BRAA).",
+    "url": "docs/general/comunicaciones/brevity-basico.pdf",
+    "refs": ["general/comunicaciones"],
+    "etiquetas": ["brevity", "comunicaciones", "multijugador", "FOX", "RWR", "AWACS"]
+  },
+  {
+    "id": "dcs-threats-guide",
+    "titulo": "DCS Threats Guide · guía de amenazas",
+    "tipo": "PDF",
+    "nota": "Todas las amenazas para las aeronaves en DCS: misiles tierra-aire, artillería antiaérea, buques y aviones, con alcance, altura, tiempo de fijación, cómo defenderse y cómo derrotarlas. Versión beta 1, agosto de 2026.",
+    "url": "docs/general/armamento/dcs-threats-guide-beta-v1.pdf",
+    "refs": ["general/armamento"],
+    "etiquetas": ["amenazas", "SAM", "AAA", "RWR", "buques", "guía"],
+    "autor": "Colonel Akir Nakesh"
   }
 ]

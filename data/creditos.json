@@ -56,5 +56,9 @@
     "nombre": "Wikimedia Commons y Wikipedia",
     "url": "https://commons.wikimedia.org",
     "desc": "Fotos de las aeronaves, los mapas y los tipos de misión, con el crédito de su autor y su licencia bajo cada imagen, y datos técnicos de los artículos de cada aeronave y arma."
+  },
+  {
+    "nombre": "Colonel Akir Nakesh",
+    "desc": "DCS Threats Guide: amenazas de misiles tierra-aire, artillería antiaérea, buques y aviones, con sus alcances y contramedidas."
   }
 ]
