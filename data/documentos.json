@@ -1167,7 +1167,7 @@
     "tipo": "PDF",
     "nota": "Todas las amenazas para las aeronaves en DCS: misiles tierra-aire, artillería antiaérea, buques y aviones, con alcance, altura, tiempo de fijación, cómo defenderse y cómo derrotarlas. Versión beta 1, agosto de 2026.",
     "url": "docs/general/armamento/dcs-threats-guide-beta-v1.pdf",
-    "refs": ["general/armamento", "misiones/sead"],
+    "refs": ["general/armamento", "misiones/sead", "misiones/cap", "misiones/cas"],
     "etiquetas": ["amenazas", "SAM", "AAA", "RWR", "buques", "guía"],
     "autor": "Colonel Akir Nakesh"
   }
