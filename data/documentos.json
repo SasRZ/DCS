@@ -731,5 +731,55 @@
     "refs": ["modulos/f5e"],
     "etiquetas": ["F-5E", "Tiger II", "checklist", "kneeboard", "RWR", "emergencias", "quickstart"],
     "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "fa18c-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · F/A-18C Hornet",
+    "tipo": "PDF",
+    "nota": "Arranque paso a paso con el cockpit anotado, extraído de la Kneeboard Suite del F/A-18C (página 15). Distingue CV y FIELD.",
+    "url": "docs/modulos/fa18c/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/fa18c"],
+    "etiquetas": ["F/A-18C", "quickstart", "arranque", "cockpit"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "a10c-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · A-10C / A-10C II",
+    "tipo": "PDF",
+    "nota": "Arranque paso a paso con el cockpit anotado, extraído de la Kneeboard Suite del A-10C / A-10C II (página 7).",
+    "url": "docs/modulos/a10c/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/a10c"],
+    "etiquetas": ["A-10C", "A-10C II", "quickstart", "arranque", "cockpit"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "ah64d-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · AH-64D Apache",
+    "tipo": "PDF",
+    "nota": "Arranque paso a paso desde la estación del piloto, con el cockpit anotado, extraído de la Kneeboard Suite del AH-64D (página 12).",
+    "url": "docs/modulos/ah64d/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/ah64d"],
+    "etiquetas": ["AH-64D", "quickstart", "arranque", "cockpit"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "f5e3-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · F-5E-3 Tiger II",
+    "tipo": "PDF",
+    "nota": "Arranque paso a paso con el cockpit anotado, extraído de la Kneeboard Suite del F-5E-3 (página 9).",
+    "url": "docs/modulos/f5e/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/f5e"],
+    "etiquetas": ["F-5E", "quickstart", "arranque", "cockpit"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "t45c-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · T-45C Goshawk",
+    "tipo": "PDF",
+    "nota": "Arranque paso a paso con el cockpit delantero anotado, extraído del kneeboard del T-45C (página 2).",
+    "url": "docs/modulos/t45c/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/t45c"],
+    "etiquetas": ["T-45", "quickstart", "arranque", "cockpit"],
+    "autor": "DimOn (Dima Kozyrev)"
   }
 ]
