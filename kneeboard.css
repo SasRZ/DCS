@@ -8,14 +8,13 @@
 .bt.on{color:var(--ambar);border-color:var(--ambar)}
 .bt[disabled]{opacity:.55;cursor:default}
 .bt.peligro:hover,.bt.peligro:focus-visible{border-color:var(--alerta);color:var(--alerta)}
-.acc{grid-column:2;grid-row:2/span 2;align-self:start;justify-self:end;position:relative;z-index:2;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-@media (max-width:640px){.acc{grid-column:1;grid-row:auto;justify-self:start;justify-content:flex-start;margin-top:6px}}
+.acc{position:relative;z-index:2;display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 
-/* Lista de documentos: la fila entera sigue siendo clicable a través del título (::after) */
-.doc{position:relative}
-.doc .tit::after{content:"";position:absolute;inset:0}
+/* Tarjetas de documento (ver .doc en index.html): la tarjeta entera es clicable a través del título (::after) */
+.doc .tit::after{content:"";position:absolute;inset:0;border-radius:10px}
 .doc .tit{outline:none}
-.doc .tit:focus-visible::after{outline:2px solid var(--ambar);outline-offset:-2px}
+.doc .tit:focus-visible::after{outline:2px solid var(--ambar);outline-offset:2px}
+.kb .doc.gd{border-color:rgba(224,167,60,.5)}
 .kb .doc.gd .tit::before{content:"★ ";color:var(--ambar)}
 html:not(.kb) #kbnav{display:none}
 

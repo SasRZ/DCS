@@ -119,12 +119,14 @@ const KB = (() => {
   addEventListener("beforeinstallprompt", e => { e.preventDefault(); instalar = e; const b = $("kb-instalar"); if (b) b.hidden = false; });
 
   function filaKb(d){
-    const otras = (d.refs || []).filter(r => idx[r]).map(r => esc(idx[r])).join(" · ");
+    const refs = (d.refs || []).filter(r => idx[r]);
     const url = "#/leer/" + encodeURIComponent(d.id);
-    return '<div class="doc gd" data-id="' + esc(d.id) + '"><a class="tit" href="' + url + '">' + esc(d.titulo) + '</a>' +
-      '<span class="tipo" data-tam>' + tam(est.bytes[d.id] || 0) + '</span>' +
+    return '<div class="doc gd" data-id="' + esc(d.id) + '" style="--c:' + colorRef(refs[0]) + '">' +
+      '<a class="tit" href="' + url + '">' + esc(d.titulo) + '</a>' +
+      '<div class="dtop"><span class="tipo">PDF · ' + tam(est.bytes[d.id] || 0) + '</span></div>' +
       (d.nota ? '<span class="nota">' + esc(d.nota) + '</span>' : '') +
-      '<span class="meta">' + (otras ? esc(otras) : '') + '<span class="falta" data-falta hidden> · No está en la tablet: vuelve a guardarlo</span></span>' +
+      '<span class="meta falta" data-falta hidden>No está en la tablet: vuelve a guardarlo</span>' +
+      (refs.length ? '<span class="rel"><span class="lbl">En</span>' + refs.map(r => '<a class="av" href="#/' + r + '">' + esc(idx[r]) + '</a>').join("") + '</span>' : '') +
       '<span class="acc"><a class="bt" href="' + url + '">Leer</a>' +
       '<button type="button" class="bt peligro" data-kb="quitar" data-id="' + esc(d.id) + '">Quitar</button></span></div>';
   }
