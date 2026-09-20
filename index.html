@@ -46,6 +46,19 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .pd{grid-column:1;color:var(--tenue);max-width:60ch}
 .pn{grid-row:1;grid-column:2;color:var(--tenue);font-size:14px;white-space:nowrap}
 
+/* Invitación a una web externa en la portada (ver RETO en el script) */
+.reto{display:grid;grid-template-columns:1fr auto;gap:6px 28px;align-items:center;margin-top:22px;padding:22px 26px;
+ border:1px solid var(--linea);border-left:6px solid var(--ambar);border-radius:10px;
+ background:linear-gradient(90deg,rgba(224,167,60,.11),transparent 65%),var(--acero2)}
+.reto:hover,.reto:focus-visible{border-color:var(--ambar);outline:none}
+.rk{grid-column:1;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar)}
+.rt{grid-column:1;font:600 clamp(28px,5vw,38px)/1.05 "Barlow Condensed",sans-serif;letter-spacing:.01em}
+.rd{grid-column:1;color:var(--tenue);max-width:64ch}
+.rb{grid-column:2;grid-row:1/span 3;align-self:center;border:1px solid var(--ambar);border-radius:6px;padding:10px 20px;
+ color:var(--ambar);font-weight:600;letter-spacing:.03em;white-space:nowrap}
+.reto:hover .rb,.reto:focus-visible .rb{background:var(--ambar);color:var(--acero)}
+@media (max-width:640px){.reto{grid-template-columns:1fr;padding:18px 18px 18px 20px}.rb{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}}
+
 /* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
 .gcab{position:relative;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 16px;
  margin-top:42px;padding:2px 0 2px 18px}
@@ -234,6 +247,18 @@ function validar(lista){
 /* ── Pintado ── */
 const cuentaCat = c => documentos.filter(d => (d.refs || []).some(r => r.startsWith(c + "/"))).length;
 const cuentaSub = ref => (porRef.get(ref) || []).length;
+
+/* Tarjeta de la portada que invita a visitar otra web. Para cambiar el mensaje o el enlace, edita este objeto. */
+const RETO = {
+  url: "https://www.taskpilotai.es/dcs/",
+  kicker: "Misiones DCS en español · por Ootoito",
+  titulo: "Ponte a prueba",
+  texto: "Cursos de vuelo progresivos, campañas y misiones sueltas para llevar a la práctica lo que has estudiado aquí: entrenamiento, combate aire-aire, ataque a tierra y transporte.",
+  boton: "Explorar misiones"
+};
+const reto = () => '<a class="reto" href="' + esc(RETO.url) + '" target="_blank" rel="noopener">' +
+  '<span class="rk">' + esc(RETO.kicker) + '</span><span class="rt">' + esc(RETO.titulo) + '</span>' +
+  '<span class="rd">' + esc(RETO.texto) + '</span><span class="rb">' + esc(RETO.boton) + ' ↗</span></a>';
 
 /* Colores de grupo: el campo "color" de la taxonomía usa estos nombres */
 const COLOR = {azul: "var(--azul)", ambar: "var(--ambar)", rojo: "var(--alerta)", teal: "var(--chart)",
@@ -429,7 +454,7 @@ function pintar(){
     return '<a href="#/' + k + '"><span class="pt">' + esc(a.nombre) + '</span>' +
       '<span class="pn">' + subs + ' apartados · ' + cuentaCat(k) + ' doc.</span>' +
       '<span class="pd">' + esc(a.desc) + '</span></a>';
-  }).join("") + '</div>';
+  }).join("") + '</div>' + reto();
 }
 
 $("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };
