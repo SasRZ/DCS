@@ -681,5 +681,35 @@
     "refs": ["mapas/atlantico"],
     "etiquetas": ["cartas", "scnt"],
     "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "t45c-checklist-dia",
+    "titulo": "T-45C Goshawk · checklist y cockpit (día)",
+    "tipo": "PDF",
+    "nota": "Checklist realista según NATOPS, diagrama de la cabina delantera y quickstart para el mod freeware T-45C, versión 1.2. Sirve para portaaviones y para tierra. Actualizado el 17 de octubre de 2025.",
+    "url": "docs/modulos/t45c/t45c-checklist-dia.pdf",
+    "refs": ["modulos/t45c"],
+    "etiquetas": ["T-45", "checklist", "kneeboard", "quickstart", "NATOPS"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "t45c-checklist-noche",
+    "titulo": "T-45C Goshawk · checklist y cockpit (noche)",
+    "tipo": "PDF",
+    "nota": "La misma checklist, el diagrama de cabina y el quickstart con fondo oscuro para vuelo nocturno.",
+    "url": "docs/modulos/t45c/t45c-checklist-noche.pdf",
+    "refs": ["modulos/t45c"],
+    "etiquetas": ["T-45", "checklist", "kneeboard", "quickstart", "noche"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "t45c-kneeboards",
+    "titulo": "T-45C Goshawk · kneeboards para instalar",
+    "tipo": "ZIP",
+    "nota": "Las mismas páginas en PNG, de día y de noche, para copiar la carpeta T-45 a Saved Games\\DCS\\KNEEBOARD. Incluye el Readme con instrucciones.",
+    "url": "docs/modulos/t45c/t45c-kneeboards.zip",
+    "refs": ["modulos/t45c"],
+    "etiquetas": ["T-45", "kneeboard", "instalar"],
+    "autor": "DimOn (Dima Kozyrev)"
   }
 ]
