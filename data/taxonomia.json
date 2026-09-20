@@ -51,6 +51,7 @@
         {"id":"i16","nombre":"I-16"}
       ]},
       { "nombre": "Entrenadores y hélice", "items": [
+        {"id":"t45c","nombre":"T-45C Goshawk"},
         {"id":"l39","nombre":"L-39 Albatros"},
         {"id":"c101","nombre":"C-101 Aviojet"},
         {"id":"mb339","nombre":"MB-339"},
