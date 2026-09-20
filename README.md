@@ -64,6 +64,13 @@ Todos los campos siguientes son opcionales:
   que se muestran como enlaces cuando ese módulo tiene documentos).
 - En **Mapas**, el número de aeródromos y las etiquetas de contenido (CARTAS,
   EN RUTA…) se calculan solos a partir de las fichas.
+- La **ficha de cada módulo** (foto y datos clave: servicio, techo, autonomía y
+  alcance de sus armas) sale de `data/modulos.json`, con una entrada por id de
+  módulo: `foto` (archivo de Wikimedia Commons, autor y licencia), `servicio`,
+  `techo`, `autonomia`, `armas` (pares nombre y alcance) y `armas_nota` cuando no
+  hay misiles. Las fotos se cargan desde Wikimedia con su crédito debajo. Los
+  datos son del tipo de aeronave real, orientativos: el módulo de DCS puede
+  modelar otra versión. Un módulo sin entrada simplemente no muestra ficha.
 - Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
   grupos ocultos, abre la web con `?todo` (por ejemplo
   `http://localhost:8080/?todo`).

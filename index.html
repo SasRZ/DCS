@@ -80,6 +80,31 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 a.av:hover,a.av:focus-visible{border-color:var(--ambar);color:var(--ambar);outline:none}
 .av.off{color:var(--tenue)}
 
+/* Ficha de módulo: foto y datos clave */
+.ficha{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;margin-top:22px;overflow:hidden;
+ background:var(--acero2);border:1px solid var(--linea);border-radius:10px}
+.foto{position:relative;margin:0;background:var(--acero);min-height:240px}
+.foto img{display:block;width:100%;height:100%;max-height:420px;object-fit:cover}
+.foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 9px;font-size:11.5px;color:#d3dce1;
+ background:linear-gradient(transparent,rgba(10,14,18,.82))}
+.foto figcaption a{text-decoration:underline;text-underline-offset:2px}
+.datos{padding:20px 24px 18px}
+.datos h3{font:600 30px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.02em;margin:0;color:var(--c)}
+.rolmod{margin:6px 0 10px;color:var(--tenue);font-size:14.5px}
+.ficha dl{margin:0}
+.dfila{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--linea)}
+.dfila dt{color:var(--tenue);font-size:12px;letter-spacing:.09em;text-transform:uppercase;padding-top:2px}
+.dfila dt small{display:block;text-transform:none;letter-spacing:0;font-size:11.5px}
+.dfila dd{margin:0}
+.armas{display:flex;flex-wrap:wrap;gap:6px}
+.arma{border:1px solid var(--linea);border-radius:4px;padding:1px 9px;font-size:13.5px;background:var(--acero)}
+.arma b{color:var(--c);font-weight:600}
+.fuente{margin:12px 0 0;color:var(--tenue);font-size:12px;line-height:1.4}
+.subt{font:600 24px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;color:var(--chart);margin:34px 0 4px;
+ padding-bottom:8px;border-bottom:1px solid var(--linea)}
+@media (max-width:760px){.ficha{grid-template-columns:1fr}.foto{min-height:200px}.datos{padding:16px 18px}
+ .dfila{grid-template-columns:1fr;gap:2px}}
+
 .doc{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
  padding:14px 4px;border-bottom:1px solid var(--linea)}
 .doc:hover,.doc:focus-visible{background:var(--acero2);outline:none}
@@ -130,7 +155,7 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
 
-let arbol = {}, documentos = [], todos = [], creditos = [], idx = {}, porRef = new Map(), filtro = "";
+let arbol = {}, documentos = [], todos = [], creditos = [], datosMod = {}, idx = {}, porRef = new Map(), filtro = "";
 /* ?todo en la dirección enseña también los apartados vacíos (atenuados) y los grupos ocultos, para revisar el catálogo */
 const VER_TODO = /[?&]todo\b/.test(location.search);
 
@@ -138,9 +163,10 @@ const VER_TODO = /[?&]todo\b/.test(location.search);
 Promise.all([
   fetch("data/taxonomia.json").then(r => r.ok ? r.json() : Promise.reject("taxonomia.json: HTTP " + r.status)),
   fetch("data/documentos.json").then(r => r.ok ? r.json() : Promise.reject("documentos.json: HTTP " + r.status)),
-  fetch("data/creditos.json").then(r => r.ok ? r.json() : []).catch(() => [])
-]).then(([t, d, c]) => {
-  arbol = t; todos = d; creditos = c;
+  fetch("data/creditos.json").then(r => r.ok ? r.json() : []).catch(() => []),
+  fetch("data/modulos.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+]).then(([t, d, c, dm]) => {
+  arbol = t; todos = d; creditos = c; datosMod = dm || {};
   /* un grupo con "oculto": true no se pinta, y sus documentos no salen en búsqueda, recuentos ni créditos (siguen en los JSON) */
   const ocultos = new Set();
   if (!VER_TODO) for (const k in arbol) for (const g of arbol[k].grupos)
@@ -240,6 +266,30 @@ function tarjeta(c, it){
     (it.rol ? '<span class="rol">' + esc(it.rol) + '</span>' : '') + extra + '</div>';
 }
 
+/* Ficha de un módulo: foto (Wikimedia Commons, con su crédito) y datos clave de data/modulos.json */
+function fichaModulo(id){
+  const d = datosMod[id];
+  if (!d || !d.foto) return "";
+  let col = "var(--chart)", rol = "";
+  for (const g of arbol.modulos.grupos) for (const it of g.items)
+    if (it.id === id) { col = COLOR[g.color] || col; rol = it.rol || ""; }
+  const f = d.foto, nombre = f.archivo;
+  const src = "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(nombre) + "?width=1100";
+  const pagina = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(nombre.replace(/ /g, "_"));
+  const lic = f.licencia_url ? '<a href="' + esc(f.licencia_url) + '" target="_blank" rel="noopener">' + esc(f.licencia) + '</a>' : esc(f.licencia);
+  const fila = (k, v) => v ? '<div class="dfila"><dt>' + k + '</dt><dd>' + v + '</dd></div>' : '';
+  const armas = (d.armas || []).length
+    ? '<div class="armas">' + d.armas.map(a => '<span class="arma"><b>' + esc(a[0]) + '</b> ' + esc(a[1]) + '</span>').join("") + '</div>'
+    : esc(d.armas_nota || "");
+  return '<section class="ficha" style="--c:' + col + '">' +
+    '<figure class="foto"><img src="' + src + '" alt="' + esc(f.alt || "") + '" loading="lazy" referrerpolicy="no-referrer">' +
+    '<figcaption>Foto: ' + esc(f.autor) + ' · ' + lic + ' · <a href="' + pagina + '" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>' +
+    '<div class="datos"><h3>Datos clave</h3>' + (rol ? '<p class="rolmod">' + esc(rol) + '</p>' : '') +
+    '<dl>' + fila("En servicio", esc(d.servicio)) + fila("Techo", esc(d.techo)) + fila("Autonomía", esc(d.autonomia)) +
+    fila("Armamento" + ((d.armas || []).length ? '<small>alcance máx.</small>' : ''), armas) + '</dl>' +
+    '<p class="fuente">' + esc(datosMod._fuente || "") + '</p></div></section>';
+}
+
 function fila(d, refActual){
   const otras = (d.refs || []).filter(r => r !== refActual && idx[r]);
   const der = refActual
@@ -308,7 +358,9 @@ function pintar(){
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + '<a href="#/' + c + '">' + esc(arbol[c].nombre) + '</a>' +
                      sep + esc(idx[ref] || s);
     $("cuenta").textContent = r.length + (r.length === 1 ? " documento" : " documentos");
-    v.innerHTML = '<h2>' + esc(idx[ref] || s) + '</h2>' + (r.length ? r.map(d => fila(d, ref)).join("")
+    const ficha = c === "modulos" ? fichaModulo(s) : "";
+    v.innerHTML = '<h2>' + esc(idx[ref] || s) + '</h2>' + ficha + (ficha ? '<h3 class="subt">Documentos</h3>' : '') +
+      (r.length ? r.map(d => fila(d, ref)).join("")
       : '<p class="vacio">Todavía no hay nada aquí. Añade una ficha con <code>"refs": ["' + esc(ref) + '"]</code>.</p>');
     return;
   }

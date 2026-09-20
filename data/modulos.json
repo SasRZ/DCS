@@ -1,0 +1,722 @@
+{
+ "_fuente": "Datos del tipo de aeronave real, tomados de Wikipedia y de los artículos de cada arma; orientativos. El módulo de DCS puede modelar otra versión o cifras distintas.",
+ "f16c": {
+  "foto": {
+   "archivo": "F-16 June 2008.jpg",
+   "autor": "Master Sgt. Andy Dunaway",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-16C de la USAF"
+  },
+  "servicio": "1978 – actualidad",
+  "autonomia": "Radio de combate ≈ 550 km · traslado ≈ 4 220 km",
+  "armas": [
+   [
+    "AIM-120C",
+    "≈ 90 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ],
+   [
+    "AGM-88 HARM",
+    "≈ 148 km"
+   ],
+   [
+    "AGM-65",
+    "≈ 22 km"
+   ]
+  ],
+  "techo": "15 240 m (50 000 ft)"
+ },
+ "fa18c": {
+  "foto": {
+   "archivo": "FA-18C desert refueling.jpg",
+   "autor": "US Air Force",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F/A-18C repostando"
+  },
+  "servicio": "1983 – actualidad (retirado en EE. UU. entre 2019 y 2021)",
+  "autonomia": "Radio de combate ≈ 740 km · traslado ≈ 3 330 km",
+  "armas": [
+   [
+    "AIM-120C",
+    "≈ 90 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ],
+   [
+    "AGM-88 HARM",
+    "≈ 148 km"
+   ],
+   [
+    "AGM-84 Harpoon",
+    "> 120 km"
+   ],
+   [
+    "AGM-65",
+    "≈ 22 km"
+   ]
+  ],
+  "techo": "15 240 m (50 000 ft)"
+ },
+ "f15e": {
+  "foto": {
+   "archivo": "F-15E takes on fuel from KC-10.jpg",
+   "autor": "Staff Sgt. Sean Carnes",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-15E repostando"
+  },
+  "servicio": "1988 – actualidad",
+  "autonomia": "Radio de combate ≈ 1 270 km · traslado ≈ 3 890 km",
+  "armas": [
+   [
+    "AIM-120C",
+    "≈ 90 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ],
+   [
+    "AGM-65",
+    "≈ 22 km"
+   ]
+  ],
+  "techo": "18 290 m (60 000 ft)"
+ },
+ "f14": {
+  "foto": {
+   "archivo": "US Navy 051105-F-5480T-005 An F-14D Tomcat conducts a mission over the Persian Gulf-region.jpg",
+   "autor": "U.S. Navy photo",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-14D sobre el golfo Pérsico"
+  },
+  "servicio": "1974 – 2006 en la US Navy; sigue en servicio en Irán",
+  "autonomia": "Radio de combate ≈ 930 km · alcance ≈ 2 960 km",
+  "armas": [
+   [
+    "AIM-54C Phoenix",
+    "≈ 184 km"
+   ],
+   [
+    "AIM-7M",
+    "≈ 70 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ]
+  ],
+  "techo": "16 150 m (53 000 ft)"
+ },
+ "f4e": {
+  "foto": {
+   "archivo": "QF-4 Holloman AFB.jpg",
+   "autor": "USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-4 Phantom II"
+  },
+  "servicio": "1960 – actualidad (uso limitado)",
+  "autonomia": "Radio de combate ≈ 680 km · traslado ≈ 2 700 km",
+  "armas": [
+   [
+    "AIM-7 (E-2)",
+    "≈ 50 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ],
+   [
+    "AGM-45 Shrike",
+    "≈ 40 km"
+   ]
+  ],
+  "techo": "18 290 m (60 000 ft)"
+ },
+ "jf17": {
+  "foto": {
+   "archivo": "Pakistan Air Force Chengdu JF-17 Gu.jpg",
+   "autor": "Shimin Gu",
+   "licencia": "GFDL 1.2",
+   "licencia_url": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+   "alt": "JF-17 Thunder"
+  },
+  "servicio": "2007 – actualidad",
+  "autonomia": "Radio de combate ≈ 900 km · traslado ≈ 1 800 km",
+  "armas": [
+   [
+    "SD-10 (PL-12)",
+    "70–100 km"
+   ],
+   [
+    "PL-5E",
+    "≈ 16–18 km"
+   ]
+  ],
+  "techo": "16 920 m (55 500 ft)"
+ },
+ "m2000c": {
+  "foto": {
+   "archivo": "Mirage 2000C in-flight 2 (cropped).jpg",
+   "autor": "SRA GREG L. DAVIS, USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Mirage 2000C"
+  },
+  "servicio": "1984 – actualidad",
+  "autonomia": "Alcance ≈ 1 550 km · traslado ≈ 3 340 km",
+  "armas": [
+   [
+    "MICA",
+    "60–80 km"
+   ],
+   [
+    "R.550 Magic 2",
+    "≈ 20 km"
+   ]
+  ],
+  "techo": "17 060 m (56 000 ft)"
+ },
+ "mirf1": {
+  "foto": {
+   "archivo": "French Air Force Mirage F1 returns to it's mission after receiving fuel from a KC-10 Extender.jpg",
+   "autor": "MSgt Eric Harris",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Mirage F1"
+  },
+  "servicio": "1973 – actualidad (uso limitado)",
+  "autonomia": "Radio de combate ≈ 420 km · traslado ≈ 3 300 km",
+  "armas": [
+   [
+    "R.550 Magic 2",
+    "≈ 20 km"
+   ],
+   [
+    "AS-30L",
+    "≈ 12 km"
+   ]
+  ],
+  "techo": "20 000 m (65 600 ft)"
+ },
+ "mig21": {
+  "foto": {
+   "archivo": "Croatian MiG-21 (cropped).jpg",
+   "autor": "Gojanovic123456789",
+   "licencia": "CC BY-SA 4.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "alt": "MiG-21"
+  },
+  "servicio": "1959 – actualidad",
+  "autonomia": "Alcance ≈ 660 km",
+  "armas": [
+   [
+    "R-60",
+    "≈ 8 km"
+   ]
+  ],
+  "techo": "17 500 m (57 400 ft)"
+ },
+ "mig29": {
+  "foto": {
+   "archivo": "VVS 100th IMG 0691 (7727464290) (cropped).jpg",
+   "autor": "Artem Katranzhi",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "MiG-29"
+  },
+  "servicio": "1983 – actualidad",
+  "autonomia": "Radio de combate ≈ 800 km · alcance ≈ 1 430 km · traslado ≈ 2 100 km",
+  "armas": [
+   [
+    "R-27ER",
+    "hasta ≈ 130 km"
+   ],
+   [
+    "R-73",
+    "≈ 30 km"
+   ],
+   [
+    "R-60",
+    "≈ 8 km"
+   ]
+  ],
+  "techo": "18 000 m (59 100 ft)"
+ },
+ "su27": {
+  "foto": {
+   "archivo": "Sukhoi Su-27SKM at MAKS-2005 airshow.jpg",
+   "autor": "Dmitriy Pichugin",
+   "licencia": "GFDL 1.2",
+   "licencia_url": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+   "alt": "Su-27"
+  },
+  "servicio": "1985 – actualidad",
+  "autonomia": "Alcance ≈ 3 530 km",
+  "armas": [
+   [
+    "R-27ER",
+    "hasta ≈ 130 km"
+   ],
+   [
+    "R-73",
+    "≈ 30 km"
+   ]
+  ],
+  "techo": "18 500 m (60 700 ft)"
+ },
+ "su33": {
+  "foto": {
+   "archivo": "Sukhoi Su-33 77 RED (30268117476).jpg",
+   "autor": "Dmitry Terekhov",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Su-33"
+  },
+  "servicio": "1998 – actualidad",
+  "autonomia": "Alcance ≈ 3 000 km",
+  "armas": [
+   [
+    "R-27ER",
+    "hasta ≈ 130 km"
+   ],
+   [
+    "R-73",
+    "≈ 30 km"
+   ]
+  ],
+  "techo": "17 000 m (55 800 ft)"
+ },
+ "f15c": {
+  "foto": {
+   "archivo": "F-15C Eagle from the 44th Fighter Squadron flies during a routine training exercise April 15, 2019.jpg",
+   "autor": "Airman 1st Class Matthew Seefeldt",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-15C Eagle"
+  },
+  "servicio": "1976 – actualidad",
+  "autonomia": "Radio de combate ≈ 1 090 km · alcance ≈ 3 970 km",
+  "armas": [
+   [
+    "AIM-120C",
+    "≈ 90 km"
+   ],
+   [
+    "AIM-7M",
+    "≈ 70 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ]
+  ],
+  "techo": "19 810 m (65 000 ft)"
+ },
+ "f5e": {
+  "foto": {
+   "archivo": "J-3005.jpg",
+   "autor": "Peng Chen",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "F-5E Tiger II"
+  },
+  "servicio": "Familia F-5: 1964 – actualidad",
+  "autonomia": "Alcance ≈ 890 km · traslado ≈ 3 720 km",
+  "armas": [
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ]
+  ],
+  "techo": "15 790 m (51 800 ft)"
+ },
+ "f86": {
+  "foto": {
+   "archivo": "F-86 Sabre hertiage flight.jpg",
+   "autor": "U.S. Air Force photo by J.M. Eddins Jr.",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-86 Sabre"
+  },
+  "servicio": "1949 – 1994",
+  "autonomia": "Radio de combate ≈ 670 km · alcance ≈ 2 450 km",
+  "armas": [],
+  "techo": "15 120 m (49 600 ft)",
+  "armas_nota": "Ametralladoras de 12,7 mm, cohetes y bombas: sin misiles guiados."
+ },
+ "mig15": {
+  "foto": {
+   "archivo": "MiG-15 (52544074366).jpg",
+   "autor": "slezo",
+   "licencia": "CC BY 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by/2.0",
+   "alt": "MiG-15"
+  },
+  "servicio": "1949 – actualidad (uso limitado)",
+  "autonomia": "Traslado ≈ 2 520 km",
+  "armas": [],
+  "techo": "15 500 m (50 900 ft)",
+  "armas_nota": "Cañones, cohetes y bombas: sin misiles guiados."
+ },
+ "mig19": {
+  "foto": {
+   "archivo": "Mikoyan-Gurevich MiG-19S Farmer USAF.jpg",
+   "autor": "U.S. Air Force photo",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "MiG-19"
+  },
+  "servicio": "1955 – retirado (el J-6 chino sigue en uso limitado)",
+  "autonomia": "Alcance ≈ 1 390 km · traslado ≈ 2 200 km",
+  "armas": [],
+  "techo": "17 500 m (57 400 ft)",
+  "armas_nota": "Cañones y cohetes: sin misiles guiados."
+ },
+ "a10c": {
+  "foto": {
+   "archivo": "Fairchild Republic A-10 Thunderbolt II - 32156159151.jpg",
+   "autor": "Master Sgt. William Greer, USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "A-10 Thunderbolt II"
+  },
+  "servicio": "1977 – actualidad",
+  "autonomia": "Radio de combate ≈ 460 km · traslado ≈ 4 150 km",
+  "armas": [
+   [
+    "AGM-65",
+    "≈ 22 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ]
+  ],
+  "techo": "13 720 m (45 000 ft)"
+ },
+ "av8b": {
+  "foto": {
+   "archivo": "Boeing AV-8B Harrier II, Italy - Navy JP7306232.jpg",
+   "autor": "Aldo Bidini",
+   "licencia": "GFDL 1.2",
+   "licencia_url": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+   "alt": "AV-8B Harrier II"
+  },
+  "servicio": "1985 – actualidad (retirada en EE. UU. en 2026)",
+  "autonomia": "Radio de combate ≈ 560 km · alcance ≈ 2 220 km · traslado ≈ 3 330 km",
+  "armas": [
+   [
+    "AGM-65",
+    "≈ 22 km"
+   ],
+   [
+    "AIM-9",
+    "hasta ≈ 35 km"
+   ]
+  ]
+ },
+ "ajs37": {
+  "foto": {
+   "archivo": "Viggen (52526298757).jpg",
+   "autor": "Airwolfhound",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Saab 37 Viggen"
+  },
+  "servicio": "1971 – 2007",
+  "autonomia": "Traslado ≈ 1 820 km",
+  "armas": [
+   [
+    "Rb 04",
+    "≈ 32 km"
+   ],
+   [
+    "Rb 75 (Maverick)",
+    "≈ 22 km"
+   ]
+  ],
+  "techo": "18 000 m (59 100 ft)"
+ },
+ "su25": {
+  "foto": {
+   "archivo": "Sukhoi Su-25 of the Russian Air Force landing at Vladivostok (8683076150).jpg",
+   "autor": "Fedor Leukhin",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Su-25"
+  },
+  "servicio": "1981 – actualidad",
+  "autonomia": "Radio de combate ≈ 750 km · alcance ≈ 1 000 km",
+  "armas": [
+   [
+    "Kh-25ML",
+    "≈ 11 km"
+   ],
+   [
+    "Kh-29L",
+    "≈ 10 km"
+   ],
+   [
+    "R-60",
+    "≈ 8 km"
+   ]
+  ],
+  "techo": "7 000 m (23 000 ft)"
+ },
+ "su25t": {
+  "foto": {
+   "archivo": "Sukhoi Su-25 of the Russian Air Force landing at Vladivostok (8683076150).jpg",
+   "autor": "Fedor Leukhin",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Su-25"
+  },
+  "servicio": "1981 – actualidad (familia Su-25)",
+  "autonomia": "Radio de combate ≈ 750 km · alcance ≈ 1 000 km",
+  "armas": [
+   [
+    "Vikhr",
+    "≈ 10–12 km"
+   ],
+   [
+    "Kh-29T",
+    "≈ 12 km"
+   ],
+   [
+    "Kh-58",
+    "hasta ≈ 120 km"
+   ]
+  ],
+  "techo": "7 000 m (23 000 ft)"
+ },
+ "ah64d": {
+  "foto": {
+   "archivo": "AH-64D Apache Longbow.jpg",
+   "autor": "U.S. Army",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "AH-64D Apache Longbow"
+  },
+  "servicio": "1986 – actualidad",
+  "autonomia": "Alcance ≈ 480 km · traslado ≈ 1 900 km",
+  "armas": [
+   [
+    "AGM-114 Hellfire",
+    "≈ 11 km"
+   ]
+  ],
+  "techo": "6 100 m (20 000 ft)"
+ },
+ "ka50": {
+  "foto": {
+   "archivo": "Russian Air Force Kamov Ka-50.jpg",
+   "autor": "Dmitriy Pichugin",
+   "licencia": "GFDL 1.2",
+   "licencia_url": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+   "alt": "Ka-50 Black Shark"
+  },
+  "servicio": "1995 – actualidad",
+  "autonomia": "Radio de combate ≈ 470 km · alcance ≈ 540 km · traslado ≈ 1 160 km",
+  "armas": [
+   [
+    "Vikhr",
+    "≈ 10–12 km"
+   ]
+  ],
+  "techo": "5 500 m (18 000 ft)"
+ },
+ "mi24p": {
+  "foto": {
+   "archivo": "Mi24CP (modified) b.jpg",
+   "autor": "Cezary Piwowarczyk",
+   "licencia": "CC BY-SA 4.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "alt": "Mi-24 Hind"
+  },
+  "servicio": "1972 – actualidad",
+  "autonomia": "Alcance ≈ 450 km",
+  "armas": [
+   [
+    "Shturm / Ataka",
+    "≈ 5 km"
+   ]
+  ],
+  "techo": "5 750 m (18 900 ft)"
+ },
+ "mi8": {
+  "foto": {
+   "archivo": "Soviet Helicopter Mil' Mi-8. Советский вертолет Миля Ми-8.jpg",
+   "autor": "Peer.Gynt",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Mi-8 en un museo"
+  },
+  "servicio": "1967 – actualidad",
+  "autonomia": "Alcance ≈ 500 km · traslado ≈ 960 km",
+  "armas": [],
+  "techo": "5 000 m (16 400 ft)",
+  "armas_nota": "Cohetes y ametralladoras: sin misiles guiados."
+ },
+ "uh1h": {
+  "foto": {
+   "archivo": "UH1 Huey - Fly Navy 2017 (26938005897).jpg",
+   "autor": "Airwolfhound",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "UH-1 Huey"
+  },
+  "servicio": "1959 – actualidad",
+  "autonomia": "Alcance ≈ 510 km",
+  "armas": [],
+  "techo": "3 840 m (12 600 ft)",
+  "armas_nota": "Cohetes y ametralladoras: sin misiles guiados."
+ },
+ "sa342": {
+  "foto": {
+   "archivo": "Gazelle - RIAT 2014 (cropped).jpg",
+   "autor": "Tim Felce",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "SA 342 Gazelle"
+  },
+  "servicio": "1973 – actualidad",
+  "autonomia": "Alcance ≈ 360 km",
+  "armas": [
+   [
+    "HOT-3",
+    "≈ 4 km"
+   ],
+   [
+    "Mistral",
+    "≈ 6 km"
+   ]
+  ],
+  "techo": "5 000 m (16 400 ft)"
+ },
+ "oh58d": {
+  "foto": {
+   "archivo": "OH-58D 1st Squadron, 17th Cavalry Regiment (cropped).jpg",
+   "autor": "U.S. Army",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "OH-58D Kiowa Warrior"
+  },
+  "servicio": "1969 – 2020 en el US Army",
+  "autonomia": "Alcance ≈ 260 km · autonomía ≈ 2 h",
+  "armas": [
+   [
+    "AGM-114 Hellfire",
+    "≈ 11 km"
+   ]
+  ],
+  "techo": "4 580 m (15 000 ft)"
+ },
+ "ch47f": {
+  "foto": {
+   "archivo": "CH-47 assigned to 3rd General Support Aviation Battalion, 82nd Combat Aviation Brigade.jpg",
+   "autor": "Sgt. Steven Galimore",
+   "licencia": "CC0",
+   "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "alt": "CH-47 Chinook"
+  },
+  "servicio": "1962 – actualidad",
+  "autonomia": "Radio de combate ≈ 310 km · alcance ≈ 740 km · traslado ≈ 2 250 km",
+  "armas": [],
+  "techo": "6 100 m (20 000 ft)",
+  "armas_nota": "Ametralladoras de puerta: helicóptero de transporte."
+ },
+ "t45c": {
+  "foto": {
+   "archivo": "T-45A Goshawk 03.jpg",
+   "autor": "Lt. j.g. John A. Ivancic",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "T-45 Goshawk"
+  },
+  "servicio": "1991 – actualidad",
+  "autonomia": "Alcance ≈ 1 300 km",
+  "armas": [],
+  "techo": "12 950 m (42 500 ft)",
+  "armas_nota": "Entrenador: sin armamento de combate."
+ },
+ "l39": {
+  "foto": {
+   "archivo": "L-39ZA Albatros (cropped).jpg",
+   "autor": "Milan Nykodym",
+   "licencia": "CC BY-SA 4.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "alt": "L-39ZA Albatros"
+  },
+  "servicio": "1972 – actualidad",
+  "autonomia": "Alcance ≈ 1 100 km · traslado ≈ 1 750 km · autonomía 2 h 30 min",
+  "armas": [],
+  "techo": "11 000 m (36 100 ft)",
+  "armas_nota": "Cañón, cohetes y bombas ligeras: sin misiles guiados."
+ },
+ "c101": {
+  "foto": {
+   "archivo": "Spanish AF CASA C-101EB Aviojet.jpg",
+   "autor": "Javier Bravo Muñoz",
+   "licencia": "GFDL 1.2",
+   "licencia_url": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+   "alt": "CASA C-101 Aviojet"
+  },
+  "servicio": "1980 – 2025",
+  "autonomia": "Radio de combate ≈ 520 km · traslado ≈ 2 000 km",
+  "armas": [],
+  "techo": "12 800 m (42 000 ft)",
+  "armas_nota": "Cañón de 30 mm, cohetes y bombas: sin misiles guiados."
+ },
+ "mb339": {
+  "foto": {
+   "archivo": "MB339 - RIAT 2008 (2674540983).jpg",
+   "autor": "Tim Felce (Airwolfhound)",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Aermacchi MB-339"
+  },
+  "servicio": "1979 – actualidad",
+  "autonomia": "Alcance ≈ 1 760 km · traslado ≈ 2 110 km",
+  "armas": [],
+  "techo": "14 630 m (48 000 ft)",
+  "armas_nota": "Cañones, cohetes y bombas ligeras: sin misiles guiados."
+ },
+ "yak52": {
+  "foto": {
+   "archivo": "Yakkes Yak-52 RA-3085K.jpg",
+   "autor": "Erik Coekelberghs",
+   "licencia": "CC BY-SA 3.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "alt": "Yak-52"
+  },
+  "servicio": "1979 – actualidad",
+  "autonomia": "Alcance ≈ 550 km",
+  "armas": [],
+  "techo": "4 000 m (13 100 ft)",
+  "armas_nota": "Sin armamento."
+ },
+ "eagle2": {
+  "foto": {
+   "archivo": "Christen Eagle II N49AE EDST.jpg",
+   "autor": "Julian Herzog",
+   "licencia": "CC BY 4.0",
+   "licencia_url": "https://creativecommons.org/licenses/by/4.0",
+   "alt": "Christen Eagle II"
+  },
+  "servicio": "Desde 1977",
+  "autonomia": "Alcance ≈ 700 km",
+  "armas": [],
+  "techo": "5 180 m (17 000 ft)",
+  "armas_nota": "Sin armamento."
+ }
+}
