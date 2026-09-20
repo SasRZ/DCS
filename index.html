@@ -99,8 +99,6 @@ header{position:relative;isolation:isolate}
 .cred{position:absolute;right:12px;top:10px;z-index:3;font-size:10.5px;color:rgba(230,238,242,.72);
  background:rgba(11,16,21,.55);padding:2px 8px;border-radius:999px}
 .cred a{text-decoration:underline;text-underline-offset:2px}
-.novedades{margin-top:12px}
-.novedades .nota{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:640px){.cat{min-height:230px}.ctx{padding:18px 18px 16px 24px}.inicio header{padding:38px 0 26px}}
 
 /* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
@@ -516,10 +514,7 @@ function pintar(){
       '<span class="cm"><span><b>' + cuentaCat(k) + '</b> documentos</span><span class="pto">·</span><span><b>' + subs +
       '</b> apartados</span><span class="flecha">→</span></span></div></div>';
   });
-  /* novedades: los últimos documentos añadidos al catálogo (el orden de documentos.json es el de incorporación) */
-  const nuevos = documentos.filter(d => d.tipo !== "WEB" && (d.refs || []).length).slice(-6).reverse();
-  v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto() +
-    (nuevos.length ? '<div class="novedades"><h3 class="subt">Últimas incorporaciones</h3>' + nuevos.map(d => fila(d, null)).join("") + '</div>' : '');
+  v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto();
 }
 
 $("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };

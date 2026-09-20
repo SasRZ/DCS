@@ -82,10 +82,8 @@ Todos los campos siguientes son opcionales:
 - La **portada** sale de `data/portada.json`: para cada categoría, su `color`, el
   texto pequeño de arriba (`kicker`) y la `foto` de fondo (Wikimedia Commons, con
   autor y licencia), más la lista de `busquedas` rápidas que salen como botones
-  bajo el buscador. «Últimas incorporaciones» muestra los seis últimos documentos
-  de `documentos.json` (el orden del archivo es el de incorporación, así que
-  añade las fichas nuevas al final). La tecla `/` enfoca el buscador. El mensaje
-  de «Ponte a prueba» está en el objeto `RETO` de `index.html`.
+  bajo el buscador. La tecla `/` enfoca el buscador. El mensaje de «Ponte a
+  prueba» está en el objeto `RETO` de `index.html`.
 - Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
   grupos ocultos, abre la web con `?todo` (por ejemplo
   `http://localhost:8080/?todo`).
