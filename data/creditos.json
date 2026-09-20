@@ -43,5 +43,13 @@
     "nombre": "Chuck's Guides",
     "url": "https://chucksguides.com",
     "desc": "Guías de DCS por aeronave: arranque, sistemas y armamento. Aquí solo se enlaza a sus páginas oficiales, para consultarlas siempre actualizadas."
+  },
+  {
+    "nombre": "CNATRA (Armada de EE. UU.)",
+    "desc": "Naval Air Training Command. Instrucciones de vuelo reales de la Armada de EE. UU. sobre intercepción todo tiempo (P-825) y maniobras de combate básicas (P-1289)."
+  },
+  {
+    "nombre": "Escuadrón San Andrés",
+    "desc": "Escuadrón San Andrés (ESA_FLANKERCOBRA). Teoría de la sección en el rol aire-aire."
   }
 ]

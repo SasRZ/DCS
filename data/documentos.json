@@ -1121,5 +1121,35 @@
     "refs": ["modulos/yak52"],
     "etiquetas": ["Chuck's Guide", "guía", "manual"],
     "autor": "Chuck's Guides"
+  },
+  {
+    "id": "cnatra-p825-awi",
+    "titulo": "All Weather Intercept (AWI) · CNATRA P-825",
+    "tipo": "PDF",
+    "nota": "Instrucción de vuelo de la Armada de EE. UU. sobre intercepción todo tiempo, para NFO avanzados del T-45C/VMTS. Documento real, no adaptado a DCS. Edición de 2017, 292 páginas.",
+    "url": "docs/general/sop/cnatra-p825-all-weather-intercept.pdf",
+    "refs": ["general/sop"],
+    "etiquetas": ["aire-aire", "intercepción", "AWI", "T-45", "teoría"],
+    "autor": "CNATRA (Armada de EE. UU.)"
+  },
+  {
+    "id": "cnatra-p1289-bfm",
+    "titulo": "Basic Fighter Maneuvering · Engaged Maneuvering · CNATRA P-1289",
+    "tipo": "PDF",
+    "nota": "Instrucción de vuelo de la Armada de EE. UU. sobre maniobras de combate básicas: sección en maniobra comprometida, para el T-45 Strike. Documento real, no adaptado a DCS. Edición de 2016 con el cambio 1 de marzo de 2021, 175 páginas.",
+    "url": "docs/general/sop/cnatra-p1289-bfm-engaged-maneuvering.pdf",
+    "refs": ["general/sop"],
+    "etiquetas": ["aire-aire", "BFM", "dogfight", "T-45", "teoría"],
+    "autor": "CNATRA (Armada de EE. UU.)"
+  },
+  {
+    "id": "esa-seccion-aire-aire-2",
+    "titulo": "La sección en el rol aire-aire II: del merge al ACM",
+    "tipo": "PDF",
+    "nota": "Continuación de «La sección en el rol aire-aire: del pre-commit al merge». Trata el uso del radar en corto alcance (SRR), la sección en WVR, el procedimiento de identificación visual (VID) y las contingencias.",
+    "url": "docs/general/sop/esa-seccion-aire-aire-2.pdf",
+    "refs": ["general/sop"],
+    "etiquetas": ["aire-aire", "sección", "WVR", "VID", "ACM", "teoría"],
+    "autor": "Escuadrón San Andrés"
   }
 ]
