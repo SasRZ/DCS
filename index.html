@@ -176,7 +176,7 @@ function fila(d, refActual){
   const der = refActual
     ? '<span class="tipo">' + esc(d.tipo) + '</span>'
     : '<span class="ruta">' + (d.refs || []).filter(r => idx[r]).map(r => esc(idx[r])).join(" · ") + '</span>';
-  const ext = /^https?:/.test(d.url) ? ' target="_blank" rel="noopener"' : '';
+  const ext = ' target="_blank" rel="noopener"';  /* todo documento se abre en pestaña nueva, para no salir de la biblioteca */
   const meta = [];
   if (d.autor) meta.push('Autor: <b>' + esc(d.autor) + '</b>');
   if (refActual && otras.length) meta.push('También en <b>' + otras.map(r => esc(idx[r])).join("</b>, <b>") + '</b>');
@@ -194,7 +194,7 @@ function paginaCreditos(){
 
   const bloques = autores.map(a => {
     const ds = documentos.filter(d => d.autor === a.nombre);
-    const lista = '<ul>' + ds.map(d => '<li><a href="' + esc(d.url) + '">' + esc(d.titulo) + '</a></li>').join("") + '</ul>';
+    const lista = '<ul>' + ds.map(d => '<li><a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.titulo) + '</a></li>').join("") + '</ul>';
     const nombre = a.url
       ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.nombre) + ' <span class="ext">↗</span></a>'
       : esc(a.nombre);
