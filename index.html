@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--acero:#151C23;--acero2:#1D272F;--linea:#2C3942;--texto:#DCE4E8;--tenue:#8A9AA5;
- --ambar:#E0A73C;--chart:#69A6A0;--alerta:#C9705A;box-sizing:border-box;
+ --ambar:#E0A73C;--chart:#69A6A0;--alerta:#C9705A;--azul:#6C9BD1;--verde:#8DB56A;--lila:#A98BC4;box-sizing:border-box;
  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--acero);color:var(--texto);
@@ -46,12 +46,25 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .pd{grid-column:1;color:var(--tenue);max-width:60ch}
 .pn{grid-row:1;grid-column:2;color:var(--tenue);font-size:14px;white-space:nowrap}
 
-.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
- border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:14px}
-.rejilla a{background:var(--acero);padding:15px 16px;display:flex;justify-content:space-between;
- gap:10px;align-items:baseline;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
-.rejilla a:hover,.rejilla a:focus-visible{background:var(--acero2);outline:none;color:var(--ambar)}
-.rejilla .n{color:var(--tenue);font-size:13px}
+/* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
+.gcab{position:relative;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 16px;
+ margin-top:42px;padding:2px 0 2px 18px}
+.gcab::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:6px;background:var(--c)}
+.gcab h3{font:600 clamp(26px,4vw,36px)/1.05 "Barlow Condensed",sans-serif;letter-spacing:.02em;margin:0}
+.gcab .gn{font:600 32px/1 "Barlow Condensed",sans-serif;color:var(--c)}
+.gcab p{grid-column:1/-1;margin:0;color:var(--tenue);font-size:15px;max-width:72ch}
+.tarjetas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;margin-top:16px}
+.tarjeta{position:relative;display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-content:start;
+ background:var(--acero2);border:1px solid var(--linea);border-radius:10px;padding:14px 16px 16px 28px}
+.tarjeta::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:6px;background:var(--c)}
+.tarjeta:hover,.tarjeta:focus-visible{border-color:var(--c);outline:none}
+.tarjeta:hover .tn,.tarjeta:focus-visible .tn{color:var(--ambar)}
+.tn{font:600 25px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.01em}
+.der{display:flex;gap:8px;align-items:center}
+.chip{color:var(--c);border:1px solid var(--c);border-radius:4px;font-size:11px;font-weight:600;
+ letter-spacing:.08em;padding:1px 7px;line-height:1.5}
+.tarjeta .n{color:var(--tenue);font-size:13px;white-space:nowrap}
+.rol{grid-column:1/-1;color:var(--tenue);font-size:14.5px;line-height:1.4}
 
 .doc{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
  padding:14px 4px;border-bottom:1px solid var(--linea)}
@@ -78,7 +91,7 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
 .autor summary{cursor:pointer;color:var(--chart);font-size:14.5px;margin-top:10px}
 footer{color:var(--tenue);font-size:14px;margin-top:48px;border-top:1px solid var(--linea);padding-top:16px}
 code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
-@media (prefers-reduced-motion:no-preference){.doc,.rejilla a,.portada a{transition:background .12s}}
+@media (prefers-reduced-motion:no-preference){.doc,.portada a{transition:background .12s}.tarjeta{transition:border-color .12s}}
 </style>
 </head>
 <body>
@@ -171,6 +184,17 @@ function validar(){
 const cuentaCat = c => documentos.filter(d => (d.refs || []).some(r => r.startsWith(c + "/"))).length;
 const cuentaSub = ref => (porRef.get(ref) || []).length;
 
+/* Colores de grupo: el campo "color" de la taxonomía usa estos nombres */
+const COLOR = {azul: "var(--azul)", ambar: "var(--ambar)", rojo: "var(--alerta)", teal: "var(--chart)",
+               verde: "var(--verde)", lila: "var(--lila)"};
+
+function tarjeta(c, it){
+  return '<a class="tarjeta" href="#/' + c + '/' + it.id + '"><span class="tn">' + esc(it.nombre) + '</span>' +
+    '<span class="der">' + (it.chip ? '<span class="chip">' + esc(it.chip) + '</span>' : '') +
+    '<span class="n">' + cuentaSub(c + "/" + it.id) + ' doc.</span></span>' +
+    (it.rol ? '<span class="rol">' + esc(it.rol) + '</span>' : '') + '</a>';
+}
+
 function fila(d, refActual){
   const otras = (d.refs || []).filter(r => r !== refActual && idx[r]);
   const der = refActual
@@ -250,9 +274,12 @@ function pintar(){
     /* los apartados sin documentos no se pintan (siguen en taxonomia.json y reaparecen al añadir una ficha) */
     v.innerHTML = arbol[c].grupos.map(g => {
       const its = g.items.filter(it => cuentaSub(c + "/" + it.id) > 0);
-      return its.length ? (g.nombre ? '<h2>' + esc(g.nombre) + '</h2>' : '') + '<div class="rejilla">' +
-        its.map(it => '<a href="#/' + c + '/' + it.id + '">' + esc(it.nombre) +
-          '<span class="n">' + cuentaSub(c + "/" + it.id) + '</span></a>').join("") + '</div>' : "";
+      if (!its.length) return "";
+      const col = COLOR[g.color] || "var(--chart)";
+      const cab = g.nombre ? '<div class="gcab"><h3>' + esc(g.nombre) + '</h3><span class="gn">' + its.length + '</span>' +
+        (g.desc ? '<p>' + esc(g.desc) + '</p>' : '') + '</div>' : '';
+      return '<section style="--c:' + col + '">' + cab + '<div class="tarjetas">' +
+        its.map(it => tarjeta(c, it)).join("") + '</div></section>';
     }).join("") || '<p class="vacio">Todavía no hay documentos en esta categoría.</p>';
     return;
   }
