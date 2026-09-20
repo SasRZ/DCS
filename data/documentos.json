@@ -1171,5 +1171,15 @@
     "etiquetas": ["amenazas", "SAM", "AAA", "RWR", "buques", "guía"],
     "autor": "Colonel Akir Nakesh",
     "destacado": true
+  },
+  {
+    "id": "mirf1-armamento-ag",
+    "titulo": "Mirage F1 · armamento aire-tierra",
+    "tipo": "PDF",
+    "nota": "Tabla de bombas y depósitos (estaciones, versión, peso y cantidad) y perfiles de ataque: picado de alta y media altitud, pop-up a baja cota, alta resistencia, Durandal, cohetes y cañón.",
+    "url": "docs/modulos/mirf1/armamento-aire-tierra.pdf",
+    "refs": ["modulos/mirf1"],
+    "etiquetas": ["armamento", "bombas", "aire-tierra", "perfiles de ataque", "kneeboard"],
+    "autor": "Ootoito (Wladimir Cova)"
   }
 ]
