@@ -71,6 +71,14 @@ Todos los campos siguientes son opcionales:
   hay misiles. Las fotos se cargan desde Wikimedia con su crédito debajo. Los
   datos son del tipo de aeronave real, orientativos: el módulo de DCS puede
   modelar otra versión. Un módulo sin entrada simplemente no muestra ficha.
+- La ficha de cada **mapa** sale de `data/mapas.json` (región, superficie,
+  aeródromos, desarrollador, terreno y acceso, de la ficha oficial de la tienda
+  de DCS) y la de cada **tipo de misión** de `data/misiones.json` (objetivos,
+  perfil de vuelo, armas, amenazas, con quién se coordina y vocabulario). Ambas
+  llevan foto de Wikimedia Commons con su crédito y siguen el mismo formato:
+  `foto` y `filas` (pares etiqueta y texto), más `chips` en las misiones. La
+  ficha de un mapa añade sola cuántos aeródromos con cartas y documentos hay, y
+  la de una misión enlaza los aviones típicos que indica `modulos` en la taxonomía.
 - Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
   grupos ocultos, abre la web con `?todo` (por ejemplo
   `http://localhost:8080/?todo`).

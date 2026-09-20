@@ -1,0 +1,454 @@
+{
+ "_fuente": "Resumen general de doctrina, simplificado y orientativo: los procedimientos reales varían según país, misión y reglas de enfrentamiento.",
+ "cas": {
+  "foto": {
+   "archivo": "Close Air Support training at the Nevada Test and Training Range 110923-F-MQ656-179.jpg",
+   "autor": "Tech. Sgt. Michael Holzworth, USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Apoyo aéreo cercano en un ejercicio"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Vehículos y blindados, tropas, posiciones y artillería enemigos, muy cerca de fuerzas amigas."
+   ],
+   [
+    "Perfil de vuelo",
+    "Vuelo bajo y lento: se orbita en el punto de contacto (CP), se entra desde el IP y se ataca en varias pasadas."
+   ],
+   [
+    "Armas habituales",
+    "Cañón, cohetes, misiles Maverick y bombas guiadas por láser o GPS."
+   ],
+   [
+    "Amenazas",
+    "Misiles portátiles (MANPADS), artillería antiaérea y fuego amigo."
+   ],
+   [
+    "Coordina con",
+    "El controlador aéreo avanzado (JTAC), con la llamada de 9 líneas."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "JTAC",
+    "9 líneas",
+    "CP",
+    "IP",
+    "Keyhole",
+    "Danger close",
+    "Tipos de control 1/2/3"
+   ]
+  }
+ },
+ "cap": {
+  "foto": {
+   "archivo": "US Air Force 011106-F-4308R-035 Noble Eagles.jpg",
+   "autor": "Lt. Col. Bill Ramsay, USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-15 en patrulla aérea de combate"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Aviones y helicópteros enemigos, y misiles de crucero, antes de que lleguen a lo que se protege."
+   ],
+   [
+    "Perfil de vuelo",
+    "Patrulla en hipódromo sobre una estación asignada, a media o gran altitud, con relevos y reabastecimiento."
+   ],
+   [
+    "Armas habituales",
+    "Misiles aire-aire de medio alcance (AIM-120, AIM-7, R-27) y de corto alcance (AIM-9, R-73), y cañón."
+   ],
+   [
+    "Amenazas",
+    "Cazas enemigos, misiles tierra-aire de largo alcance y quedarse sin combustible."
+   ],
+   [
+    "Coordina con",
+    "AWACS o control desde tierra (GCI), cisternas y otras patrullas."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "BARCAP",
+    "Estación",
+    "Bullseye",
+    "BVR / WVR",
+    "Fox 1/2/3",
+    "Picture"
+   ]
+  }
+ },
+ "escolta": {
+  "foto": {
+   "archivo": "\"Bottisham Four\" - Four P-51 Mustangs fighters in flight (cropped).jpg",
+   "autor": "USAAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "P-51 Mustang de escolta"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Los cazas y los misiles tierra-aire que amenazan a los aviones escoltados."
+   ],
+   [
+    "Perfil de vuelo",
+    "Se vuela junto a la formación protegida (escolta cerrada) o por delante (barrido), a su velocidad."
+   ],
+   [
+    "Armas habituales",
+    "Misiles aire-aire y, a veces, antirradiación."
+   ],
+   [
+    "Amenazas",
+    "Cazas, misiles tierra-aire y dejar sin combustible a los escoltados."
+   ],
+   [
+    "Coordina con",
+    "El paquete escoltado y el AWACS."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "Barrido",
+    "Escolta cercana",
+    "Paquete",
+    "Push / Commit"
+   ]
+  }
+ },
+ "intercepcion": {
+  "foto": {
+   "archivo": "RAF Tyhoon Russian Intercept.jpg",
+   "autor": "Royal Air Force / Ministry of Defence",
+   "licencia": "OGL v1.0",
+   "licencia_url": "http://NationalArchives.gov.uk/doc/open-government-licence/version/1/",
+   "alt": "Typhoon de la RAF interceptando un Tu-95"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Aeronaves desconocidas u hostiles que se acercan: bombarderos, cazas o aviones no identificados."
+   ],
+   [
+    "Perfil de vuelo",
+    "Despegue en alerta, ascenso rápido y guiado desde tierra hasta identificar o atacar."
+   ],
+   [
+    "Armas habituales",
+    "Misiles aire-aire y cañón."
+   ],
+   [
+    "Amenazas",
+    "Identificar mal el blanco y una ventana de tiempo muy corta."
+   ],
+   [
+    "Coordina con",
+    "El control de intercepción desde tierra (GCI) y el mando."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "QRA",
+    "Scramble",
+    "GCI",
+    "Identificación visual (VID)",
+    "Intruso"
+   ]
+  }
+ },
+ "strike": {
+  "foto": {
+   "archivo": "GBU-12s loading on F-14.jpg",
+   "autor": "U.S. Navy",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Armado de bombas guiadas por láser"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Puentes, depósitos, aeródromos, centros de mando e instalaciones."
+   ],
+   [
+    "Perfil de vuelo",
+    "Ingreso a baja o media cota, o a gran altitud, según la amenaza; lanzamiento a la hora sobre el objetivo y salida coordinada."
+   ],
+   [
+    "Armas habituales",
+    "Bombas guiadas por GPS o láser (JDAM, Paveway) y misiles de largo alcance."
+   ],
+   [
+    "Amenazas",
+    "Misiles tierra-aire, cazas y artillería antiaérea cerca del objetivo."
+   ],
+   [
+    "Coordina con",
+    "Escolta, SEAD y cisterna."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "TOT",
+    "Ingreso / egreso",
+    "IP",
+    "JDAM",
+    "Paveway"
+   ]
+  }
+ },
+ "sead": {
+  "foto": {
+   "archivo": "F-4G Phantom II wild weasel.jpg",
+   "autor": "U.S. Air Force",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "F-4G Wild Weasel"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Radares de alerta, radares de guiado de misiles tierra-aire y baterías antiaéreas."
+   ],
+   [
+    "Perfil de vuelo",
+    "Disparo de misil antirradiación desde media o gran altitud (SEAD) o ataque directo a baja cota (DEAD)."
+   ],
+   [
+    "Armas habituales",
+    "Misiles antirradiación (AGM-88 HARM), bombas guiadas y de racimo."
+   ],
+   [
+    "Amenazas",
+    "Misiles tierra-aire que se activan o se apagan, y los que disparan al atacante."
+   ],
+   [
+    "Coordina con",
+    "El paquete de ataque, la escolta y el AWACS."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "HARM",
+    "POS / HAD",
+    "RWR",
+    "Wild Weasel",
+    "Magnum"
+   ]
+  }
+ },
+ "antibuque": {
+  "foto": {
+   "archivo": "USS Princeton (CG-59) fires RGM-84 Harpoon on 14 July 2016.jpg",
+   "autor": "U.S. Navy",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Lanzamiento de un misil Harpoon"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Buques de superficie: fragatas, destructores y mercantes."
+   ],
+   [
+    "Perfil de vuelo",
+    "Aproximación y disparo a distancia; el misil vuela casi a ras del mar (sea-skimming) hacia el final."
+   ],
+   [
+    "Armas habituales",
+    "Misiles antibuque (Harpoon, Exocet, C-802) y bombas."
+   ],
+   [
+    "Amenazas",
+    "Misiles de los propios buques, defensa cercana (CIWS) y el combustible sobre el mar."
+   ],
+   [
+    "Coordina con",
+    "AWACS o radar externo y otros aviones del grupo."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "Sea-skimming",
+    "Harpoon",
+    "Exocet",
+    "CIWS",
+    "Radar de superficie"
+   ]
+  }
+ },
+ "aar": {
+  "foto": {
+   "archivo": "KC-135 refuels an F-16 Fighting Falcon.jpg",
+   "autor": "U.S. Air Force",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "KC-135 repostando a un F-16"
+  },
+  "filas": [
+   [
+    "Receptores",
+    "Los aviones que necesitan combustible."
+   ],
+   [
+    "Perfil de vuelo",
+    "Encuentro en el punto de reabastecimiento (ARCP) y vuelo estable en la pista del cisterna a velocidad y altitud fijadas."
+   ],
+   [
+    "Sistemas",
+    "Cesta y sonda (US Navy, RAF) o pértiga (USAF)."
+   ],
+   [
+    "Amenazas",
+    "Mal tiempo, turbulencia y, en combate, amenazas aéreas al cisterna."
+   ],
+   [
+    "Coordina con",
+    "El cisterna: indicativo, TACAN y frecuencia."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "Cisterna",
+    "ARCP",
+    "Sonda y cesta",
+    "Pértiga (boom)",
+    "Bingo",
+    "Joker"
+   ]
+  }
+ },
+ "csar": {
+  "foto": {
+   "archivo": "Pararescue.training exercise.jpg",
+   "autor": "Petty Officer 2nd Class Scott Taylor, U.S. Navy",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Entrenamiento de rescate"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Tripulantes derribados y aislados en territorio hostil."
+   ],
+   [
+    "Perfil de vuelo",
+    "Helicópteros de rescate con escolta de ataque: localizar al superviviente por baliza y radio, y recogerlo rápido."
+   ],
+   [
+    "Armas habituales",
+    "Ametralladoras de puerta y cohetes, con apoyo de aviones de ataque."
+   ],
+   [
+    "Amenazas",
+    "Fuego terrestre, misiles portátiles y la cercanía del enemigo al superviviente."
+   ],
+   [
+    "Coordina con",
+    "El comandante en el lugar (OSC), la escolta y el control."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "OSC",
+    "Baliza",
+    "Superviviente",
+    "LZ",
+    "NOE"
+   ]
+  }
+ },
+ "transporte": {
+  "foto": {
+   "archivo": "UH 60 Black Hawk helicopters from 5th Battalion, 101st Combat Aviation Brigade.jpg",
+   "autor": "Staff Sgt. Joel Salgado, U.S. Army",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Helicópteros UH-60 en un asalto aéreo"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Mover tropas y carga entre bases y zonas de aterrizaje."
+   ],
+   [
+    "Perfil de vuelo",
+    "Vuelo bajo (NOE) y aterrizaje o carga en zonas improvisadas, a menudo en formación."
+   ],
+   [
+    "Armas habituales",
+    "Solo defensivas: ametralladoras de puerta."
+   ],
+   [
+    "Amenazas",
+    "Misiles portátiles, armas ligeras, terreno y meteorología."
+   ],
+   [
+    "Coordina con",
+    "La escolta, el control de zona y las tropas a bordo."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "LZ",
+    "PZ",
+    "NOE",
+    "Carga externa"
+   ]
+  }
+ },
+ "recon": {
+  "foto": {
+   "archivo": "Lockheed SR-71 Blackbird (modified).jpg",
+   "autor": "USAF / Judson Brohmer",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "SR-71 Blackbird"
+  },
+  "filas": [
+   [
+    "Objetivos",
+    "Posiciones, movimientos y objetivos de interés para el mando."
+   ],
+   [
+    "Perfil de vuelo",
+    "Vuelo a baja o gran altitud, según la amenaza, con sensores (FLIR, cámara) y transmisión de datos."
+   ],
+   [
+    "Armas habituales",
+    "Normalmente ninguna, salvo las defensivas."
+   ],
+   [
+    "Amenazas",
+    "Misiles tierra-aire, cazas y artillería antiaérea; ser detectado."
+   ],
+   [
+    "Coordina con",
+    "El mando y las fuerzas propias que usan la información."
+   ]
+  ],
+  "chips": {
+   "titulo": "Vocabulario",
+   "items": [
+    "FLIR",
+    "MGRS",
+    "Informe de contacto"
+   ]
+  }
+ }
+}

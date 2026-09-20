@@ -1,0 +1,446 @@
+{
+ "_fuente": "Datos de la ficha oficial de cada mapa en la tienda de DCS World; pueden cambiar con las actualizaciones.",
+ "caucaso": {
+  "foto": {
+   "archivo": "Elbrus view on the mountains.jpg",
+   "autor": "Riadchikova",
+   "licencia": "CC BY-SA 4.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "alt": "Montañas del Cáucaso"
+  },
+  "filas": [
+   [
+    "Región",
+    "Costa oriental del mar Negro: sur de Rusia (Kuban), cordillera del Cáucaso, oeste de Georgia, Abjasia y Adjaria."
+   ],
+   [
+    "Superficie",
+    "Unos 720 km de largo, de Anapa a Tiflis."
+   ],
+   [
+    "Aeródromos",
+    "21"
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Playas, llanuras y montañas. El Elbrus (≈ 5 600 m) es el punto más alto."
+   ],
+   [
+    "Acceso",
+    "Gratuito, incluido con DCS World."
+   ]
+  ]
+ },
+ "siria": {
+  "foto": {
+   "archivo": "Syrian Desert.png",
+   "autor": "Emilfarb (Wikipedia en inglés)",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Imagen de satélite del desierto sirio"
+  },
+  "filas": [
+   [
+    "Región",
+    "Este del Mediterráneo: Siria, Chipre, Líbano y partes de Israel, Turquía, Jordania e Irak."
+   ],
+   [
+    "Superficie",
+    "1 000 × 900 km."
+   ],
+   [
+    "Aeródromos",
+    "69 entre aeródromos y helipuertos, como Damasco, Beirut, Larnaca, Incirlik, Akrotiri y Ramat David."
+   ],
+   [
+    "Desarrollador",
+    "Ugra Media"
+   ],
+   [
+    "Terreno",
+    "Costa fértil, montañas y grandes desiertos, con mar Mediterráneo para operar desde portaaviones."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "golfo": {
+  "foto": {
+   "archivo": "Strait of Hormuz and Musandam Peninsula (MODIS 2018-12-10).jpg",
+   "autor": "NASA / MODIS Land Rapid Response Team",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Estrecho de Ormuz visto por satélite"
+  },
+  "filas": [
+   [
+    "Región",
+    "Irán, Emiratos Árabes Unidos y Omán, alrededor del estrecho de Ormuz."
+   ],
+   [
+    "Superficie",
+    "≈ 200 000 km²."
+   ],
+   [
+    "Aeródromos",
+    "13, en Irán, Emiratos y Omán."
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Montañas, valles y llanuras desérticas, islas y mucho mar para operar desde portaaviones."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "sinai": {
+  "foto": {
+   "archivo": "Iss016e019375.jpg",
+   "autor": "NASA",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Suez y el canal, vistos desde la Estación Espacial"
+  },
+  "filas": [
+   [
+    "Región",
+    "Península del Sinaí, este de Egipto, delta del Nilo, sur de Israel y oeste de Jordania."
+   ],
+   [
+    "Superficie",
+    "1 500 × 1 000 km, con 700 × 700 km en detalle."
+   ],
+   [
+    "Aeródromos",
+    "20 egipcios y 9 israelíes, incluidos los de El Cairo y Ben Gurion."
+   ],
+   [
+    "Desarrollador",
+    "OnReTech"
+   ],
+   [
+    "Terreno",
+    "Desierto, montañas, canal de Suez, golfos de Suez y Aqaba, y las pirámides de Guiza."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "irak": {
+  "foto": {
+   "archivo": "Chibaish Marches, Iraq - An Nasiriyah.jpg",
+   "autor": "Autor desconocido",
+   "licencia": "CC0",
+   "licencia_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "alt": "Marismas de Irak"
+  },
+  "filas": [
+   [
+    "Región",
+    "Todo Irak."
+   ],
+   [
+    "Superficie",
+    "1 820 000 km²."
+   ],
+   [
+    "Aeródromos",
+    "28"
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Desiertos, marismas, montañas y grandes ciudades."
+   ],
+   [
+    "Acceso",
+    "De pago, en acceso anticipado."
+   ]
+  ]
+ },
+ "afganistan": {
+  "foto": {
+   "archivo": "Hindu Kush mountains (30357238428).jpg",
+   "autor": "Ninara",
+   "licencia": "CC BY 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by/2.0",
+   "alt": "Montañas del Hindu Kush"
+  },
+  "filas": [
+   [
+    "Región",
+    "Todo Afganistán y pequeñas zonas de los países vecinos."
+   ],
+   [
+    "Superficie",
+    "2 290 264 km²."
+   ],
+   [
+    "Aeródromos",
+    "28"
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Cordillera del Hindu Kush, desiertos y valles fértiles."
+   ],
+   [
+    "Acceso",
+    "De pago, en acceso anticipado."
+   ]
+  ]
+ },
+ "kola": {
+  "foto": {
+   "archivo": "Hibiny winter.jpg",
+   "autor": "Lite",
+   "licencia": "CC BY-SA 3.0",
+   "licencia_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "alt": "Montañas nevadas de Jibiny, península de Kola"
+  },
+  "filas": [
+   [
+    "Región",
+    "Norte de Noruega, Suecia y Finlandia, regiones rusas de Múrmansk y Carelia, y los mares de Barents y de Noruega."
+   ],
+   [
+    "Superficie",
+    "Unos 1 400 × 1 000 km, con más de 575 000 km² de tierra."
+   ],
+   [
+    "Aeródromos",
+    "9 de alto detalle, más otros 7 en Noruega y Suecia."
+   ],
+   [
+    "Desarrollador",
+    "Orbx"
+   ],
+   [
+    "Terreno",
+    "Ártico: fiordos, islas, bosques, montañas, tundra y miles de lagos, con texturas de verano y de invierno."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "nevada": {
+  "foto": {
+   "archivo": "Nellis Air Force Base, Las Vegas, Nevada (14017031619).jpg",
+   "autor": "Ken Lund",
+   "licencia": "CC BY-SA 2.0",
+   "licencia_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "alt": "Base aérea de Nellis, Nevada"
+  },
+  "filas": [
+   [
+    "Región",
+    "Nevada, con partes de Utah, Arizona y California; incluye Las Vegas y la presa Hoover."
+   ],
+   [
+    "Superficie",
+    "≈ 366 000 km²."
+   ],
+   [
+    "Aeródromos",
+    "Nellis, Creech y la instalación de Groom Lake (Área 51), entre otros."
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Desierto, con todo el espacio aéreo del NTTR y sus subáreas de entrenamiento."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "marianas": {
+  "foto": {
+   "archivo": "Dyess B-1s deploy to Andersen, take over Continuous Bomber Presence operations 170206-F-LP948-046.jpg",
+   "autor": "Tech. Sgt. Richard Ebensberger, USAF",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Base aérea de Andersen, Guam"
+  },
+  "filas": [
+   [
+    "Región",
+    "Archipiélago de las Marianas, a unos 2 000 km al sur de Japón: Guam, Rota, Tinian y Saipán."
+   ],
+   [
+    "Superficie",
+    "Unos 1 500 × 1 500 km, casi todo océano."
+   ],
+   [
+    "Aeródromos",
+    "La base de Andersen y los aeródromos de Rota, Tinian y Saipán."
+   ],
+   [
+    "Desarrollador",
+    "Eagle Dynamics"
+   ],
+   [
+    "Terreno",
+    "Costas rocosas y playas, acantilados, jungla y praderas, con mucho mar para operaciones navales."
+   ],
+   [
+    "Acceso",
+    "Gratuito."
+   ]
+  ]
+ },
+ "atlantico": {
+  "foto": {
+   "archivo": "Aerial photo Port Stanley.jpg",
+   "autor": "ver la ficha en Wikimedia Commons",
+   "licencia": "CC BY-SA 3.0",
+   "licencia_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "alt": "Vista aérea de Stanley, islas Malvinas"
+  },
+  "filas": [
+   [
+    "Región",
+    "Argentina, Chile y las islas Malvinas (Falkland), con Stanley."
+   ],
+   [
+    "Superficie",
+    "Más de 3 100 000 km²."
+   ],
+   [
+    "Desarrollador",
+    "Specter Studios"
+   ],
+   [
+    "Terreno",
+    "Picos andinos, llanuras de la Patagonia y las islas, con clima duro."
+   ],
+   [
+    "Acceso",
+    "De pago; no compatible con Steam."
+   ]
+  ]
+ },
+ "alemania": {
+  "foto": {
+   "archivo": "US Army M60 tank in German village.jpg",
+   "autor": "SSGT Bob Simons, U.S. Army",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Carro M60 en un pueblo alemán durante un ejercicio REFORGER"
+  },
+  "filas": [
+   [
+    "Región",
+    "Alemania Occidental y Oriental, Polonia, Checoslovaquia y los Países Bajos, con el corredor de Fulda."
+   ],
+   [
+    "Superficie",
+    "980 × 800 km."
+   ],
+   [
+    "Aeródromos",
+    "Más de 100 entre aeródromos militares y helipuertos."
+   ],
+   [
+    "Desarrollador",
+    "Ugra Media"
+   ],
+   [
+    "Terreno",
+    "Bosques, campos, colinas, costa y ciudades como Berlín, Fráncfort y Hamburgo. Época: años 80."
+   ],
+   [
+    "Acceso",
+    "De pago, en acceso anticipado."
+   ]
+  ]
+ },
+ "normandia": {
+  "foto": {
+   "archivo": "Into the Jaws of Death 23-0455M edit.jpg",
+   "autor": "Robert F. Sargent, U.S. Coast Guard",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Desembarco de Normandía, 1944"
+  },
+  "filas": [
+   [
+    "Región",
+    "Gran parte de Francia y Gran Bretaña, con París y Londres."
+   ],
+   [
+    "Superficie",
+    "400 × 600 km."
+   ],
+   [
+    "Desarrollador",
+    "Ugra Media"
+   ],
+   [
+    "Terreno",
+    "Costa del desembarco de 1944: muro del Atlántico, bocage, Caen, Rouen y puertos."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ },
+ "canal": {
+  "foto": {
+   "archivo": "Spitfire and He 111 during Battle of Britain 1940.jpg",
+   "autor": "Australian armed forces",
+   "licencia": "Public domain",
+   "licencia_url": "",
+   "alt": "Spitfire y Heinkel He 111 en la Batalla de Inglaterra"
+  },
+  "filas": [
+   [
+    "Región",
+    "Sureste de Inglaterra y noreste de Francia, entre 1940 y 1945."
+   ],
+   [
+    "Superficie",
+    "Similar a Suiza."
+   ],
+   [
+    "Aeródromos",
+    "Aeródromos históricos de la época."
+   ],
+   [
+    "Terreno",
+    "Aeródromos, ciudades, carreteras, ferrocarriles y puertos de la Batalla de Inglaterra."
+   ],
+   [
+    "Acceso",
+    "De pago."
+   ]
+  ]
+ }
+}
