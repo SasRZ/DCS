@@ -791,5 +791,335 @@
     "refs": ["modulos/f16c"],
     "etiquetas": ["F-16C", "Viper", "Block 50", "quickstart", "arranque", "cockpit"],
     "autor": "Ulvar (Andreas)"
+  },
+  {
+    "id": "chuck-f-16cm",
+    "titulo": "Chuck's Guide · F-16CM Viper",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-16cm",
+    "refs": ["modulos/f16c"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-fa-18c",
+    "titulo": "Chuck's Guide · F/A-18C Hornet",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/fa-18c",
+    "refs": ["modulos/fa18c"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-f-15e",
+    "titulo": "Chuck's Guide · F-15E Strike Eagle",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-15e",
+    "refs": ["modulos/f15e"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-f-14b",
+    "titulo": "Chuck's Guide · F-14B Tomcat",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-14b",
+    "refs": ["modulos/f14"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-f-4e",
+    "titulo": "Chuck's Guide · F-4E Phantom II",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-4e",
+    "refs": ["modulos/f4e"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-jf-17",
+    "titulo": "Chuck's Guide · JF-17 Thunder",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/jf-17",
+    "refs": ["modulos/jf17"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-m-2000c",
+    "titulo": "Chuck's Guide · Mirage 2000C",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/m-2000c",
+    "refs": ["modulos/m2000c"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mirage-f1",
+    "titulo": "Chuck's Guide · Mirage F1",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mirage-f1",
+    "refs": ["modulos/mirf1"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mig-21bis",
+    "titulo": "Chuck's Guide · MiG-21bis",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mig-21bis",
+    "refs": ["modulos/mig21"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-f-5e3",
+    "titulo": "Chuck's Guide · F-5E-3 Tiger II",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-5e3",
+    "refs": ["modulos/f5e"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-f-86f",
+    "titulo": "Chuck's Guide · F-86F Sabre",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/f-86f",
+    "refs": ["modulos/f86"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mig-15bis",
+    "titulo": "Chuck's Guide · MiG-15bis",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mig-15bis",
+    "refs": ["modulos/mig15"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mig-19p",
+    "titulo": "Chuck's Guide · MiG-19P",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mig-19p",
+    "refs": ["modulos/mig19"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-a-10c",
+    "titulo": "Chuck's Guide · A-10C Warthog",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/a-10c",
+    "refs": ["modulos/a10c"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-av-8b",
+    "titulo": "Chuck's Guide · AV-8B Harrier II",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/av-8b",
+    "refs": ["modulos/av8b"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-ajs-37",
+    "titulo": "Chuck's Guide · AJS-37 Viggen",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/ajs-37",
+    "refs": ["modulos/ajs37"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-ah-64d",
+    "titulo": "Chuck's Guide · AH-64D Apache",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/ah-64d",
+    "refs": ["modulos/ah64d"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-ka-50",
+    "titulo": "Chuck's Guide · Ka-50 Black Shark",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/ka-50",
+    "refs": ["modulos/ka50"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mi-24p",
+    "titulo": "Chuck's Guide · Mi-24P Hind",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mi-24p",
+    "refs": ["modulos/mi24p"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-mi-8",
+    "titulo": "Chuck's Guide · Mi-8MTV2",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/mi-8",
+    "refs": ["modulos/mi8"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-uh-1h",
+    "titulo": "Chuck's Guide · UH-1H Huey",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/uh-1h",
+    "refs": ["modulos/uh1h"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-sa-342",
+    "titulo": "Chuck's Guide · SA-342 Gazelle",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/sa-342",
+    "refs": ["modulos/sa342"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-p-51d",
+    "titulo": "Chuck's Guide · P-51D Mustang",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/p-51d",
+    "refs": ["modulos/p51d"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-p-47d",
+    "titulo": "Chuck's Guide · P-47D Thunderbolt",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/p-47d",
+    "refs": ["modulos/p47d"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-spitfire-lf-mk-ix",
+    "titulo": "Chuck's Guide · Spitfire LF Mk IX",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/spitfire-lf-mk-ix",
+    "refs": ["modulos/spitfire"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-bf109k-4",
+    "titulo": "Chuck's Guide · Bf 109 K-4",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/bf109k-4",
+    "refs": ["modulos/bf109"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-fw190-a8",
+    "titulo": "Chuck's Guide · Fw 190 A-8",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/fw190-a8",
+    "refs": ["modulos/fw190"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-fw190-d9",
+    "titulo": "Chuck's Guide · Fw 190 D-9",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/fw190-d9",
+    "refs": ["modulos/fw190"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-dh98",
+    "titulo": "Chuck's Guide · Mosquito FB Mk VI",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/dh98",
+    "refs": ["modulos/mossie"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-i-16",
+    "titulo": "Chuck's Guide · I-16",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/i-16",
+    "refs": ["modulos/i16"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-l-39za",
+    "titulo": "Chuck's Guide · L-39 Albatros",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/l-39za",
+    "refs": ["modulos/l39"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-c-101cc",
+    "titulo": "Chuck's Guide · C-101 Aviojet",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/c-101cc",
+    "refs": ["modulos/c101"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
+  },
+  {
+    "id": "chuck-yak-52",
+    "titulo": "Chuck's Guide · Yak-52",
+    "tipo": "WEB",
+    "nota": "Guía oficial de Chuck's Guides. El enlace lleva siempre a su web, para consultar la versión más actualizada.",
+    "url": "https://chucksguides.com/aircraft/dcs/yak-52",
+    "refs": ["modulos/yak52"],
+    "etiquetas": ["Chuck's Guide", "guía", "manual"],
+    "autor": "Chuck's Guides"
   }
 ]

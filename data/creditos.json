@@ -38,5 +38,10 @@
   {
     "nombre": "Ulvar (Andreas)",
     "desc": "Quick startup checklist del F-16C Block 50, basada en las guías de Chuck."
+  },
+  {
+    "nombre": "Chuck's Guides",
+    "url": "https://chucksguides.com",
+    "desc": "Guías de DCS por aeronave: arranque, sistemas y armamento. Aquí solo se enlaza a sus páginas oficiales, para consultarlas siempre actualizadas."
   }
 ]
