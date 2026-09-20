@@ -485,5 +485,185 @@
     "url": "docs/general/armamento/dcs-aircraft-weapon-overview.pdf",
     "refs": ["general/armamento"],
     "etiquetas": ["armamento", "cañones", "misiles", "referencia"]
+  },
+  {
+    "id": "golfo-oibs-cartas",
+    "titulo": "Sirri Island (OIBS) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Sirri Island (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oibs/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oibs"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "golfo-oibl-cartas",
+    "titulo": "Bandar Lengeh (OIBL) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Bandar Lengeh (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oibl/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oibl"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "golfo-oizj-cartas",
+    "titulo": "Bandar e Jask (OIZJ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Bandar e Jask (Irán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/oizj/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "oizj"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "golfo-omdw-cartas",
+    "titulo": "Al Maktoum (OMDW) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Al Maktoum (EAU), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/omdw/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "omdw"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "golfo-ookb-cartas",
+    "titulo": "Khasab (OOKB) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Khasab (Omán), recopiladas en un único PDF.",
+    "url": "docs/mapas/golfo/ookb/cartas.pdf",
+    "refs": ["mapas/golfo"],
+    "etiquetas": ["cartas", "ookb"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "siria-ltcs-cartas",
+    "titulo": "Sanliurfa (LTCS) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Sanliurfa (Turquía), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/ltcs/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "ltcs"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "siria-llib-cartas",
+    "titulo": "Rosh Pina (LLIB) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Rosh Pina (Israel), recopiladas en un único PDF.",
+    "url": "docs/mapas/siria/llib/cartas.pdf",
+    "refs": ["mapas/siria"],
+    "etiquetas": ["cartas", "llib"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-egyp-cartas",
+    "titulo": "Mount Pleasant (EGYP) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Mount Pleasant (Islas Malvinas (Falkland)), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/egyp/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "egyp"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sfal-cartas",
+    "titulo": "Port Stanley (SFAL) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Port Stanley (Islas Malvinas (Falkland)), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sfal/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sfal"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sawc-cartas",
+    "titulo": "El Calafate (SAWC) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de El Calafate (Argentina), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sawc/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sawc"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sawe-cartas",
+    "titulo": "Río Grande (SAWE) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Río Grande (Argentina), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sawe/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sawe"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sawg-cartas",
+    "titulo": "Río Gallegos (SAWG) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Río Gallegos (Argentina), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sawg/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sawg"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sawh-cartas",
+    "titulo": "Ushuaia (SAWH) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Ushuaia (Argentina), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sawh/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sawh"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-sawj-cartas",
+    "titulo": "San Julián (SAWJ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de San Julián (Argentina), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/sawj/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "sawj"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-scci-cartas",
+    "titulo": "Punta Arenas (SCCI) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Punta Arenas (Chile), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/scci/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "scci"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-scfm-cartas",
+    "titulo": "Porvenir (SCFM) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Porvenir (Chile), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/scfm/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "scfm"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-scgz-cartas",
+    "titulo": "Puerto Williams (SCGZ) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Puerto Williams (Chile), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/scgz/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "scgz"],
+    "autor": "CORSAIR V.E.A.F"
+  },
+  {
+    "id": "atlantico-scnt-cartas",
+    "titulo": "Puerto Natales (SCNT) · cartas de aproximación",
+    "tipo": "PDF",
+    "nota": "Cartas de aeródromo de Puerto Natales (Chile), recopiladas en un único PDF.",
+    "url": "docs/mapas/atlantico/scnt/cartas.pdf",
+    "refs": ["mapas/atlantico"],
+    "etiquetas": ["cartas", "scnt"],
+    "autor": "CORSAIR V.E.A.F"
   }
 ]
