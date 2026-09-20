@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Biblioteca DCS</title>
 <meta name="theme-color" content="#151C23">
-<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -495,6 +494,7 @@ function paginaCreditos(){
 let pintado = false;
 function pintar(){
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
+  if (!KB.activo && (ruta[0] === "kneeboard" || ruta[0] === "leer")) ruta.length = 0;   /* el modo kneeboard solo existe en tablet y móvil */
   if (ruta[0] === "leer") {
     const habia = pintado;
     if (!habia) pintarVista(["kneeboard"]);
@@ -599,10 +599,6 @@ addEventListener("hashchange", () => {
   if (/^#\/leer\//.test(location.hash)) { pintar(); return; }
   if (KB.abierto() && pintado) { KB.cerrar(); return; }   /* al cerrar el visor, la vista de debajo sigue como estaba */
   $("buscar").value = ""; filtro = ""; pintar(); scrollTo(0, 0);
-});
-
-/* Sin conexión: la web y lo guardado en Mi kneeboard siguen funcionando gracias al service worker (sw.js) */
-if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
-</script>
+});</script>
 </body>
 </html>

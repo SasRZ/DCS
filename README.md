@@ -95,7 +95,11 @@ Todos los campos siguientes son opcionales:
 
 ## Modo kneeboard (tablet, sin conexión)
 
-La web es también una app instalable pensada para usarla de kneeboard en una tablet:
+La web es también una app instalable pensada para usarla de kneeboard en una tablet.
+**Solo aparece en tablet y móvil** (dispositivos con pantalla táctil como puntero principal);
+en escritorio la web se ve limpia, sin botones, sin enlace y sin opción de instalarla. Para verla
+igualmente (por ejemplo, para probarla), abre la web con `?kneeboard`; con `?kneeboard=0` se
+vuelve a ocultar. Se recuerda en ese navegador.
 
 - **☆ Guardar** en cualquier PDF lo descarga al dispositivo. Los guardados salen en
   **Mi kneeboard** (enlace junto al buscador) y se abren sin conexión.

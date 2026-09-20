@@ -16,7 +16,8 @@
 .doc .tit::after{content:"";position:absolute;inset:0}
 .doc .tit{outline:none}
 .doc .tit:focus-visible::after{outline:2px solid var(--ambar);outline-offset:-2px}
-.doc.gd .tit::before{content:"★ ";color:var(--ambar)}
+.kb .doc.gd .tit::before{content:"★ ";color:var(--ambar)}
+html:not(.kb) #kbnav{display:none}
 
 /* Sin conexión: solo se pueden abrir los documentos guardados */
 #sinred{margin-top:14px;padding:9px 14px;border:1px solid var(--ambar);border-left-width:3px;border-radius:6px;background:var(--acero2);font-size:14px;color:var(--ambar)}

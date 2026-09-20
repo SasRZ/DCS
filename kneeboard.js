@@ -13,6 +13,24 @@ const KB = (() => {
   try { Object.assign(est, JSON.parse(localStorage.getItem(CLAVE) || "{}")); } catch (e) {}
   const guardarEstado = () => { try { localStorage.setItem(CLAVE, JSON.stringify(est)); } catch (e) {} };
 
+  /* El modo kneeboard solo aparece en tablet y móvil (puntero táctil). En escritorio no se ve nada: ni botones, ni enlace, ni app instalable.
+     Para verlo igualmente (por ejemplo, para probarlo), abre la web con ?kneeboard; con ?kneeboard=0 se vuelve a ocultar. Se recuerda en ese navegador. */
+  const ACTIVO = (() => {
+    const m = /[?&]kneeboard(?:=([^&]*))?/.exec(location.search);
+    let forzado = false;
+    try {
+      if (m) m[1] === "0" ? localStorage.removeItem("dcs-kneeboard-forzar") : localStorage.setItem("dcs-kneeboard-forzar", "1");
+      forzado = !!localStorage.getItem("dcs-kneeboard-forzar");
+    } catch (e) { forzado = !!m && m[1] !== "0"; }
+    return forzado || matchMedia("(pointer: coarse)").matches;
+  })();
+  if (ACTIVO) {
+    document.documentElement.classList.add("kb");
+    const man = document.createElement("link"); man.rel = "manifest"; man.href = "manifest.webmanifest"; document.head.appendChild(man);
+    /* service worker: web y JSON disponibles sin conexión (sw.js) */
+    if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+
   const ficha = id => todos.find(d => d.id === id);
   const abs = d => new URL(d.url, location.href).href;
   const esPdf = d => !!d && d.tipo === "PDF" && !/^https?:\/\//i.test(d.url);
@@ -67,7 +85,7 @@ const KB = (() => {
   const rotulo = id => guardado(id) ? "★ Guardado" : "☆ Guardar";
 
   function botones(d){
-    if (!esPdf(d)) return "";
+    if (!ACTIVO || !esPdf(d)) return "";
     return '<span class="acc"><button type="button" class="bt kb-fijar' + (guardado(d.id) ? ' on' : '') + '" data-kb="fijar" data-id="' + esc(d.id) +
       '" aria-pressed="' + guardado(d.id) + '">' + rotulo(d.id) + '</button>' +
       '<a class="bt" href="#/leer/' + encodeURIComponent(d.id) + '">Leer</a></span>';
@@ -450,12 +468,12 @@ const KB = (() => {
   });
 
   function actualizarRed(){
-    const off = navigator.onLine === false;
+    const off = ACTIVO && navigator.onLine === false;
     document.body.classList.toggle("offline", off);
     const e = $("sinred"); if (e) e.hidden = !off;
   }
   addEventListener("online", actualizarRed); addEventListener("offline", actualizarRed);
   document.addEventListener("DOMContentLoaded", () => { actualizarRed(); refrescarNav(); });
 
-  return {botones, guardado, pagina, abrir, cerrar, refrescarNav, abierto: () => L.abierto};
+  return {activo: ACTIVO, botones, guardado, pagina, abrir, cerrar, refrescarNav, abierto: () => L.abierto};
 })();
