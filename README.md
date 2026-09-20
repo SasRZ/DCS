@@ -81,15 +81,16 @@ navegador bloquea las peticiones `fetch` a los JSON en `file://`.
 
 ## Créditos
 
-- **CORSAIR V.E.A.F**: autor de las cartas de aproximación de Siria, Golfo
-  Pérsico, Marianas y Atlántico Sur (`docs/mapas/siria/`, `docs/mapas/golfo/`,
-  `docs/mapas/marianas/` y `docs/mapas/atlantico/`, salvo los documentos de
-  CombatWombat). Los
-  originales están en su página de archivos de usuario de DCS:
-  <https://files.digitalcombatsimulator.com/en/files/filter/user-is-CORSAIR%20V.E.A.F/apply/>.
-  Todos los derechos son suyos; aquí solo se recopilan para consulta.
+La web tiene una página **Créditos** (enlace junto al buscador). Se genera sola:
 
-Cada ficha de `data/documentos.json` lleva su `autor` cuando se conoce.
+- `data/creditos.json` guarda los autores (nombre, enlace opcional y una
+  descripción corta).
+- La lista de documentos de cada autor sale del campo `autor` de las fichas de
+  `data/documentos.json`.
+- Un `autor` que no esté en `creditos.json` aparece igualmente, sin enlace ni
+  descripción, y el validador lo avisa.
+
+Es una recopilación de consulta personal: todos los derechos son de sus autores.
 
 ## Conectar tu dominio de Hostinger
 
