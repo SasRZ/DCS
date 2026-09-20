@@ -781,5 +781,15 @@
     "refs": ["modulos/t45c"],
     "etiquetas": ["T-45", "quickstart", "arranque", "cockpit"],
     "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "f16c-quickstart-workflow",
+    "titulo": "Quickstart workflow made easy · F-16C Viper",
+    "tipo": "PDF",
+    "nota": "Quick startup checklist del F-16C Block 50, en 26 pasos numerados sobre los paneles del cockpit. Basada en las guías de Chuck, con gráficos inspirados en la checklist de Minsky (DimOn). Versión 1.02.",
+    "url": "docs/modulos/f16c/quickstart-workflow-made-easy.pdf",
+    "refs": ["modulos/f16c"],
+    "etiquetas": ["F-16C", "Viper", "Block 50", "quickstart", "arranque", "cockpit"],
+    "autor": "Ulvar (Andreas)"
   }
 ]
