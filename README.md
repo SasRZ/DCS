@@ -15,6 +15,9 @@ misión y general. Sin backend — solo HTML, CSS y JSON.
 │   ├── modulos/f16c/…
 │   ├── mapas/caucaso/…
 │   └── misiones/sead/…
+├── kneeboard.js / kneeboard.css  guardados sin conexión y visor de PDF
+├── sw.js, manifest.webmanifest   modo sin conexión y app instalable (+ icons/)
+├── vendor/pdfjs/                 PDF.js, el visor de PDF (Apache 2.0)
 ├── scripts/
 │   └── validar_catalogo.py       comprueba duplicados y referencias rotas
 └── .github/workflows/paginas.yml valida y publica en GitHub Pages
@@ -89,6 +92,28 @@ Todos los campos siguientes son opcionales:
 - Los apartados sin documentos no se ven. Para revisarlos todos, junto con los
   grupos ocultos, abre la web con `?todo` (por ejemplo
   `http://localhost:8080/?todo`).
+
+## Modo kneeboard (tablet, sin conexión)
+
+La web es también una app instalable pensada para usarla de kneeboard en una tablet:
+
+- **☆ Guardar** en cualquier PDF lo descarga al dispositivo. Los guardados salen en
+  **Mi kneeboard** (enlace junto al buscador) y se abren sin conexión.
+- **Leer** abre el PDF en un visor a pantalla completa: pasar página con un
+  toque en los bordes o deslizando, zoom con pellizco o con +/−, ajuste a página o
+  a ancho, modo noche, pantalla siempre encendida, cambio rápido entre los documentos
+  guardados y recuerda la última página de cada uno.
+- Lo guardado y las preferencias quedan **en el dispositivo** (caché del navegador y
+  `localStorage`), sin cuenta ni servidor. Cuando se sube algo nuevo al repositorio, la
+  web se actualiza sola al abrirla con conexión; los PDF guardados se renuevan con
+  **Actualizar todo**. **Copiar lista** / **Pegar lista** lleva la lista de un dispositivo a otro.
+- Piezas: `manifest.webmanifest` e `icons/` (la app instalable), `sw.js` (service worker:
+  deja web y JSON disponibles sin conexión), `kneeboard.js` y `kneeboard.css` (guardados y
+  visor) y `vendor/pdfjs/` (PDF.js 3.11.174, licencia Apache 2.0, sin dependencia de internet).
+- Si añades un archivo que la web necesite para arrancar sin conexión, añádelo a `PRECACHE` en
+  `sw.js` (el validador comprueba que todos existan). Si cambias esa lista, sube `VERSION`.
+- Se instala desde el menú del navegador → «Añadir a la pantalla de inicio» / «Instalar aplicación».
+  Necesita HTTPS, que da GitHub Pages; en local solo funciona en `localhost`.
 
 ## Validar antes de subir
 

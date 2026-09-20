@@ -4,8 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Biblioteca DCS</title>
+<meta name="theme-color" content="#151C23">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- las fuentes no bloquean el pintado: con mala cobertura (tren, avión) la página aparece igualmente con la fuente del sistema -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{--acero:#151C23;--acero2:#1D272F;--linea:#2C3942;--texto:#DCE4E8;--tenue:#8A9AA5;
  --ambar:#E0A73C;--chart:#69A6A0;--alerta:#C9705A;--azul:#6C9BD1;--verde:#8DB56A;--lila:#A98BC4;box-sizing:border-box;
@@ -185,8 +191,8 @@ a.arma:hover,a.arma:focus-visible{border-color:var(--ambar);color:var(--ambar);o
 
 .doc{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:baseline;
  padding:14px 4px;border-bottom:1px solid var(--linea)}
-.doc:hover,.doc:focus-visible{background:var(--acero2);outline:none}
-.doc:hover .tit,.doc:focus-visible .tit{color:var(--ambar)}
+.doc:hover,.doc:focus-within{background:var(--acero2)}
+.doc:hover .tit,.doc:focus-within .tit{color:var(--ambar)}
 .tit{font-weight:500}
 .nota{grid-column:1;color:var(--tenue);font-size:14.5px;max-width:72ch}
 .meta{grid-column:1;color:var(--tenue);font-size:13.5px}
@@ -195,6 +201,7 @@ a.arma:hover,a.arma:focus-visible{border-color:var(--ambar);color:var(--ambar);o
  border:1px solid var(--linea);border-radius:2px;padding:2px 7px}
 .ruta{grid-row:1;grid-column:2;color:var(--tenue);font-size:13px;text-align:right;max-width:34ch}
 .vacio{color:var(--tenue);padding:40px 4px}
+.cabnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
 .creditos{color:var(--tenue);font-size:14px;border:1px solid var(--linea);border-radius:3px;padding:6px 12px}
 .creditos:hover,.creditos:focus-visible{color:var(--ambar);border-color:var(--ambar);outline:none}
 .intro{color:var(--tenue);max-width:68ch;margin:18px 0 0}
@@ -210,13 +217,14 @@ footer{color:var(--tenue);font-size:14px;margin-top:48px;border-top:1px solid va
 code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 @media (prefers-reduced-motion:no-preference){.doc,.portada a{transition:background .12s}.tarjeta,.cat{transition:border-color .15s}.cat .img{transition:transform .6s ease}.cat:hover .img{transform:scale(1.045)}}
 </style>
+<link rel="stylesheet" href="kneeboard.css">
 </head>
 <body>
 <div class="env">
 <header>
   <div class="cab">
     <h1><a href="#/">Biblioteca DCS</a></h1>
-    <a class="creditos" href="#/creditos">Créditos</a>
+    <nav class="cabnav"><a class="creditos" id="kbnav" href="#/kneeboard">Mi kneeboard</a><a class="creditos" href="#/creditos">Créditos</a></nav>
   </div>
   <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
   <div class="barra">
@@ -226,12 +234,15 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
   <div class="rapidas" id="rapidas"></div>
 </header>
 
+<div id="sinred" hidden>Sin conexión · solo se pueden abrir los documentos guardados en Mi kneeboard</div>
 <section id="avisos" hidden><h3>Revisar el catálogo</h3><ul id="avisos-lista"></ul></section>
 <nav class="miga" id="miga"></nav>
 <main id="vista"><p class="vacio">Cargando catálogo…</p></main>
 <footer>Esta página está actualizada por Sas - <a href="https://escuadronfox3.com" target="_blank" rel="noopener">Escuadrón FOX3</a>.</footer>
 </div>
+<div id="toast" role="status" aria-live="polite"></div>
 
+<script src="kneeboard.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
@@ -260,6 +271,7 @@ Promise.all([
   validar(todos);
   $("buscar").disabled = false;
   pintar();
+  KB.refrescarNav();
 }).catch(err => {
   $("vista").innerHTML = '<p class="vacio">No se ha podido cargar el catálogo (' + esc(String(err)) +
     ').<br>Comprueba que sirves la carpeta por HTTP y que los JSON están en <code>data/</code> y son válidos.</p>';
@@ -449,10 +461,11 @@ function fila(d, refActual){
   const meta = [];
   if (d.autor) meta.push('Autor: <b>' + esc(d.autor) + '</b>');
   if (refActual && otras.length) meta.push('También en <b>' + otras.map(r => esc(idx[r])).join("</b>, <b>") + '</b>');
-  return '<a class="doc" href="' + esc(d.url) + '"' + ext + '><span class="tit">' + esc(d.titulo) + '</span>' + der +
+  /* la fila entera es clicable a través del título (::after), para poder llevar botones dentro; KB.botones añade Guardar y Leer a los PDF */
+  return '<div class="doc' + (KB.guardado(d.id) ? ' gd' : '') + '"><a class="tit" href="' + esc(d.url) + '"' + ext + '>' + esc(d.titulo) + '</a>' + der +
     (d.nota ? '<span class="nota">' + esc(d.nota) + '</span>' : '') +
     (meta.length ? '<span class="meta">' + meta.join(" · ") + '</span>' : '') +
-    '</a>';
+    KB.botones(d) + '</div>';
 }
 
 /* ── Créditos: autores de creditos.json + cualquier "autor" que aparezca en las fichas ── */
@@ -478,9 +491,23 @@ function paginaCreditos(){
     'que aparecen aquí con su nombre y su enlace cuando lo hay. Todos los derechos son suyos.</p>' + bloques.join("");
 }
 
+/* Un solo punto de entrada: #/leer/<id> abre el visor de PDF encima de la vista actual (que no se repinta, para volver donde estabas) */
+let pintado = false;
 function pintar(){
-  const v = $("vista"), miga = $("miga");
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
+  if (ruta[0] === "leer") {
+    const habia = pintado;
+    if (!habia) pintarVista(["kneeboard"]);
+    KB.abrir(decodeURIComponent(ruta[1] || ""), habia);
+    return;
+  }
+  KB.cerrar();
+  pintarVista(ruta);
+}
+
+function pintarVista(ruta){
+  const v = $("vista"), miga = $("miga");
+  pintado = true;
   const sep = '<span class="sep">›</span>';
   const enInicio = !ruta.length;
   document.body.classList.toggle("inicio", enInicio);
@@ -498,6 +525,13 @@ function pintar(){
   }
 
   const [c, s] = ruta;
+
+  if (c === "kneeboard") {
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Mi kneeboard';
+    $("cuenta").textContent = "";
+    v.innerHTML = KB.pagina();
+    return;
+  }
 
   if (c === "creditos") {
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Créditos';
@@ -561,7 +595,14 @@ $("rapidas").onclick = e => { const b = e.target.closest("button[data-q]"); if (
   $("buscar").value = b.dataset.q; filtro = b.dataset.q.toLowerCase(); pintar(); };
 addEventListener("keydown", e => { if (e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey &&
   !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && !$("buscar").disabled) { e.preventDefault(); $("buscar").focus(); } });
-addEventListener("hashchange", () => { $("buscar").value = ""; filtro = ""; pintar(); scrollTo(0, 0); });
+addEventListener("hashchange", () => {
+  if (/^#\/leer\//.test(location.hash)) { pintar(); return; }
+  if (KB.abierto() && pintado) { KB.cerrar(); return; }   /* al cerrar el visor, la vista de debajo sigue como estaba */
+  $("buscar").value = ""; filtro = ""; pintar(); scrollTo(0, 0);
+});
+
+/* Sin conexión: la web y lo guardado en Mi kneeboard siguen funcionando gracias al service worker (sw.js) */
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 </script>
 </body>
 </html>

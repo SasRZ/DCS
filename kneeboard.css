@@ -1,0 +1,68 @@
+/* Modo kneeboard: botones de guardar, página «Mi kneeboard» y visor de PDF. Usa las variables de index.html. */
+
+/* Botones (áreas táctiles grandes: se usan con el dedo, en la tablet) */
+.bt{font:inherit;font-size:14.5px;color:var(--texto);background:transparent;border:1px solid var(--linea);
+ border-radius:8px;padding:8px 16px;min-height:40px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.bt:hover,.bt:focus-visible{border-color:var(--ambar);color:var(--ambar);outline:none}
+.bt[hidden],.lsel[hidden],.ltit[hidden],.falta[hidden]{display:none}
+.bt.on{color:var(--ambar);border-color:var(--ambar)}
+.bt[disabled]{opacity:.55;cursor:default}
+.bt.peligro:hover,.bt.peligro:focus-visible{border-color:var(--alerta);color:var(--alerta)}
+.acc{grid-column:2;grid-row:2/span 2;align-self:start;justify-self:end;position:relative;z-index:2;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:640px){.acc{grid-column:1;grid-row:auto;justify-self:start;justify-content:flex-start;margin-top:6px}}
+
+/* Lista de documentos: la fila entera sigue siendo clicable a través del título (::after) */
+.doc{position:relative}
+.doc .tit::after{content:"";position:absolute;inset:0}
+.doc .tit{outline:none}
+.doc .tit:focus-visible::after{outline:2px solid var(--ambar);outline-offset:-2px}
+.doc.gd .tit::before{content:"★ ";color:var(--ambar)}
+
+/* Sin conexión: solo se pueden abrir los documentos guardados */
+#sinred{margin-top:14px;padding:9px 14px;border:1px solid var(--ambar);border-left-width:3px;border-radius:6px;background:var(--acero2);font-size:14px;color:var(--ambar)}
+#sinred[hidden]{display:none}
+.offline .doc:not(.gd) .tit,.offline .doc:not(.gd) .nota,.offline .doc:not(.gd) .meta{opacity:.5}
+.offline .doc:not(.gd) .kb-fijar{opacity:.4}
+
+#toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));z-index:80;transform:translate(-50%,20px);max-width:min(92vw,520px);
+ padding:11px 18px;border:1px solid var(--linea);border-radius:10px;background:#0d1319;color:var(--texto);font-size:14.5px;
+ box-shadow:0 8px 30px rgba(0,0,0,.5);opacity:0;pointer-events:none}
+#toast.ver{opacity:1;transform:translate(-50%,0);transition:opacity .18s,transform .18s}
+
+/* Mi kneeboard */
+.kbcab{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.kbcab .kbinfo{flex:1 1 260px;color:var(--tenue);font-size:14px}
+.kbaviso{margin-top:14px;font-size:14.5px;color:var(--tenue);max-width:70ch}
+.kbaviso details{margin-top:10px}
+.kbaviso summary{cursor:pointer;color:var(--chart)}
+.kbaviso ul{margin:8px 0 0;padding-left:20px}
+.doc .falta{color:var(--alerta)}
+
+/* Visor */
+body.leyendo{overflow:hidden}
+#lector{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:#0b0f13;color:var(--texto);
+ padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)}
+#lector[hidden]{display:none}
+.lbar,.lpie{flex:none;display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--acero2);border-color:var(--linea)}
+.lbar{border-bottom:1px solid var(--linea);flex-wrap:wrap}
+.lpie{border-top:1px solid var(--linea);justify-content:center;gap:14px}
+#lector.sinbarra .lbar,#lector.sinbarra .lpie{display:none}
+.lbar .bt,.lpie .bt{padding:6px 14px;min-height:44px;min-width:44px}
+.ltit{flex:1 1 180px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.lsel{flex:1 1 180px;min-width:0;max-width:100%;min-height:44px;font:inherit;font-size:15px;color:var(--texto);background:var(--acero);
+ border:1px solid var(--linea);border-radius:8px;padding:6px 10px}
+.lgrp{display:flex;align-items:center;gap:6px}
+.lz{min-width:3.6em;text-align:center;color:var(--tenue);font-size:14px}
+.lpag{display:flex;align-items:center;gap:8px;color:var(--tenue);font-size:16px}
+.lpag input{width:4.2em;min-height:44px;font:inherit;font-size:16px;text-align:center;color:var(--texto);background:var(--acero);
+ border:1px solid var(--linea);border-radius:8px}
+.lesc{position:relative;flex:1;min-height:0;display:flex;overflow:auto;overscroll-behavior:contain;background:#3a4147;touch-action:pan-x pan-y}
+.lhoja{margin:auto;flex:none;line-height:0;box-shadow:0 2px 18px rgba(0,0,0,.55)}
+.lhoja canvas{display:block;background:#fff}
+#lector.noche .lesc{background:#000}
+#lector.noche .lhoja{box-shadow:none}
+#lector.noche .lhoja canvas{filter:invert(1) hue-rotate(180deg)}
+.lmsg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+ color:var(--tenue);font-size:17px;pointer-events:none;line-height:1.5}
+.lmsg:empty{display:none}
+.lmsg b{color:var(--texto)}

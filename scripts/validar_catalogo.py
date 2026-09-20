@@ -11,6 +11,7 @@ Comprueba:
   - cada documento tiene al menos una "ref"
   - los archivos locales referenciados (docs/...) existen de verdad en el repo
   - cada "autor" de una ficha figura en data/creditos.json (aviso, no bloquea)
+  - los archivos de la lista PRECACHE de sw.js y los iconos del manifest existen
 
 Uso:
   python3 scripts/validar_catalogo.py
@@ -20,6 +21,7 @@ Los avisos no bloquean, solo se muestran.
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -109,9 +111,28 @@ def validar(arbol, documentos):
             vistas.add(ref)
 
 
+def validar_app():
+    """El service worker falla al instalarse si algún archivo de PRECACHE no existe: mejor enterarse aquí."""
+    sw = RAIZ / "sw.js"
+    if not sw.exists():
+        return
+    bloque = re.search(r"const PRECACHE = \[(.*?)\];", sw.read_text(encoding="utf-8"), re.S)
+    if not bloque:
+        errores.append("sw.js: no se encuentra la lista PRECACHE")
+        return
+    for ruta in re.findall(r'"([^"]+)"', bloque.group(1)):
+        if ruta != "./" and not (RAIZ / ruta).exists():
+            errores.append(f"sw.js: PRECACHE incluye '{ruta}', que no existe (el modo sin conexión no se instalaría)")
+    manifiesto = cargar_json(RAIZ / "manifest.webmanifest")
+    for icono in (manifiesto or {}).get("icons", []):
+        if not (RAIZ / icono["src"]).exists():
+            errores.append(f"manifest.webmanifest: falta el icono '{icono['src']}'")
+
+
 def main():
     arbol = cargar_json(TAXONOMIA)
     documentos = cargar_json(DOCUMENTOS)
+    validar_app()
 
     if arbol is not None and documentos is not None:
         validar(arbol, documentos)
