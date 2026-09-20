@@ -35,12 +35,15 @@ misión y general. Sin backend — solo HTML, CSS y JSON.
      "nota": "Aproximación a la cesta y al KC-135.",
      "url": "docs/modulos/fa18c/aar.pdf",
      "refs": ["modulos/fa18c", "mapas/golfo"],
-     "etiquetas": ["AAR"]
+     "etiquetas": ["AAR"],
+     "autor": "Nombre del creador"
    }
    ```
 
 3. El `id` debe ser único en todo el archivo.
-4. Si añades un módulo, mapa o tipo de misión que no existe todavía,
+4. `autor` es opcional pero recomendable: aparece en la ficha de la web y
+   entra en la búsqueda. Úsalo siempre que el documento no sea propio.
+5. Si añades un módulo, mapa o tipo de misión que no existe todavía,
    créalo primero en `data/taxonomia.json`.
 
 ## Validar antes de subir
@@ -75,6 +78,17 @@ navegador bloquea las peticiones `fetch` a los JSON en `file://`.
    a ejecutarse y lo ves marcado en rojo en la pestaña **Actions**.
 4. La URL de publicación aparece en Settings → Pages y también en el
    resumen del workflow, con forma `https://tu-usuario.github.io/repo/`.
+
+## Créditos
+
+- **CORSAIR V.E.A.F**: autor de las cartas de aproximación de Siria, Golfo
+  Pérsico y Marianas (`docs/mapas/siria/`, `docs/mapas/golfo/` y
+  `docs/mapas/marianas/`, salvo los documentos de CombatWombat). Los
+  originales están en su página de archivos de usuario de DCS:
+  <https://files.digitalcombatsimulator.com/en/files/filter/user-is-CORSAIR%20V.E.A.F/apply/>.
+  Todos los derechos son suyos; aquí solo se recopilan para consulta.
+
+Cada ficha de `data/documentos.json` lleva su `autor` cuando se conoce.
 
 ## Conectar tu dominio de Hostinger
 

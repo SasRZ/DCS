@@ -51,7 +51,8 @@
     "nota": "Cartas de aeródromo de Ercan (Chipre Norte), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/lcen/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "lcen"]
+    "etiquetas": ["cartas", "lcen"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-lclk-cartas",
@@ -60,7 +61,8 @@
     "nota": "Cartas de aeródromo de Larnaca (Chipre), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/lclk/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "lclk"]
+    "etiquetas": ["cartas", "lclk"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-lcph-cartas",
@@ -69,7 +71,8 @@
     "nota": "Cartas de aeródromo de Pafos (Chipre), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/lcph/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "lcph"]
+    "etiquetas": ["cartas", "lcph"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-lcra-cartas",
@@ -78,7 +81,8 @@
     "nota": "Cartas de aeródromo de Akrotiri (Chipre), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/lcra/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "lcra"]
+    "etiquetas": ["cartas", "lcra"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-ltaf-cartas",
@@ -87,7 +91,8 @@
     "nota": "Cartas de aeródromo de Adana (Turquía), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/ltaf/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "ltaf"]
+    "etiquetas": ["cartas", "ltaf"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-ltag-cartas",
@@ -96,7 +101,8 @@
     "nota": "Cartas de aeródromo de Incirlik (Turquía), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/ltag/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "ltag"]
+    "etiquetas": ["cartas", "ltag"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-ltaj-cartas",
@@ -105,7 +111,8 @@
     "nota": "Cartas de aeródromo de Gaziantep (Turquía), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/ltaj/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "ltaj"]
+    "etiquetas": ["cartas", "ltaj"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-ltda-cartas",
@@ -114,7 +121,8 @@
     "nota": "Cartas de aeródromo de Hatay (Turquía), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/ltda/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "ltda"]
+    "etiquetas": ["cartas", "ltda"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-ltfg-cartas",
@@ -123,7 +131,8 @@
     "nota": "Cartas de aeródromo de Gazipasa (Turquía), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/ltfg/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "ltfg"]
+    "etiquetas": ["cartas", "ltfg"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-olba-cartas",
@@ -132,7 +141,8 @@
     "nota": "Cartas de aeródromo de Beirut (Líbano), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/olba/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "olba"]
+    "etiquetas": ["cartas", "olba"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-osap-cartas",
@@ -141,7 +151,8 @@
     "nota": "Cartas de aeródromo de Alepo (Siria), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/osap/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "osap"]
+    "etiquetas": ["cartas", "osap"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "armada-sop-fox3",
@@ -159,7 +170,8 @@
     "nota": "Cartas de aeródromo de Damasco (Siria), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/osdi/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "osdi"]
+    "etiquetas": ["cartas", "osdi"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "siria-oslk-cartas",
@@ -168,7 +180,8 @@
     "nota": "Cartas de aeródromo de Latakia (Siria), recopiladas en un único PDF.",
     "url": "docs/mapas/siria/oslk/cartas.pdf",
     "refs": ["mapas/siria"],
-    "etiquetas": ["cartas", "oslk"]
+    "etiquetas": ["cartas", "oslk"],
+    "autor": "CORSAIR V.E.A.F"
   },
     {
     "id": "golfo-oibv-cartas",
@@ -177,7 +190,8 @@
     "nota": "Cartas de aeródromo de Lavan Island (Irán), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/oibv/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "oibv"]
+    "etiquetas": ["cartas", "oibv"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-oikb-cartas",
@@ -186,7 +200,8 @@
     "nota": "Cartas de aeródromo de Bandar Abbas (Irán), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/oikb/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "oikb"]
+    "etiquetas": ["cartas", "oikb"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-oikk-cartas",
@@ -195,7 +210,8 @@
     "nota": "Cartas de aeródromo de Kerman (Irán), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/oikk/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "oikk"]
+    "etiquetas": ["cartas", "oikk"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omaa-cartas",
@@ -204,7 +220,8 @@
     "nota": "Cartas de aeródromo de Abu Dabi (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omaa/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omaa"]
+    "etiquetas": ["cartas", "omaa"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omal-cartas",
@@ -213,7 +230,8 @@
     "nota": "Cartas de aeródromo de Al Ain (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omal/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omal"]
+    "etiquetas": ["cartas", "omal"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omdb-cartas",
@@ -222,7 +240,8 @@
     "nota": "Cartas de aeródromo de Dubái (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omdb/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omdb"]
+    "etiquetas": ["cartas", "omdb"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omfj-cartas",
@@ -231,7 +250,8 @@
     "nota": "Cartas de aeródromo de Fujairah (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omfj/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omfj"]
+    "etiquetas": ["cartas", "omfj"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omrk-cartas",
@@ -240,7 +260,8 @@
     "nota": "Cartas de aeródromo de Ras Al Khaimah (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omrk/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omrk"]
+    "etiquetas": ["cartas", "omrk"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-oibk-cartas",
@@ -249,7 +270,8 @@
     "nota": "Cartas de aeródromo de Kish Island (Irán), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/oibk/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "oibk"]
+    "etiquetas": ["cartas", "oibk"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-oiss-cartas",
@@ -258,7 +280,8 @@
     "nota": "Cartas de aeródromo de Shiraz (Irán), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/oiss/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "oiss"]
+    "etiquetas": ["cartas", "oiss"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "golfo-omsj-cartas",
@@ -267,7 +290,8 @@
     "nota": "Cartas de aeródromo de Sharjah (EAU), recopiladas en un único PDF.",
     "url": "docs/mapas/golfo/omsj/cartas.pdf",
     "refs": ["mapas/golfo"],
-    "etiquetas": ["cartas", "omsj"]
+    "etiquetas": ["cartas", "omsj"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "marianas-pgwt-cartas",
@@ -276,7 +300,8 @@
     "nota": "Cartas de aeródromo de Tinian (Islas Marianas del Norte), recopiladas en un único PDF.",
     "url": "docs/mapas/marianas/pgwt/cartas.pdf",
     "refs": ["mapas/marianas"],
-    "etiquetas": ["cartas", "pgwt"]
+    "etiquetas": ["cartas", "pgwt"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "marianas-pgro-cartas",
@@ -285,7 +310,8 @@
     "nota": "Cartas de aeródromo de Rota (Islas Marianas del Norte), recopiladas en un único PDF.",
     "url": "docs/mapas/marianas/pgro/cartas.pdf",
     "refs": ["mapas/marianas"],
-    "etiquetas": ["cartas", "pgro"]
+    "etiquetas": ["cartas", "pgro"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "marianas-pgsn-cartas",
@@ -294,7 +320,8 @@
     "nota": "Cartas de aeródromo de Saipán (Islas Marianas del Norte), recopiladas en un único PDF.",
     "url": "docs/mapas/marianas/pgsn/cartas.pdf",
     "refs": ["mapas/marianas"],
-    "etiquetas": ["cartas", "pgsn"]
+    "etiquetas": ["cartas", "pgsn"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "marianas-pgum-cartas",
@@ -303,7 +330,8 @@
     "nota": "Cartas de aeródromo internacional de Guam, recopiladas en un único PDF.",
     "url": "docs/mapas/marianas/pgum/cartas.pdf",
     "refs": ["mapas/marianas"],
-    "etiquetas": ["cartas", "pgum"]
+    "etiquetas": ["cartas", "pgum"],
+    "autor": "CORSAIR V.E.A.F"
   },
   {
     "id": "sead-reference-guide",

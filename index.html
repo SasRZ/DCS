@@ -84,7 +84,7 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 <section id="avisos" hidden><h3>Revisar el catálogo</h3><ul id="avisos-lista"></ul></section>
 <nav class="miga" id="miga"></nav>
 <main id="vista"><p class="vacio">Cargando catálogo…</p></main>
-<footer>Esta página está actualizada por Sas - <a href="https://escuadronfox3.com" target="_blank" rel="noopener">Escuadrón FOX3</a>. <a href="https://discord.gg/uGaFdpZhNh" target="_blank" rel="noopener">ÚNETE AQUÍ</a></footer>
+<footer>Esta página está actualizada por Sas - <a href="https://escuadronfox3.com" target="_blank" rel="noopener">Escuadrón FOX3</a>. <a href="https://discord.gg/uGaFdpZhNh" target="_blank" rel="noopener">ÚNETE AQUÍ</a><br>Las cartas de aproximación de Siria, Golfo Pérsico y Marianas son obra de <a href="https://files.digitalcombatsimulator.com/en/files/filter/user-is-CORSAIR%20V.E.A.F/apply/" target="_blank" rel="noopener">CORSAIR V.E.A.F</a>, autor original. Todos los derechos son suyos.</footer>
 </div>
 
 <script>
@@ -164,9 +164,12 @@ function fila(d, refActual){
     ? '<span class="tipo">' + esc(d.tipo) + '</span>'
     : '<span class="ruta">' + (d.refs || []).filter(r => idx[r]).map(r => esc(idx[r])).join(" · ") + '</span>';
   const ext = /^https?:/.test(d.url) ? ' target="_blank" rel="noopener"' : '';
+  const meta = [];
+  if (d.autor) meta.push('Autor: <b>' + esc(d.autor) + '</b>');
+  if (refActual && otras.length) meta.push('También en <b>' + otras.map(r => esc(idx[r])).join("</b>, <b>") + '</b>');
   return '<a class="doc" href="' + esc(d.url) + '"' + ext + '><span class="tit">' + esc(d.titulo) + '</span>' + der +
     (d.nota ? '<span class="nota">' + esc(d.nota) + '</span>' : '') +
-    (refActual && otras.length ? '<span class="meta">También en <b>' + otras.map(r => esc(idx[r])).join("</b>, <b>") + '</b></span>' : '') +
+    (meta.length ? '<span class="meta">' + meta.join(" · ") + '</span>' : '') +
     '</a>';
 }
 
@@ -177,7 +180,7 @@ function pintar(){
 
   if (filtro) {
     const r = documentos.filter(d => (
-      d.titulo + " " + (d.nota || "") + " " + (d.etiquetas || []).join(" ") + " " +
+      d.titulo + " " + (d.nota || "") + " " + (d.autor || "") + " " + (d.etiquetas || []).join(" ") + " " +
       (d.refs || []).map(x => idx[x] || "").join(" ")).toLowerCase().includes(filtro));
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Resultados';
     $("cuenta").textContent = r.length + (r.length === 1 ? " resultado" : " resultados");
