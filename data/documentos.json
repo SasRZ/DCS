@@ -711,5 +711,45 @@
     "refs": ["modulos/t45c"],
     "etiquetas": ["T-45", "kneeboard", "instalar"],
     "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "fa18c-kneeboard-suite",
+    "titulo": "F/A-18C Hornet · Kneeboard Suite",
+    "tipo": "PDF",
+    "nota": "Suite completa de día y de noche en un solo PDF de 30 páginas, con índice en la primera: checklists, tabla de armamento, quickstart, amenazas RWR y códigos HARM, y guía CASE I/II/III con overhead break. Reúne las tres partes del paquete original.",
+    "url": "docs/modulos/fa18c/kneeboards-fa18c.pdf",
+    "refs": ["modulos/fa18c"],
+    "etiquetas": ["F/A-18C", "Hornet", "checklist", "kneeboard", "armamento", "CASE", "RWR", "HARM", "quickstart"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "a10c-kneeboard-suite",
+    "titulo": "A-10C / A-10C II · Kneeboard Suite",
+    "tipo": "PDF",
+    "nota": "Checklists realistas, tablas HOTAS, amenazas RWR, quickstart y más, de día y de noche. Vale para el A-10C clásico y para el A-10C II Tank Killer: la página 5 tiene una versión para cada uno. Actualizado el 23 de enero de 2026.",
+    "url": "docs/modulos/a10c/kneeboards-a10c.pdf",
+    "refs": ["modulos/a10c"],
+    "etiquetas": ["A-10C", "A-10C II", "Warthog", "checklist", "kneeboard", "HOTAS", "RWR", "quickstart"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "ah64d-kneeboard-suite",
+    "titulo": "AH-64D Apache · Kneeboard Suite",
+    "tipo": "PDF",
+    "nota": "Checklists realistas, controles de George, amenazas ASE, lista de armamento, diagramas de cabina y quickstart, de día y de noche. Actualizado el 29 de octubre de 2025.",
+    "url": "docs/modulos/ah64d/kneeboards-ah64d.pdf",
+    "refs": ["modulos/ah64d"],
+    "etiquetas": ["AH-64D", "Apache", "checklist", "kneeboard", "George", "ASE", "armamento", "quickstart"],
+    "autor": "DimOn (Dima Kozyrev)"
+  },
+  {
+    "id": "f5e3-kneeboard-suite",
+    "titulo": "F-5E-3 Tiger II · Kneeboard Suite",
+    "tipo": "PDF",
+    "nota": "Checklists, amenazas RWR, lista de armamento con pesos, patrones de aterrizaje, diagrama de cabina anotado, quickstart y 31 procedimientos de emergencia, de día y de noche.",
+    "url": "docs/modulos/f5e/kneeboards-f5e3.pdf",
+    "refs": ["modulos/f5e"],
+    "etiquetas": ["F-5E", "Tiger II", "checklist", "kneeboard", "RWR", "emergencias", "quickstart"],
+    "autor": "DimOn (Dima Kozyrev)"
   }
 ]
