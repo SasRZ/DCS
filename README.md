@@ -46,11 +46,14 @@ misión y general. Sin backend — solo HTML, CSS y JSON.
 3. El `id` debe ser único en todo el archivo.
 4. `autor` es opcional pero recomendable: aparece en la ficha de la web y
    entra en la búsqueda. Úsalo siempre que el documento no sea propio.
-5. Para enlazar una web en lugar de subir un archivo, pon una dirección
+5. `"destacado": true` marca un documento especialmente relevante: en todas las
+   categorías donde aparece sale el primero, a todo el ancho, en ámbar y con la
+   etiqueta «Destacado».
+6. Para enlazar una web en lugar de subir un archivo, pon una dirección
    completa en `url` (`https://…`) y `"tipo": "WEB"`. Se abre en una pestaña
    nueva y el validador no busca ese archivo. Así van las guías de Chuck's
    Guides: siempre se consultan en su web oficial para que estén actualizadas.
-6. Si añades un módulo, mapa o tipo de misión que no existe todavía,
+7. Si añades un módulo, mapa o tipo de misión que no existe todavía,
    créalo primero en `data/taxonomia.json`.
 
 ## Cómo se pintan las categorías (`data/taxonomia.json`)

@@ -1169,6 +1169,7 @@
     "url": "docs/general/armamento/dcs-threats-guide-beta-v1.pdf",
     "refs": ["general/armamento", "misiones/sead", "misiones/cap", "misiones/cas"],
     "etiquetas": ["amenazas", "SAM", "AAA", "RWR", "buques", "guía"],
-    "autor": "Colonel Akir Nakesh"
+    "autor": "Colonel Akir Nakesh",
+    "destacado": true
   }
 ]
