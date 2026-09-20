@@ -1128,7 +1128,7 @@
     "tipo": "PDF",
     "nota": "Instrucción de vuelo de la Armada de EE. UU. sobre intercepción todo tiempo, para NFO avanzados del T-45C/VMTS. Documento real, no adaptado a DCS. Edición de 2017, 292 páginas.",
     "url": "docs/general/sop/cnatra-p825-all-weather-intercept.pdf",
-    "refs": ["general/sop"],
+    "refs": ["general/sop", "misiones/cap"],
     "etiquetas": ["aire-aire", "intercepción", "AWI", "T-45", "teoría"],
     "autor": "CNATRA (Armada de EE. UU.)"
   },
@@ -1138,7 +1138,7 @@
     "tipo": "PDF",
     "nota": "Instrucción de vuelo de la Armada de EE. UU. sobre maniobras de combate básicas: sección en maniobra comprometida, para el T-45 Strike. Documento real, no adaptado a DCS. Edición de 2016 con el cambio 1 de marzo de 2021, 175 páginas.",
     "url": "docs/general/sop/cnatra-p1289-bfm-engaged-maneuvering.pdf",
-    "refs": ["general/sop"],
+    "refs": ["general/sop", "misiones/cap"],
     "etiquetas": ["aire-aire", "BFM", "dogfight", "T-45", "teoría"],
     "autor": "CNATRA (Armada de EE. UU.)"
   },
@@ -1148,7 +1148,7 @@
     "tipo": "PDF",
     "nota": "Continuación de «La sección en el rol aire-aire: del pre-commit al merge». Trata el uso del radar en corto alcance (SRR), la sección en WVR, el procedimiento de identificación visual (VID) y las contingencias.",
     "url": "docs/general/sop/esa-seccion-aire-aire-2.pdf",
-    "refs": ["general/sop"],
+    "refs": ["general/sop", "misiones/cap"],
     "etiquetas": ["aire-aire", "sección", "WVR", "VID", "ACM", "teoría"],
     "autor": "Escuadrón San Andrés"
   },
