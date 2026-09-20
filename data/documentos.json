@@ -448,5 +448,14 @@
     "url": "docs/general/comunicaciones/manual-basico-fox3-procedimientos-coms.pdf",
     "refs": ["general/comunicaciones", "general/sop"],
     "etiquetas": ["procedimientos", "comunicaciones", "FOX3", "manual"]
+  },
+  {
+    "id": "dcs-aircraft-weapon-overview",
+    "titulo": "DCS Aircraft Weapon Overview",
+    "tipo": "PDF",
+    "nota": "Resumen del armamento de DCS por tipo: cañones, pods de cañón, aire-aire de corto y medio alcance y más, con aeronaves, alcance y notas. Sebastian Benner.",
+    "url": "docs/general/armamento/dcs-aircraft-weapon-overview.pdf",
+    "refs": ["general/armamento"],
+    "etiquetas": ["armamento", "cañones", "misiles", "referencia"]
   }
 ]
