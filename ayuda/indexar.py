@@ -338,6 +338,48 @@ def guardar(almacen, f, paginas, trozos):
     almacen.ejecutar(f"UPDATE fuentes SET firma={lit(f['firma'])}, actualizada={lit(ahora)} WHERE id={lit(f['id'])};")
 
 
+# ── Novedades: qué ha cambiado entre dos versiones de un manual ───────────────
+
+def frases(trozos):
+    """{frase en minúsculas: (página, frase)} de un documento. Se compara por frases, así que no importa cómo se reparta el texto
+    en fragmentos ni que las páginas se desplacen."""
+    res = {}
+    for pagina, texto in trozos:
+        lineas = texto.split("\n")
+        if lineas and len(lineas[0]) < 60 and re.search(r"\d", lineas[0]):
+            lineas = lineas[1:]                              # cabecera o número de página
+        plano = re.sub(r"\s+", " ", " ".join(lineas))
+        plano = re.sub(r"^\s*(?:DCS\s+)?\[[^\]]{2,40}\]\s*(?:DCS\s+)?(?:EAGLE DYNAMICS\s+)?\d+\s*", "", plano)   # «DCS [F-16C Viper] 15 …»
+        for f in re.split(r"(?<=[.!?])\s+|\s[•▪●]\s", plano):
+            f = f.strip()
+            if len(f) >= 30 and not re.fullmatch(r"[\d\W]+", f) and not re.search(r"\.{6,}", f):    # sin índices de contenido
+                res.setdefault(f.lower(), (pagina, f))
+    return res
+
+
+def diferencias(viejos, nuevos):
+    """Frases añadidas y eliminadas entre dos versiones: ([(página, frase)], [(página, frase)])."""
+    ant, nue = frases(viejos), frases(nuevos)
+    return sorted(nue[k] for k in nue if k not in ant), sorted(ant[k] for k in ant if k not in nue)
+
+
+def registrar_cambios(almacen, f, viejos, nuevos):
+    """Guarda en la tabla «cambios» lo que ha cambiado; la IA lo resume la primera vez que alguien abre las novedades."""
+    try:
+        anadido, eliminado = diferencias(viejos, nuevos)
+        if len(anadido) + len(eliminado) < 4:
+            print("  = sin cambios de texto relevantes"); return
+        a = [{"p": p, "t": t[:320]} for p, t in anadido[:60]]
+        e = [{"t": t[:320]} for _, t in eliminado[:40]]
+        ahora = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
+        almacen.ejecutar(
+            f"INSERT INTO cambios(fuente,fecha,anadido,eliminado,resumen) VALUES ({lit(f['id'])},{lit(ahora)},"
+            f"{lit(json.dumps(a, ensure_ascii=False))},{lit(json.dumps(e, ensure_ascii=False))},NULL);")
+        print(f"  ≠ {len(anadido)} frases añadidas y {len(eliminado)} eliminadas: registradas en novedades")
+    except Exception as ex:
+        print(f"  ! no se pudieron registrar los cambios ({ex})")
+
+
 # ── Programa ─────────────────────────────────────────────────────────────────
 
 def buscar(almacen, consulta, n=6):
@@ -412,8 +454,16 @@ def main():
             print(f"! {f['id']}: falló la descarga o la lectura ({e})"); continue
         if almacen.presupuesto is not None and gastados + len(trozos) > almacen.presupuesto and gastados:
             pendientes.append(f["id"]); continue        # no cabe hoy: se deja entera para la próxima ejecución
+        viejos = None
+        if estado.get(f["id"]):                                # ya estaba indexada: se guarda la versión anterior para ver qué cambia
+            try:
+                viejos = [(r["pagina"], r["texto"]) for r in almacen.consultar(f"SELECT pagina, texto FROM trozos WHERE fuente = {lit(f['id'])}")]
+            except Exception as ex:
+                print(f"  (no se pudo leer la versión anterior: {ex})")
         try:
             guardar(almacen, f, paginas, trozos)
+            if viejos:
+                registrar_cambios(almacen, f, viejos, trozos)
         except Exception as e:
             print(f"! {f['id']}: falló la subida ({e})")
             if re.search(r"limit|exceed|quota|too many", str(e), re.I):

@@ -1,7 +1,8 @@
 # Ayuda con IA (privada, para el escuadrón)
 
 Una caja de preguntas dentro de la web (`#/ayuda`) que contesta dudas de DCS con los **manuales oficiales de
-Eagle Dynamics** y las **guías de Chuck**, y dice de qué página sale cada dato.
+Eagle Dynamics**, las **guías de Chuck** y los documentos de esta biblioteca, y dice de qué página sale cada dato.
+Además: preguntas sobre la página abierta en el visor, hojas de consulta en PDF para el kneeboard y novedades de los manuales.
 
 Nada de esto está en la web pública:
 
@@ -35,6 +36,18 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    ayuda puede contestar con los SOP, procedimientos, la DCS Threats Guide, etc., y los cita como «de la biblioteca».
    Se leen del disco (no se descargan) y se reindexan solos cuando cambia el archivo: `python ayuda/indexar.py --d1 --solo bib-`.
    Los PDF que son solo imagen (cartas de aeródromos, hojas de armamento) no tienen texto que leer; harían falta OCR.
+6. **Preguntar desde el visor (tablet).** En el visor de PDF, el botón **💬 Preguntar** abre un panel para preguntar por la página
+   abierta, hablando (dictado del navegador) o escribiendo. La web envía qué documento y qué página es (`contexto`), y el
+   servicio pone el texto de esa página el primero. Si la página es una imagen sin texto, la IA lo dice. Esas preguntas no usan la
+   caché. El dictado depende del navegador: si no lo permite (por ejemplo, sin servicios de Google), avisa y se usa el micrófono del teclado.
+7. **Hojas de consulta.** En `#/ayuda`, «Crear hoja»: el servicio (`/hoja`) prepara con los manuales una hoja de una página
+   (secciones, pasos con interruptor y posición, avisos y fuentes) como JSON validado; el navegador (`hoja.js`) la dibuja en un
+   canvas A5 y la empaqueta como PDF. Se descarga o se guarda en Mi kneeboard (caché del navegador), donde se abre sin conexión.
+   Tope de 6 hojas por dispositivo y día (`LIMITE_HOJAS`); también pasan por la caché de respuestas.
+8. **Novedades por parche.** Cada vez que `indexar.py` reindexa una fuente que ya existía (porque ED o Chuck la han actualizado, o
+   con `--forzar`), compara las frases del texto anterior y del nuevo (da igual que las páginas se desplacen) y guarda las
+   diferencias en la tabla `cambios`. La página `#/novedades` las enseña con un resumen hecho por IA, que se genera la primera
+   vez que se abre y se guarda. Si solo hay ruido (cabeceras, números de página), lo marca como «sin cambios relevantes».
 
 ## Puesta en marcha (una vez)
 

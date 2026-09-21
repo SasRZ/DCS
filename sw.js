@@ -4,11 +4,11 @@
    - Los PDF guardados en «Mi kneeboard» viven en otra caché (kneeboard-pdf) que gestiona la página, no este archivo;
      aquí solo se usan como respaldo cuando un PDF se pide sin conexión.
    Al cambiar algún archivo de la lista PRECACHE, sube VERSION para que los móviles y tablets lo renueven. */
-const VERSION = "v2";
+const VERSION = "v3";
 const SHELL = "shell-" + VERSION;
 const PDFS = "kneeboard-pdf";
 const PRECACHE = [
-  "./", "index.html", "kneeboard.js", "kneeboard.css", "manifest.webmanifest",
+  "./", "index.html", "kneeboard.js", "kneeboard.css", "ayuda.js", "ayuda.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png",
   "data/taxonomia.json", "data/documentos.json", "data/creditos.json", "data/modulos.json",
   "data/mapas.json", "data/misiones.json", "data/portada.json",

@@ -43,3 +43,14 @@ CREATE TABLE IF NOT EXISTS cache_respuestas (
   creada    TEXT NOT NULL,
   usos      INTEGER NOT NULL DEFAULT 0
 );
+
+-- Cambios detectados al reindexar un manual o guía que ya existía: frases añadidas y eliminadas (JSON).
+-- El resumen con IA se genera la primera vez que alguien abre la página de novedades.
+CREATE TABLE IF NOT EXISTS cambios (
+  id        INTEGER PRIMARY KEY AUTOINCREMENT,
+  fuente    TEXT NOT NULL,
+  fecha     TEXT NOT NULL,
+  anadido   TEXT NOT NULL,      -- [{"p": pagina, "t": frase}]
+  eliminado TEXT NOT NULL,      -- [{"t": frase}]
+  resumen   TEXT                -- NULL hasta que se genera
+);

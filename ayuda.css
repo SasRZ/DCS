@@ -35,3 +35,27 @@
 .ay-resto{margin-left:auto;font-size:13px;color:var(--tenue)}
 .ay-error{margin:12px 0 0;color:var(--alerta)}
 .ay-nota{margin:14px 0 0;font-size:13px;color:var(--tenue);max-width:70ch}
+
+.ay-enlace{color:var(--chart);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.ay-enlace:hover{color:var(--ambar)}
+/* Hojas de consulta */
+.ay-hojas{margin-top:40px}
+.ay-ej-hoja{margin-top:12px}
+.ay-hojas-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:16px;margin-top:18px}
+.ay-hoja{display:flex;flex-direction:column;gap:10px;padding:12px;background:var(--acero2);border:1px solid var(--linea);border-radius:10px}
+.ay-hoja img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+.ay-hoja-acc{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ay-hoja-acc b{flex:1 0 100%;font:600 20px/1.15 "Barlow Condensed",sans-serif;letter-spacing:.02em}
+.ay-hoja-acc .ay-guardada{flex:1 0 100%;margin:0}
+/* Novedades */
+.nv{margin-top:16px;padding:16px 20px;background:var(--acero2);border:1px solid var(--linea);border-left:6px solid var(--ambar);border-radius:10px}
+.nv-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.nv-cab h3{margin:0;font:600 26px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.02em}
+.nv-cab span{color:var(--tenue);font-size:13.5px;white-space:nowrap}
+.nv ul{margin:8px 0;padding-left:22px}.nv li{margin:4px 0}
+.nv p{margin:8px 0}
+.nv-nada{opacity:.65;border-left-color:var(--linea)}
+.ay-tabla{overflow-x:auto;margin:8px 0}
+.ay-tabla table{border-collapse:collapse;font-size:14.5px;min-width:100%}
+.ay-tabla th,.ay-tabla td{padding:6px 12px;border:1px solid var(--linea);text-align:left;vertical-align:top}
+.ay-tabla th{background:var(--acero);color:var(--chart);font-weight:600}

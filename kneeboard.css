@@ -66,3 +66,20 @@ body.leyendo{overflow:hidden}
  color:var(--tenue);font-size:17px;pointer-events:none;line-height:1.5}
 .lmsg:empty{display:none}
 .lmsg b{color:var(--texto)}
+
+/* Panel de preguntas a la IA dentro del visor (por voz o escribiendo): cubre la parte de abajo y se cierra con ✕ */
+.lpre{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;flex-direction:column;max-height:58%;background:var(--acero);
+ border-top:2px solid var(--ambar);box-shadow:0 -10px 34px rgba(0,0,0,.6)}
+.lpre[hidden],.lpre-form[hidden],.lpre-codigo[hidden]{display:none}
+.lpre-cab{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid var(--linea)}
+.lpre-cab .bt{padding:4px 14px;min-height:40px}
+.lpre-msgs{flex:1 1 auto;min-height:56px;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:10px}
+.lpre-msgs:empty{display:none}
+.lpre-form,.lpre-codigo{flex:none;padding:10px 12px;border-top:1px solid var(--linea)}
+.lpre textarea,.lpre input{width:100%;font:inherit;font-size:16px;color:var(--texto);background:var(--acero2);border:1px solid var(--linea);border-radius:8px;padding:10px 12px}
+.lpre textarea{resize:none}
+.lpre textarea:focus,.lpre input:focus{outline:2px solid var(--ambar);outline-offset:1px;border-color:transparent}
+.lpre label{display:block;margin-bottom:6px;color:var(--tenue)}
+.lpre-fila{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
+.lpre-codigo .lpre-fila{margin-top:0}
+#lector.preguntando .lpie{display:none}

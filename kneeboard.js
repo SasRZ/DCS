@@ -9,8 +9,9 @@ const KB = (() => {
   const PDFJS = "vendor/pdfjs/pdf.min.js", WORKER = "vendor/pdfjs/pdf.worker.min.js";
 
   /* ── Estado ── */
-  const est = {pins: [], bytes: {}, pos: {}, noche: false, pantalla: true};
+  const est = {pins: [], bytes: {}, pos: {}, noche: false, pantalla: true, hojas: []};
   try { Object.assign(est, JSON.parse(localStorage.getItem(CLAVE) || "{}")); } catch (e) {}
+  if (!Array.isArray(est.hojas)) est.hojas = [];
   const guardarEstado = () => { try { localStorage.setItem(CLAVE, JSON.stringify(est)); } catch (e) {} };
 
   /* El modo kneeboard solo aparece en tablet y móvil (puntero táctil). En escritorio no se ve nada: ni botones, ni enlace, ni app instalable.
@@ -31,7 +32,9 @@ const KB = (() => {
     if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
   }
 
-  const ficha = id => todos.find(d => d.id === id);
+  /* Las hojas de consulta creadas con IA (ayuda.js) viven en la caché como un PDF más, con una dirección propia, y se abren en el visor */
+  const hojaFicha = id => { const h = est.hojas.find(x => x.id === id); return h ? {id: h.id, titulo: h.titulo, tipo: "PDF", url: "hojas/" + h.id + ".pdf", refs: [], hoja: true} : null; };
+  const ficha = id => todos.find(d => d.id === id) || hojaFicha(id);
   const abs = d => new URL(d.url, location.href).href;
   const esPdf = d => !!d && d.tipo === "PDF" && !/^https?:\/\//i.test(d.url);
   const guardado = id => est.pins.includes(id);
@@ -107,7 +110,8 @@ const KB = (() => {
   }
 
   function refrescarNav(){
-    const e = $("kbnav"); if (e) e.textContent = "Mi kneeboard" + (est.pins.length ? " · " + est.pins.length : "");
+    const n = est.pins.length + est.hojas.length;
+    const e = $("kbnav"); if (e) e.textContent = "Mi kneeboard" + (n ? " · " + n : "");
   }
 
   async function alternar(btn){
@@ -124,6 +128,30 @@ const KB = (() => {
   /* ── Mi kneeboard ── */
   let instalar = null;
   addEventListener("beforeinstallprompt", e => { e.preventDefault(); instalar = e; const b = $("kb-instalar"); if (b) b.hidden = false; });
+
+  async function guardarHoja({titulo, blob, fuentes}){
+    const id = "hoja-" + Date.now().toString(36), c = await abrirCache();
+    await c.put(abs({url: "hojas/" + id + ".pdf"}), new Response(blob, {headers: {"Content-Type": "application/pdf"}}));
+    est.hojas.unshift({id, titulo, creada: new Date().toISOString().slice(0, 10), bytes: blob.size,
+      fuentes: [...new Set((fuentes || []).map(f => f.titulo))].slice(0, 4)});
+    guardarEstado(); refrescarNav();
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+    return id;
+  }
+
+  async function quitarHoja(id){
+    try { const c = await abrirCache(); await c.delete(abs(hojaFicha(id))); } catch (e) {}
+    est.hojas = est.hojas.filter(h => h.id !== id); delete est.pos[id]; guardarEstado();
+  }
+
+  function filaHoja(h){
+    const url = "#/leer/" + encodeURIComponent(h.id), fecha = (h.creada || "").split("-").reverse().join("/");
+    return '<div class="doc gd" data-id="' + esc(h.id) + '" data-hoja style="--c:var(--ambar)"><a class="tit" href="' + url + '">' + esc(h.titulo) + '</a>' +
+      '<div class="dtop"><span class="tipo">HOJA IA · ' + tam(h.bytes || 0) + '</span></div>' +
+      '<span class="nota">Creada el ' + esc(fecha) + ' con IA a partir de: ' + esc((h.fuentes || []).join(" · ") || "manuales y guías") + '.</span>' +
+      '<span class="acc"><a class="bt" href="' + url + '">Leer</a>' +
+      '<button type="button" class="bt peligro" data-kb="quitar-hoja" data-id="' + esc(h.id) + '">Quitar</button></span></div>';
+  }
 
   function filaKb(d){
     const refs = (d.refs || []).filter(r => idx[r]);
@@ -148,7 +176,7 @@ const KB = (() => {
       '<button type="button" class="bt" data-kb="copiar">Copiar lista</button><button type="button" class="bt" data-kb="pegar">Pegar lista</button>' +
       (ds.length ? '<button type="button" class="bt peligro" data-kb="borrar">Borrar todo</button>' : '') +
       '<button type="button" class="bt" id="kb-instalar" data-kb="instalar"' + (instalar ? '' : ' hidden') + '>Instalar app</button></div>';
-    const ayuda = '<div class="kbaviso">' + (ds.length ? '' :
+    const ayuda = '<div class="kbaviso">' + (ds.length || est.hojas.length ? '' :
       '<p>Aún no has guardado nada. Busca un documento y pulsa <b>☆ Guardar</b>: se descarga a esta tablet y queda disponible sin conexión ' +
       '(en el tren, en el avión…). Guarda con Wi‑Fi antes de salir; los PDF grandes ocupan decenas de MB, así que guarda solo los que uses.</p>') +
       '<details><summary>Instalarla como app</summary><ul><li>Abre esta web en el navegador de la tablet y, en su menú (⋮ o ☰), elige ' +
@@ -156,7 +184,8 @@ const KB = (() => {
       '<li>Aunque no la instales, todo lo guardado se puede leer sin conexión desde el navegador.</li>' +
       '<li>La lista de guardados es de cada dispositivo. Con <b>Copiar lista</b> y <b>Pegar lista</b> la llevas de uno a otro.</li></ul></details>' +
       '<p id="kb-espacio"></p></div>';
-    return '<h2>Mi kneeboard</h2>' + cab + ayuda + (ds.length ? '<div id="kb-lista">' + ds.map(filaKb).join('') + '</div>' : '');
+    return '<h2>Mi kneeboard</h2>' + cab + ayuda + (ds.length ? '<div id="kb-lista">' + ds.map(filaKb).join('') + '</div>' : '') +
+      (est.hojas.length ? '<h3 class="subt">Mis hojas de consulta</h3><div id="kb-hojas">' + est.hojas.map(filaHoja).join('') + '</div>' : '');
   }
 
   async function verificar(){
@@ -236,7 +265,13 @@ const KB = (() => {
       '<div class="lesc"><div class="lhoja"></div><div class="lmsg" role="status"></div></div>' +
       '<div class="lpie"><button type="button" class="bt" data-l="ant" aria-label="Página anterior">‹ Anterior</button>' +
       '<span class="lpag"><input type="number" min="1" inputmode="numeric" aria-label="Página"> / <span class="ltot">–</span></span>' +
-      '<button type="button" class="bt" data-l="sig" aria-label="Página siguiente">Siguiente ›</button></div>';
+      '<button type="button" class="bt" data-l="preguntar" title="Pregunta a la IA sobre esta página" hidden>💬 Preguntar</button>' +
+      '<button type="button" class="bt" data-l="sig" aria-label="Página siguiente">Siguiente ›</button></div>' +
+      '<div class="lpre" hidden><div class="lpre-cab"><b class="lpre-tit">Pregunta sobre esta página</b><button type="button" class="bt" data-l="pre-cerrar" aria-label="Cerrar">✕</button></div>' +
+      '<div class="lpre-msgs" role="log"></div>' +
+      '<form class="lpre-codigo" hidden><label>Código del escuadrón</label><div class="lpre-fila"><input type="password" autocomplete="off" required><button type="submit" class="bt on">Entrar</button></div></form>' +
+      '<form class="lpre-form"><textarea rows="2" maxlength="600" placeholder="Pregunta sobre esta página…  (Enter para enviar)"></textarea>' +
+      '<div class="lpre-fila"><button type="button" class="bt" data-l="pre-mic" hidden>🎙 Hablar</button><button type="submit" class="bt on">Preguntar</button></div></form></div>';
     document.body.appendChild(elLector);
     const q = s => elLector.querySelector(s);
     if (!("wakeLock" in navigator)) q('[data-l="pantalla"]').hidden = true;
@@ -244,7 +279,7 @@ const KB = (() => {
 
     elLector.addEventListener("click", e => {
       const b = e.target.closest("[data-l]"); if (b) { accionLector(b.dataset.l); return; }
-      if (e.target.closest(".lbar,.lpie")) return;
+      if (e.target.closest(".lbar,.lpie,.lpre")) return;
       /* toque en la hoja: bordes = pasar página; centro = mostrar u ocultar las barras */
       const r = q(".lesc").getBoundingClientRect(), f = (e.clientX - r.left) / r.width;
       if (haySobreancho() || (f >= .25 && f <= .75)) { elLector.classList.toggle("sinbarra"); repintar(); }
@@ -252,6 +287,16 @@ const KB = (() => {
     });
     q(".lsel").onchange = e => location.replace("#/leer/" + encodeURIComponent(e.target.value));
     q(".lpag input").onchange = e => ir(parseInt(e.target.value, 10) || L.p);
+
+    /* panel de preguntas a la IA sobre la página abierta */
+    const pre = q(".lpre");
+    pre.addEventListener("submit", e => {
+      e.preventDefault();
+      if (e.target.classList.contains("lpre-codigo")) { AYUDA.guardarCodigo(q(".lpre-codigo input").value); preAviso = ""; pintarPregunta(); }
+      else enviarPre();
+    });
+    pre.querySelector("textarea").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); enviarPre(); } });
+    q('[data-l="pre-mic"]').hidden = !SR;
 
     /* gestos: arrastrar con un dedo (pasar página si no se puede desplazar en horizontal) y pellizcar para acercar */
     const escena = q(".lesc"), hoja = q(".lhoja");
@@ -316,6 +361,69 @@ const KB = (() => {
     else if (a === "ant") ir(L.p - 1);
     else if (a === "sig") ir(L.p + 1);
     else if (a === "fijar") alternarLector();
+    else if (a === "preguntar") abrirPregunta();
+    else if (a === "pre-cerrar") cerrarPregunta();
+    else if (a === "pre-mic") dictar();
+  }
+
+  /* ── Preguntar desde el visor: la IA contesta con el texto de la página que estás leyendo (por voz o escribiendo) ── */
+  let preMsgs = [], preEspera = false, preAviso = "", rec = null;
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  function pintarPregunta(){
+    const d = ficha(L.id), sin = !AYUDA.tieneCodigo();
+    q(".lpre-tit").textContent = d && !d.hoja ? "Pregunta sobre esta página (p. " + L.p + ")" : "Pregunta sobre DCS";
+    q(".lpre-codigo").hidden = !sin; q(".lpre-form").hidden = sin;
+    q(".lpre-msgs").innerHTML = preMsgs.map(m => m.rol === "user" ? '<div class="ay-msg ay-yo">' + esc(m.texto) + '</div>'
+      : '<div class="ay-msg ay-ia">' + AYUDA.formato(m.texto, m.fuentes) + ((m.fuentes || []).length ? '<div class="ay-fuentes">' + AYUDA.listaFuentes(m.fuentes) + '</div>' : '') + '</div>').join("") +
+      (preEspera ? '<div class="ay-msg ay-ia ay-espera">Buscando en el manual…</div>' : '') + (preAviso ? '<p class="ay-error">' + esc(preAviso) + '</p>' : '');
+    const m = q(".lpre-msgs"); m.scrollTop = m.scrollHeight;
+    q(".lpre textarea").disabled = preEspera;
+  }
+
+  function abrirPregunta(){
+    preAviso = ""; q(".lpre").hidden = false; elLector.classList.add("preguntando"); pintarPregunta();
+    const t = q(".lpre textarea"); if (!q(".lpre-form").hidden) t.focus({preventScroll: true});
+  }
+
+  function cerrarPregunta(){
+    if (rec) { try { rec.abort(); } catch (e) {} rec = null; }
+    q(".lpre").hidden = true; elLector.classList.remove("preguntando");
+  }
+
+  async function enviarPre(){
+    const t = q(".lpre textarea"), texto = t.value.trim();
+    if (!texto || preEspera) return;
+    t.value = ""; preAviso = "";
+    const d = ficha(L.id), historial = preMsgs.slice(-4).map(m => ({rol: m.rol, texto: m.texto}));
+    preMsgs.push({rol: "user", texto}); preEspera = true; pintarPregunta();
+    try {
+      const r = await AYUDA.api("/preguntar", {pregunta: texto, historial, contexto: d && !d.hoja ? {fuente: "bib-" + d.id, pagina: L.p} : undefined});
+      if (r.estado === 401) { preMsgs.pop(); preAviso = "El código no es correcto."; }
+      else if (!r.ok) { preMsgs.pop(); preAviso = r.datos.error || "La ayuda no está disponible ahora mismo."; }
+      else preMsgs.push({rol: "assistant", texto: r.datos.respuesta, fuentes: r.datos.fuentes});
+    } catch (e) { preMsgs.pop(); preAviso = AYUDA.sinRed(); }
+    preEspera = false; pintarPregunta();
+  }
+
+  /* Dictado por voz: rellena la pregunta mientras hablas y la envía al terminar. Depende del navegador: si no lo permite, se avisa. */
+  function dictar(){
+    const b = q('[data-l="pre-mic"]'), t = q(".lpre textarea");
+    if (rec) { try { rec.stop(); } catch (e) {} return; }
+    rec = new SR(); rec.lang = "es-ES"; rec.interimResults = true; rec.maxAlternatives = 1;
+    let final = "";
+    b.classList.add("on"); b.textContent = "■ Escuchando…"; preAviso = "";
+    rec.onresult = e => {
+      let txt = ""; for (const r of e.results) txt += r[0].transcript;
+      t.value = txt; final = e.results[e.results.length - 1].isFinal ? txt : "";
+    };
+    rec.onerror = e => {
+      preAviso = e.error === "not-allowed" || e.error === "service-not-allowed" ? "Este navegador no permite el dictado por voz: usa el micrófono del teclado."
+        : e.error === "no-speech" ? "No te he oído. Inténtalo de nuevo." : "El dictado no está disponible (" + e.error + ").";
+      pintarPregunta();
+    };
+    rec.onend = () => { rec = null; b.classList.remove("on"); b.textContent = "🎙 Hablar"; if (final && t.value.trim()) enviarPre(); };
+    try { rec.start(); } catch (e) { rec = null; b.classList.remove("on"); b.textContent = "🎙 Hablar"; }
   }
 
   async function alternarLector(){
@@ -336,7 +444,10 @@ const KB = (() => {
     q(".lz").textContent = Math.round(L.z * 100) + " %";
     const f = q('[data-l="fijar"]'); f.textContent = rotulo(L.id); f.classList.toggle("on", guardado(L.id)); f.disabled = false;
     q(".lpag input").value = L.p; q(".ltot").textContent = L.n || "–";
-    const d = ficha(L.id), ids = est.pins.filter(x => ficha(x)); if (d && !ids.includes(d.id)) ids.unshift(d.id);
+    const d = ficha(L.id), ids = [...est.pins, ...est.hojas.map(h => h.id)].filter(x => ficha(x)); if (d && !ids.includes(d.id)) ids.unshift(d.id);
+    f.hidden = !!(d && d.hoja);                        // las hojas propias ya están guardadas: no tienen «Guardar»
+    q('[data-l="preguntar"]').hidden = !(typeof AYUDA !== "undefined" && AYUDA.activa);
+    if (!q(".lpre").hidden) pintarPregunta();
     const sel = q(".lsel"), tit = q(".ltit");
     tit.textContent = d ? d.titulo : ""; tit.title = tit.textContent;
     sel.hidden = ids.length < 2; tit.hidden = !sel.hidden;
@@ -365,6 +476,11 @@ const KB = (() => {
   }
 
   async function leerBytes(d, alProgreso){
+    if (d.hoja) {                                     // una hoja propia solo existe en la caché: no hay nada que descargar
+      const c = await abrirCache(), r = await c.match(abs(d));
+      if (!r) throw new Error("hoja-perdida");
+      return new Uint8Array(await r.arrayBuffer());
+    }
     try {
       const c = await abrirCache(), r = await c.match(abs(d));
       if (r) return new Uint8Array(await r.arrayBuffer());
@@ -380,7 +496,7 @@ const KB = (() => {
     elLector.hidden = false; document.body.classList.add("leyendo"); pedirPantalla();
     if (L.id === id && L.pdf) { etiquetas(); return; }
     const tok = ++L.tok, d = ficha(id);
-    cerrarPdf(); L.id = id; L.n = 0;
+    cerrarPdf(); L.id = id; L.n = 0; preMsgs = []; preAviso = "";
     etiquetas(); q(".lhoja").replaceChildren();
     if (!esPdf(d)) { mensaje("No se encuentra este documento, o no es un PDF."); return; }
     mensaje("Abriendo…");
@@ -397,6 +513,7 @@ const KB = (() => {
       if (tok !== L.tok) return;
       mensaje(e && e.message === "sinred"
         ? "<span><b>Este documento no está guardado en la tablet</b><br>y ahora no hay conexión.<br>Guárdalo con «☆ Guardar» cuando tengas Wi‑Fi.</span>"
+        : e && e.message === "hoja-perdida" ? "Esta hoja ya no está en la tablet (el navegador la ha borrado). Puedes crearla de nuevo en Ayuda con IA."
         : "No se ha podido abrir el documento.<br>" + esc(String(e && e.message || e)));
     }
   }
@@ -410,6 +527,7 @@ const KB = (() => {
   function cerrar(){
     if (!L.abierto) return;
     L.abierto = false; L.tok++; cerrarPdf(); L.id = null;
+    cerrarPregunta(); preMsgs = [];
     soltarPantalla();
     elLector.hidden = true; document.body.classList.remove("leyendo");
   }
@@ -465,6 +583,7 @@ const KB = (() => {
       const a = b.dataset.kb;
       if (a === "fijar") alternar(b);
       else if (a === "quitar") quitar(b.dataset.id).then(() => { $("vista").innerHTML = pagina(); refrescarNav(); });
+      else if (a === "quitar-hoja") quitarHoja(b.dataset.id).then(() => { $("vista").innerHTML = pagina(); refrescarNav(); aviso("Hoja quitada"); });
       else if (a === "actualizar") actualizarTodo();
       else if (a === "borrar") borrarTodo();
       else if (a === "copiar") copiarLista();
@@ -484,5 +603,5 @@ const KB = (() => {
   addEventListener("online", actualizarRed); addEventListener("offline", actualizarRed);
   document.addEventListener("DOMContentLoaded", () => { actualizarRed(); refrescarNav(); });
 
-  return {activo: ACTIVO, botones, enlace, guardado, pagina, abrir, cerrar, refrescarNav, abierto: () => L.abierto};
+  return {activo: ACTIVO, botones, enlace, guardado, pagina, abrir, cerrar, refrescarNav, guardarHoja, abierto: () => L.abierto};
 })();

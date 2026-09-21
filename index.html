@@ -521,7 +521,7 @@ function paginaCreditos(){
 let pintado = false;
 function pintar(){
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
-  if ((!KB.activo && (ruta[0] === "kneeboard" || ruta[0] === "leer")) || (!AYUDA.activa && ruta[0] === "ayuda")) ruta.length = 0;   /* el modo kneeboard solo existe en tablet y móvil */
+  if ((!KB.activo && (ruta[0] === "kneeboard" || ruta[0] === "leer")) || (!AYUDA.activa && (ruta[0] === "ayuda" || ruta[0] === "novedades"))) ruta.length = 0;   /* el modo kneeboard solo existe en tablet y móvil */
   if (ruta[0] === "leer") {
     const habia = pintado;
     if (!habia) pintarVista(["kneeboard"]);
@@ -552,6 +552,14 @@ function pintarVista(ruta){
   }
 
   const [c, s] = ruta;
+
+  if (c === "novedades") {
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + '<a href="#/ayuda">Ayuda con IA</a>' + sep + 'Novedades';
+    $("cuenta").textContent = "";
+    v.innerHTML = AYUDA.paginaNovedades();
+    AYUDA.cargarNovedades();
+    return;
+  }
 
   if (c === "ayuda") {
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Ayuda con IA';
