@@ -9,7 +9,7 @@ const AYUDA = (() => {
   const URL_SERVICIO = "https://biblioteca-dcs-ayuda.nando91cs.workers.dev";
 
   const CLAVE_CODIGO = "dcs-ayuda-codigo", CLAVE_DISP = "dcs-ayuda-dispositivo";
-  const EJEMPLOS = ["¿Cómo activo el pod ECM del F-16?", "¿Cómo se alinea el INS del F/A-18C?", "¿Cómo lanzo un misil HARM en modo POS?", "¿Cómo repostar en vuelo con el A-10C?"];
+  const EJEMPLOS = ["¿Cómo activo el pod ECM del F-16?", "¿Cómo se alinea el INS del F/A-18C?", "¿Cómo lanzo un HARM en modo TOO con el F/A-18C?", "¿Cómo repostar en vuelo con el A-10C?"];
   const guarda = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
   const lee = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 
