@@ -11,12 +11,14 @@ El texto de los manuales NUNCA va al repositorio: se guarda en la base de datos 
 o, en pruebas, en un archivo local fuera del repositorio.
 
 Modos:
-  - D1 (producción): con CF_ACCOUNT_ID, CF_D1_ID y CF_API_TOKEN en el entorno.
+  - D1 con tu sesión de wrangler (npx wrangler login): --d1 [NOMBRE]. No necesita token.
+  - D1 con token de API (para GitHub Actions): con CF_ACCOUNT_ID, CF_D1_ID y CF_API_TOKEN en el entorno.
   - Local (pruebas): sin esas variables, o con --local. Crea indice.db en la carpeta de datos.
 
 Uso:
   python ayuda/indexar.py --listar               ver qué fuentes hay y cuáles están al día
   python ayuda/indexar.py --solo f-16            indexar solo las fuentes cuyo id contiene «f-16»
+  python ayuda/indexar.py --d1 --solo f-16       lo mismo, pero subiéndolo a Cloudflare D1
   python ayuda/indexar.py                        indexar (o actualizar) todo
   python ayuda/indexar.py --buscar "ECM pod"     probar una búsqueda en el índice local
 
@@ -29,7 +31,9 @@ import html
 import json
 import os
 import re
+import shutil
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.error
@@ -250,6 +254,39 @@ class D1:
         return self._peticion(sql)[0].get("results", [])
 
 
+class Wrangler:
+    """D1 a través de `wrangler`, con la sesión que ya tengas iniciada (npx wrangler login): no hace falta token de API."""
+    nombre = "Cloudflare D1 (con tu sesión de wrangler)"
+    sql_max = 1_500_000      # wrangler admite archivos grandes: menos ejecuciones, más rápido
+
+    def __init__(self, bd, presupuesto):
+        self.bd, self.presupuesto = bd, presupuesto
+        self.npx = shutil.which("npx.cmd") or shutil.which("npx")
+        if not self.npx:
+            raise SystemExit("No encuentro npx: instala Node.js (winget install OpenJS.NodeJS.LTS) y abre una terminal nueva.")
+
+    def _run(self, args):
+        r = subprocess.run([self.npx, "--yes", "wrangler", "d1", "execute", self.bd, "--remote", *args], cwd=RAIZ / "worker",
+                           capture_output=True, text=True, encoding="utf-8", errors="replace")
+        if r.returncode:
+            raise RuntimeError("wrangler falló: " + (r.stderr or r.stdout)[-600:])
+        return r.stdout
+
+    def ejecutar(self, sql):
+        # El archivo temporal va en ayuda/worker (ignorado por Git y borrado siempre al terminar): el Python de la
+        # Microsoft Store redirige las escrituras en AppData y wrangler no vería el archivo.
+        tmp = RAIZ / "worker" / "lote.tmp.sql"
+        tmp.write_text(sql, encoding="utf-8")
+        try:
+            self._run(["--file", tmp.name, "--yes"])
+        finally:
+            tmp.unlink(missing_ok=True)
+
+    def consultar(self, sql):
+        salida = self._run(["--command", sql, "--json"])
+        return json.loads(salida[salida.index("["):])[0].get("results", [])
+
+
 def preparar_d1(almacen):
     if isinstance(almacen, D1):
         almacen.ejecutar((RAIZ / "worker" / "schema.sql").read_text(encoding="utf-8"))
@@ -266,7 +303,7 @@ def guardar(almacen, f, paginas, trozos):
     lote, largo = [], 0
     for pagina, texto in trozos:
         s = f"INSERT INTO trozos(texto,fuente,pagina) VALUES ({lit(texto)},{lit(f['id'])},{pagina});"
-        if lote and largo + len(s) > SQL_MAX:
+        if lote and largo + len(s) > getattr(almacen, 'sql_max', SQL_MAX):
             almacen.ejecutar("".join(lote)); lote, largo = [], 0
             time.sleep(0.3)
         lote.append(s); largo += len(s)
@@ -295,6 +332,8 @@ def main():
     ap.add_argument("--listar", action="store_true", help="solo lista las fuentes y su estado")
     ap.add_argument("--solo", nargs="+", metavar="TEXTO", help="solo fuentes cuyo id contenga alguno de estos textos")
     ap.add_argument("--local", action="store_true", help="usar el índice local aunque haya credenciales de D1")
+    ap.add_argument("--d1", nargs="?", const="biblioteca-dcs-ayuda", metavar="NOMBRE",
+                    help="subir a Cloudflare D1 con tu sesión de wrangler (sin token de API); NOMBRE = base de datos")
     ap.add_argument("--forzar", action="store_true", help="reindexar aunque no hayan cambiado")
     ap.add_argument("--conservar", action="store_true", help="no borrar los PDF descargados")
     ap.add_argument("--max-trozos", type=int, default=15000,
@@ -305,7 +344,12 @@ def main():
     cuenta, bd, token = (os.environ.get(k) for k in ("CF_ACCOUNT_ID", "CF_D1_ID", "CF_API_TOKEN"))
     if a.buscar:
         buscar(Local(), a.buscar); return
-    almacen = D1(cuenta, bd, token, a.max_trozos) if (cuenta and bd and token and not a.local) else Local()
+    if a.d1 and not a.local:
+        almacen = Wrangler(a.d1, a.max_trozos)
+    elif cuenta and bd and token and not a.local:
+        almacen = D1(cuenta, bd, token, a.max_trozos)
+    else:
+        almacen = Local()
     print(f"Destino: {almacen.nombre}" + (f" ({almacen.ruta})" if isinstance(almacen, Local) else ""))
     preparar_d1(almacen)
 
@@ -338,11 +382,14 @@ def main():
             paginas, trozos = extraer(ruta)
         except Exception as e:
             print(f"! {f['id']}: falló la descarga o la lectura ({e})"); continue
-        if not a.conservar:
-            ruta.unlink(missing_ok=True)
         if almacen.presupuesto is not None and gastados + len(trozos) > almacen.presupuesto and gastados:
             pendientes.append(f["id"]); continue        # no cabe hoy: se deja entera para la próxima ejecución
-        guardar(almacen, f, paginas, trozos)
+        try:
+            guardar(almacen, f, paginas, trozos)
+        except Exception as e:
+            print(f"! {f['id']}: falló la subida ({e}); el PDF queda en la caché para reintentarlo"); continue
+        if not a.conservar:
+            ruta.unlink(missing_ok=True)                # solo se borra cuando ya está subido
         gastados += len(trozos); hechas += 1
         print(f"  ✓ {paginas} páginas, {len(trozos)} fragmentos")
 

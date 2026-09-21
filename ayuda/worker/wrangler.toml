@@ -7,7 +7,7 @@ compatibility_date = "2025-09-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "biblioteca-dcs-ayuda"
-database_id = "PON-AQUI-EL-ID"        # lo imprime: npx wrangler d1 create biblioteca-dcs-ayuda
+database_id = "ee03dfaa-4152-4443-85c1-201e3c43d9ba"   # el id de la base de datos (no es un secreto)
 
 [vars]
 # Webs desde las que se acepta la caja de ayuda (el origen de GitHub Pages no incluye la ruta /DCS)

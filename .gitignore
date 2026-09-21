@@ -7,3 +7,4 @@ ayuda/*.sqlite
 .env
 node_modules/
 .wrangler/
+ayuda/worker/lote*.sql

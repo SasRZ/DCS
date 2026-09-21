@@ -51,24 +51,23 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    `deploy` imprime la dirección del servicio, `https://biblioteca-dcs-ayuda.<tu-subdominio>.workers.dev`.
 4. Pon esa dirección (sin barra final) en `URL_SERVICIO` de `ayuda.js`, haz commit y súbelo. Aparecerá el enlace
    «Ayuda IA» junto a Créditos.
-5. **Indexar**. Crea un token de API de Cloudflare con permiso *D1: Edit* y apunta tu ID de cuenta y el `database_id`:
+5. **Indexar**. Con la sesión de `wrangler` ya iniciada no hace falta ningún token:
 
-   ```powershell
-   $env:CF_ACCOUNT_ID = "…"; $env:CF_D1_ID = "…"; $env:CF_API_TOKEN = "…"
-   python ayuda/indexar.py --solo f-16      # primero una prueba con el F-16
-   python ayuda/indexar.py                  # después, todo
+   ```bash
+   pip install pymupdf
+   python ayuda/indexar.py --d1 --solo f-16      # primero una prueba con el F-16
+   python ayuda/indexar.py --d1                  # después, todo
    ```
 
-   Necesita `pip install pymupdf`. El plan gratuito de D1 permite unas 100.000 filas escritas al día: por eso el
-   script se detiene a los 15.000 fragmentos (`--max-trozos`) y lo pendiente se hace en la siguiente ejecución. Repítelo
-   uno o dos días, o pasa Workers al plan de pago (5 $/mes) y sube el tope.
-
+   El plan gratuito de D1 permite unas 100.000 filas escritas al día: por eso el script se detiene a los 15.000
+   fragmentos por ejecución (`--max-trozos`) y lo pendiente se hace en la siguiente. Repítelo uno o dos días, o pasa
+   Workers al plan de pago (5 $/mes) y sube el tope.
 ## Actualización automática
 
 El workflow `.github/workflows/ayuda-indexar.yml` lo hace cada lunes sin que tengas el PC encendido. Para activarlo, en
 GitHub → Settings → Secrets and variables → Actions:
 
-- Secretos: `CF_ACCOUNT_ID`, `CF_D1_ID` y `CF_API_TOKEN`.
+- Secretos: `CF_ACCOUNT_ID`, `CF_D1_ID` y `CF_API_TOKEN` (un token de API de Cloudflare con permiso *D1: Edit*; solo se necesita para esto).
 - Variable: `AYUDA_ACTIVA` = `true`.
 
 Si los servidores de GitHub no pudieran descargar de ED o de Chuck (a veces bloquean las IP de centros de datos), ejecuta
