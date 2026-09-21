@@ -387,7 +387,11 @@ def main():
         try:
             guardar(almacen, f, paginas, trozos)
         except Exception as e:
-            print(f"! {f['id']}: falló la subida ({e}); el PDF queda en la caché para reintentarlo"); continue
+            print(f"! {f['id']}: falló la subida ({e})")
+            if re.search(r"limit|exceed|quota|too many", str(e), re.I):
+                print("Parece que se ha alcanzado el límite diario de escritura de D1. Se para aquí; vuelve a lanzarlo mañana.")
+                pendientes.append(f["id"]); break
+            continue
         if not a.conservar:
             ruta.unlink(missing_ok=True)                # solo se borra cuando ya está subido
         gastados += len(trozos); hechas += 1

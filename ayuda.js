@@ -6,7 +6,7 @@
    Usa las funciones globales de index.html ($, esc). */
 const AYUDA = (() => {
   /* Dirección del servicio privado, la que imprime `wrangler deploy`, sin barra final. Vacía = ayuda desactivada. */
-  const URL_SERVICIO = "";
+  const URL_SERVICIO = "https://biblioteca-dcs-ayuda.nando91cs.workers.dev";
 
   const CLAVE_CODIGO = "dcs-ayuda-codigo", CLAVE_DISP = "dcs-ayuda-dispositivo";
   const EJEMPLOS = ["¿Cómo activo el pod ECM del F-16?", "¿Cómo se alinea el INS del F/A-18C?", "¿Cómo lanzo un misil HARM en modo POS?", "¿Cómo repostar en vuelo con el A-10C?"];
@@ -32,8 +32,9 @@ const AYUDA = (() => {
     let html = "", lista = null;
     const cierra = () => { if (lista) { html += "</" + lista + ">"; lista = null; } };
     for (const l of texto.split(/\n/)) {
-      const num = l.match(/^\s*\d+[.)]\s+(.*)/), gui = l.match(/^\s*[-•*]\s+(.*)/);
-      if (num || gui) {
+      const num = l.match(/^\s*\d+[.)]\s+(.*)/), gui = l.match(/^\s*[-•*]\s+(.*)/), tit = l.match(/^\s*#{1,4}\s+(.*)/);
+      if (tit) { cierra(); html += "<h4>" + linea(tit[1]) + "</h4>"; }
+      else if (num || gui) {
         const tipo = num ? "ol" : "ul";
         if (lista !== tipo) { cierra(); html += "<" + tipo + ">"; lista = tipo; }
         html += "<li>" + linea((num || gui)[1]) + "</li>";
