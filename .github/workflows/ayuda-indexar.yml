@@ -1,0 +1,43 @@
+name: Actualizar la ayuda con IA
+
+# Cada semana revisa los manuales oficiales de ED y las guías de Chuck y actualiza en Cloudflare D1 solo lo que haya cambiado.
+# El texto de los manuales no se guarda en el repositorio: pasa por la memoria del ejecutor y va a la base de datos privada.
+# Solo se ejecuta si has activado la ayuda: Settings → Secrets and variables → Actions → Variables → AYUDA_ACTIVA = true
+# (y has creado los tres secretos de abajo). Ver ayuda/README.md.
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"      # lunes, 04:00 UTC
+  workflow_dispatch:          # también se puede lanzar a mano desde la pestaña Actions
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ayuda-indexar
+  cancel-in-progress: false
+
+jobs:
+  indexar:
+    if: ${{ vars.AYUDA_ACTIVA == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar PyMuPDF
+        run: pip install pymupdf
+
+      - name: Indexar lo nuevo o cambiado
+        run: python ayuda/indexar.py
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_D1_ID: ${{ secrets.CF_D1_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          AYUDA_DIR: ${{ runner.temp }}/ayuda

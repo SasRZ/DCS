@@ -1,0 +1,21 @@
+# Configuración del servicio privado de la ayuda con IA. Aquí no hay secretos: la clave de la API y los
+# códigos de acceso se guardan con `npx wrangler secret put` y no se escriben en ningún archivo.
+name = "biblioteca-dcs-ayuda"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "biblioteca-dcs-ayuda"
+database_id = "PON-AQUI-EL-ID"        # lo imprime: npx wrangler d1 create biblioteca-dcs-ayuda
+
+[vars]
+# Webs desde las que se acepta la caja de ayuda (el origen de GitHub Pages no incluye la ruta /DCS)
+ORIGENES = "https://sasrz.github.io,http://localhost:8080"
+# Límites de preguntas por día
+LIMITE_DISPOSITIVO = "20"
+LIMITE_IP = "40"
+LIMITE_GLOBAL = "300"
+# Modelos: el pequeño prepara la búsqueda y el grande redacta la respuesta
+MODELO_BUSQUEDA = "claude-haiku-4-5-20251001"
+MODELO_RESPUESTA = "claude-sonnet-5"

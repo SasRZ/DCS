@@ -123,6 +123,13 @@ vuelve a ocultar. Se recuerda en ese navegador.
 - Se instala desde el menú del navegador → «Añadir a la pantalla de inicio» / «Instalar aplicación».
   Necesita HTTPS, que da GitHub Pages; en local solo funciona en `localhost`.
 
+## Ayuda con IA (privada)
+
+`ayuda.js`, `ayuda.css` y la carpeta `ayuda/` forman una caja de preguntas que contesta con los manuales
+oficiales de ED y las guías de Chuck. Es privada: el texto de los manuales vive en Cloudflare, nunca en este
+repositorio, y el servicio exige un código del escuadrón. No aparece en la web hasta que se configura
+`URL_SERVICIO` en `ayuda.js`. Instrucciones completas en [`ayuda/README.md`](ayuda/README.md).
+
 ## Validar antes de subir
 
 ```bash

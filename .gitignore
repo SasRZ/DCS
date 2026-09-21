@@ -1,0 +1,9 @@
+# Ayuda con IA: nada de esto debe subirse nunca (texto de manuales con derechos de autor, secretos y dependencias)
+ayuda/cache/
+ayuda/*.db
+ayuda/*.sqlite
+*.db
+.dev.vars
+.env
+node_modules/
+.wrangler/

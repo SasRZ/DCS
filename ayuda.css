@@ -1,0 +1,34 @@
+/* Ayuda con IA (ver ayuda.js). Usa las variables de index.html. */
+#ayudanav[hidden]{display:none}
+.ay-chat{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.ay-msg{max-width:min(100%,760px);padding:12px 16px;border:1px solid var(--linea);border-radius:10px;background:var(--acero2);line-height:1.5}
+.ay-yo{align-self:flex-end;background:rgba(224,167,60,.10);border-color:rgba(224,167,60,.4)}
+.ay-ia{align-self:flex-start}
+.ay-ia p{margin:0 0 8px}.ay-ia p:last-child{margin:0}
+.ay-ia ol,.ay-ia ul{margin:4px 0 8px;padding-left:22px}
+.ay-ia li{margin:3px 0}
+.ay-ia code{background:var(--acero);padding:1px 5px;border-radius:3px}
+.ay-cita{display:inline-block;min-width:1.4em;padding:0 5px;margin:0 1px;border:1px solid var(--chart);border-radius:4px;
+ font-size:.78em;line-height:1.5;text-align:center;color:var(--chart);vertical-align:.12em}
+.ay-cita:hover{background:var(--chart);color:var(--acero)}
+.ay-fuentes{display:flex;flex-direction:column;gap:2px;margin-top:10px;padding-top:9px;border-top:1px solid var(--linea);font-size:13px;color:var(--tenue)}
+.ay-fuentes a:hover{color:var(--ambar)}
+.ay-fuentes b{color:var(--chart);font-weight:600}
+.ay-espera{color:var(--tenue)}
+@media (prefers-reduced-motion:no-preference){.ay-espera{animation:ay-pulso 1.4s ease-in-out infinite}}
+@keyframes ay-pulso{50%{opacity:.45}}
+.ay-ej{margin:6px 0 0;color:var(--tenue)}
+.ay-ejemplos{display:flex;flex-wrap:wrap;gap:8px}
+.ay-chip{font:inherit;font-size:14.5px;color:var(--texto);background:transparent;border:1px solid var(--linea);border-radius:999px;padding:8px 16px;cursor:pointer;text-align:left}
+.ay-chip:hover,.ay-chip:focus-visible{border-color:var(--ambar);color:var(--ambar);outline:none}
+.ay-form{margin-top:18px}
+.ay-form textarea,.ay-form input{width:100%;font:inherit;color:var(--texto);background:var(--acero2);border:1px solid var(--linea);border-radius:8px;padding:11px 14px}
+.ay-form textarea{resize:vertical;min-height:64px}
+.ay-form textarea:focus,.ay-form input:focus{outline:2px solid var(--ambar);outline-offset:1px;border-color:transparent}
+.ay-form label{display:block;margin-bottom:6px;color:var(--tenue)}
+.ay-fila{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.ay-codigo .ay-fila{margin-top:0}
+.ay-codigo input{flex:1 1 220px;width:auto}
+.ay-resto{margin-left:auto;font-size:13px;color:var(--tenue)}
+.ay-error{margin:12px 0 0;color:var(--alerta)}
+.ay-nota{margin:14px 0 0;font-size:13px;color:var(--tenue);max-width:70ch}

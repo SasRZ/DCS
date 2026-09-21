@@ -228,13 +228,14 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 @media (prefers-reduced-motion:no-preference){.doc,.portada a{transition:background .12s}.tarjeta,.cat{transition:border-color .15s}.cat .img{transition:transform .6s ease}.cat:hover .img{transform:scale(1.045)}}
 </style>
 <link rel="stylesheet" href="kneeboard.css">
+<link rel="stylesheet" href="ayuda.css">
 </head>
 <body>
 <div class="env">
 <header>
   <div class="cab">
     <h1><a href="#/">Biblioteca DCS</a></h1>
-    <nav class="cabnav"><a class="creditos" id="kbnav" href="#/kneeboard">Mi kneeboard</a><a class="creditos" href="#/creditos">Créditos</a></nav>
+    <nav class="cabnav"><a class="creditos" id="ayudanav" href="#/ayuda" hidden>Ayuda IA</a><a class="creditos" id="kbnav" href="#/kneeboard">Mi kneeboard</a><a class="creditos" href="#/creditos">Créditos</a></nav>
   </div>
   <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
   <div class="barra">
@@ -253,6 +254,7 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script src="kneeboard.js"></script>
+<script src="ayuda.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
@@ -519,7 +521,7 @@ function paginaCreditos(){
 let pintado = false;
 function pintar(){
   const ruta = (location.hash || "#/").slice(2).split("/").filter(Boolean);
-  if (!KB.activo && (ruta[0] === "kneeboard" || ruta[0] === "leer")) ruta.length = 0;   /* el modo kneeboard solo existe en tablet y móvil */
+  if ((!KB.activo && (ruta[0] === "kneeboard" || ruta[0] === "leer")) || (!AYUDA.activa && ruta[0] === "ayuda")) ruta.length = 0;   /* el modo kneeboard solo existe en tablet y móvil */
   if (ruta[0] === "leer") {
     const habia = pintado;
     if (!habia) pintarVista(["kneeboard"]);
@@ -550,6 +552,13 @@ function pintarVista(ruta){
   }
 
   const [c, s] = ruta;
+
+  if (c === "ayuda") {
+    miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Ayuda con IA';
+    $("cuenta").textContent = "";
+    v.innerHTML = AYUDA.pagina();
+    return;
+  }
 
   if (c === "kneeboard") {
     miga.innerHTML = '<a href="#/">Inicio</a>' + sep + 'Mi kneeboard';
