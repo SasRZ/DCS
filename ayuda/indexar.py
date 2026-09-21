@@ -27,6 +27,7 @@ Carpeta de datos (por defecto %LOCALAPPDATA%\\BibliotecaDCS-ayuda, fuera del rep
 """
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -46,6 +47,7 @@ UA = "BibliotecaDCS-ayuda/1.0 (uso privado del escuadron FOX3)"
 ED_LISTA = "https://www.digitalcombatsimulator.com/es/downloads/documentation/"
 ED_RAIZ = "https://www.digitalcombatsimulator.com"
 CHUCK = "https://chucksguides.com"
+BIBLIOTECA_URL = os.environ.get("AYUDA_BIBLIOTECA_URL", "https://sasrz.github.io/DCS/")   # dónde publica la web los PDF propios
 PAUSA = 1.5          # segundos entre peticiones a las webs de origen
 TROZO_MAX = 1800     # caracteres por fragmento (aprox.)
 TROZO_MIN = 80       # páginas con menos texto se ignoran (portadas, separadores)
@@ -138,6 +140,29 @@ def fuentes_chuck():
         fuentes.append({"id": "chuck-" + s, "titulo": "Chuck's Guide · " + re.sub(r"^DCS Guide\s*-\s*", "", titulo),
                         "tipo": "chuck", "url": html.unescape(pdf.group(1)), "web": web})
     return fuentes
+
+
+def fuentes_biblioteca():
+    """PDF de la propia biblioteca (data/documentos.json). Están en el repositorio: no se descargan, se leen del disco."""
+    raiz = RAIZ.parent
+    fuentes = []
+    for d in json.loads((raiz / "data" / "documentos.json").read_text(encoding="utf-8")):
+        url = d.get("url", "")
+        if d.get("tipo") != "PDF" or url.startswith(("http://", "https://")):
+            continue
+        ruta = raiz / url
+        if ruta.exists():
+            fuentes.append({"id": "bib-" + d["id"], "titulo": d["titulo"], "tipo": "biblioteca", "local": str(ruta),
+                            "url": BIBLIOTECA_URL + urllib.parse.quote(url), "web": BIBLIOTECA_URL})
+    return fuentes
+
+
+def firma_local(ruta):
+    h = hashlib.sha1()
+    with open(ruta, "rb") as f:
+        while bloque := f.read(1 << 20):
+            h.update(bloque)
+    return "sha1:" + h.hexdigest()
 
 
 def firma_remota(url):
@@ -354,18 +379,20 @@ def main():
     preparar_d1(almacen)
 
     print("Buscando fuentes…")
-    fuentes = fuentes_oficiales() + fuentes_chuck()
+    solo_bib = bool(a.solo) and all(t.lower().startswith("bib") for t in a.solo)    # no hace falta recorrer ED ni Chuck
+    fuentes = fuentes_biblioteca() if solo_bib else fuentes_oficiales() + fuentes_chuck() + fuentes_biblioteca()
     if a.solo:
         fuentes = [f for f in fuentes if any(t.lower() in f["id"] for t in a.solo)]
     estado = {r["id"]: r["firma"] for r in almacen.consultar("SELECT id, firma FROM fuentes")}
     print(f"{len(fuentes)} fuentes ({sum(f['tipo'] == 'oficial' for f in fuentes)} oficiales, "
-          f"{sum(f['tipo'] == 'chuck' for f in fuentes)} de Chuck)\n")
+          f"{sum(f['tipo'] == 'chuck' for f in fuentes)} de Chuck, {sum(f['tipo'] == 'biblioteca' for f in fuentes)} de la biblioteca)\n")
 
     gastados, pendientes, hechas = 0, [], 0
     for f in fuentes:
-        time.sleep(PAUSA)
+        if not f.get("local"):
+            time.sleep(PAUSA)
         try:
-            f["firma"] = firma_remota(f["url"])
+            f["firma"] = firma_local(f["local"]) if f.get("local") else firma_remota(f["url"])
         except urllib.error.URLError as e:
             print(f"! {f['id']}: no se pudo consultar ({e})"); continue
         al_dia = estado.get(f["id"]) == f["firma"]
@@ -376,9 +403,10 @@ def main():
         if almacen.presupuesto is not None and gastados >= almacen.presupuesto:
             pendientes.append(f["id"]); continue
         print(f"↓ {f['id']}: {f['titulo']}")
-        ruta = CACHE / (f["id"] + ".pdf")
+        ruta = Path(f["local"]) if f.get("local") else CACHE / (f["id"] + ".pdf")
         try:
-            descargar(f["url"], ruta)
+            if not f.get("local"):
+                descargar(f["url"], ruta)
             paginas, trozos = extraer(ruta)
         except Exception as e:
             print(f"! {f['id']}: falló la descarga o la lectura ({e})"); continue
@@ -392,8 +420,8 @@ def main():
                 print("Parece que se ha alcanzado el límite diario de escritura de D1. Se para aquí; vuelve a lanzarlo mañana.")
                 pendientes.append(f["id"]); break
             continue
-        if not a.conservar:
-            ruta.unlink(missing_ok=True)                # solo se borra cuando ya está subido
+        if not a.conservar and not f.get("local"):
+            ruta.unlink(missing_ok=True)                # solo se borra cuando ya está subido (los PDF propios nunca se tocan)
         gastados += len(trozos); hechas += 1
         print(f"  ✓ {paginas} páginas, {len(trozos)} fragmentos")
 

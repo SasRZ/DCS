@@ -31,6 +31,11 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    fuentes, nunca las preguntas de seguimiento, y caducan a los 45 días o en cuanto se indexa algo nuevo o cambiado (así
    ninguna sobrevive a un parche). No se guarda quién preguntó. Si cambias los prompts del Worker, sube `VERSION_CACHE`.
 
+5. **Documentos de la biblioteca.** Los PDF de `data/documentos.json` con texto también se indexan (ids `bib-…`): así la
+   ayuda puede contestar con los SOP, procedimientos, la DCS Threats Guide, etc., y los cita como «de la biblioteca».
+   Se leen del disco (no se descargan) y se reindexan solos cuando cambia el archivo: `python ayuda/indexar.py --d1 --solo bib-`.
+   Los PDF que son solo imagen (cartas de aeródromos, hojas de armamento) no tienen texto que leer; harían falta OCR.
+
 ## Puesta en marcha (una vez)
 
 1. **Node.js** (necesario para `wrangler`): `winget install OpenJS.NodeJS.LTS`, y abre una terminal nueva.
