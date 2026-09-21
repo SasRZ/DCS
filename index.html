@@ -122,9 +122,6 @@ header{position:relative;isolation:isolate}
 .cm{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;color:var(--texto)}
 .cm b{font-weight:600;color:var(--c)}
 .cm .flecha{margin-left:auto;font-size:20px;color:var(--c)}
-.cred{position:absolute;right:12px;top:10px;z-index:3;font-size:10.5px;color:rgba(230,238,242,.72);
- background:rgba(11,16,21,.55);padding:2px 8px;border-radius:999px}
-.cred a{text-decoration:underline;text-underline-offset:2px}
 @media (max-width:640px){.cat{min-height:230px}.ctx{padding:18px 18px 16px 24px}.inicio header{padding:38px 0 26px}}
 
 /* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
@@ -504,9 +501,18 @@ function paginaCreditos(){
         : '<details><summary>' + ds.length + ' documentos</summary>' + lista + '</details>') +
       '</article>';
   });
+  /* fotos de las tarjetas de la portada (data/portada.json): su crédito no se pone sobre la imagen, sino aquí */
+  const fotos = Object.entries(datosPortada.categorias || {}).filter(([k, c]) => c.foto && arbol[k]).map(([k, c]) => {
+    const f = c.foto, pagina = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(f.archivo.replace(/ /g, "_"));
+    const lic = f.licencia_url ? '<a href="' + esc(f.licencia_url) + '" target="_blank" rel="noopener">' + esc(f.licencia) + '</a>' : esc(f.licencia);
+    return '<li><b>' + esc(arbol[k].nombre) + '</b>: <a href="' + pagina + '" target="_blank" rel="noopener">' + esc(f.alt || f.archivo) +
+      '</a> · foto de ' + esc(f.autor) + ' · ' + lic + '</li>';
+  });
+  const portada = fotos.length ? '<article class="autor"><h3>Fotos de la portada</h3>' +
+    '<p>Las imágenes de las tarjetas de la portada, de Wikimedia Commons.</p><ul>' + fotos.join("") + '</ul></article>' : '';
   return '<h2>Créditos</h2>' +
     '<p class="intro">Esta biblioteca es una recopilación de consulta personal. Los documentos son obra de sus autores, ' +
-    'que aparecen aquí con su nombre y su enlace cuando lo hay. Todos los derechos son suyos.</p>' + bloques.join("");
+    'que aparecen aquí con su nombre y su enlace cuando lo hay. Todos los derechos son suyos.</p>' + bloques.join("") + portada;
 }
 
 /* Un solo punto de entrada: #/leer/<id> abre el visor de PDF encima de la vista actual (que no se repinta, para volver donde estabas) */
@@ -597,9 +603,8 @@ function pintarVista(ruta){
     const f = d.foto;
     const foto = f ? '<img class="img" src="https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f.archivo) +
       '?width=1000" alt="" loading="lazy" referrerpolicy="no-referrer">' : '';
-    const cred = f ? '<span class="cred">Foto: ' + esc(f.autor) + ' · <a href="https://commons.wikimedia.org/wiki/File:' +
-      encodeURIComponent(f.archivo.replace(/ /g, "_")) + '" target="_blank" rel="noopener">Wikimedia</a></span>' : '';
-    return '<div class="cat" style="--c:' + col + '">' + foto + cred + '<div class="ctx">' +
+    /* el crédito de la foto de cada categoría está en la página de Créditos */
+    return '<div class="cat" style="--c:' + col + '">' + foto + '<div class="ctx">' +
       (d.kicker ? '<span class="ck">' + esc(d.kicker) + '</span>' : '') +
       '<a class="cn" href="#/' + k + '">' + esc(a.nombre) + '</a>' +
       '<span class="cd">' + esc(a.desc) + '</span>' +

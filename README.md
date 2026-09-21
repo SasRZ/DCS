@@ -87,7 +87,8 @@ Todos los campos siguientes son opcionales:
   la de una misión enlaza los aviones típicos que indica `modulos` en la taxonomía.
 - La **portada** sale de `data/portada.json`: para cada categoría, su `color`, el
   texto pequeño de arriba (`kicker`) y la `foto` de fondo (Wikimedia Commons, con
-  autor y licencia), más la lista de `busquedas` rápidas que salen como botones
+  autor y licencia; su crédito no se ve sobre la tarjeta, sale en la página
+  Créditos), más la lista de `busquedas` rápidas que salen como botones
   bajo el buscador. La tecla `/` enfoca el buscador. Los mensajes del final de
   la portada están en `index.html`: el objeto `RETO` («Ponte a prueba») y el
   objeto `FOX3` (el banner grande de invitación al escuadrón, con sus dos
