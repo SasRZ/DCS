@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS cache_respuestas (
   fuentes   TEXT NOT NULL,
   indice    TEXT NOT NULL,
   creada    TEXT NOT NULL,
-  usos      INTEGER NOT NULL DEFAULT 0
+  usos      INTEGER NOT NULL DEFAULT 0,
+  texto     TEXT                -- la pregunta tal como se escribió la primera vez (sin datos de quién); solo se enseña si se repite
 );
 
 -- Cambios detectados al reindexar un manual o guía que ya existía: frases añadidas y eliminadas (JSON).

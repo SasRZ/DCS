@@ -59,3 +59,4 @@
 .ay-tabla table{border-collapse:collapse;font-size:14.5px;min-width:100%}
 .ay-tabla th,.ay-tabla td{padding:6px 12px;border:1px solid var(--linea);text-align:left;vertical-align:top}
 .ay-tabla th{background:var(--acero);color:var(--chart);font-weight:600}
+.ay-frec{margin-top:22px}

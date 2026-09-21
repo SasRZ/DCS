@@ -8,6 +8,7 @@
      /preguntar   contesta una duda; con "contexto" ({fuente, pagina}) da prioridad a la página que el jugador está leyendo
      /hoja        prepara una hoja de consulta de una página (JSON estructurado; el dibujo del PDF lo hace el navegador)
      /novedades   lista los cambios detectados en manuales y guías, con su resumen (se genera la primera vez que se piden)
+     /frecuentes  las preguntas más repetidas (ya en la caché), para enseñarlas como botones que no gastan crédito
 
    Secretos (npx wrangler secret put …):
      ANTHROPIC_API_KEY   clave de la API de Anthropic
@@ -130,10 +131,13 @@ async function cacheLeer(env, clave, indice) {
     "SELECT respuesta, fuentes, creada FROM cache_respuestas WHERE clave = ?1 AND indice = ?2 AND creada > datetime('now', '-45 days')").bind(clave, indice).first();
 }
 
-async function cacheGuardar(env, clave, palabras, respuesta, fuentes, indice) {
+/* «texto» es la pregunta tal como se escribió la primera vez (nunca quién la hizo): sirve para enseñar como botón las más repetidas.
+   Si lleva enlaces o correos no se guarda. */
+async function cacheGuardar(env, clave, palabras, respuesta, fuentes, indice, texto) {
+  const visible = texto && !/https?:|www\.|@/i.test(texto) ? String(texto).replace(/\s+/g, " ").trim().slice(0, 160) : null;
   try {
-    await env.DB.prepare("INSERT OR REPLACE INTO cache_respuestas(clave,pregunta,respuesta,fuentes,indice,creada,usos) VALUES(?1,?2,?3,?4,?5,datetime('now'),0)")
-      .bind(clave, palabras.join(" "), respuesta, JSON.stringify(fuentes), indice).run();
+    await env.DB.prepare("INSERT OR REPLACE INTO cache_respuestas(clave,pregunta,respuesta,fuentes,indice,creada,usos,texto) VALUES(?1,?2,?3,?4,?5,datetime('now'),0,?6)")
+      .bind(clave, palabras.join(" "), respuesta, JSON.stringify(fuentes), indice, visible).run();
   } catch (e) { console.error("caché:", String(e)); }
 }
 
@@ -301,7 +305,7 @@ async function preguntar(req, env, cab) {
 
     /* solo se devuelven las fuentes que la respuesta cita */
     const usadas = citas.filter(c => new RegExp(`\\[${c.n}\\]`).test(respuesta));
-    if (clave && usadas.length) await cacheGuardar(env, clave, palabras, respuesta, usadas, indice);
+    if (clave && usadas.length) await cacheGuardar(env, clave, palabras, respuesta, usadas, indice, pregunta);
     return json({ respuesta, fuentes: usadas.length ? usadas : citas.slice(0, 3), restantes: Math.max(0, lim(env.LIMITE_DISPOSITIVO, 20) - l.usos) }, 200, cab);
   } catch (err) {
     console.error(String(err));
@@ -397,9 +401,23 @@ async function novedades(req, env, cab) {
   return json({ novedades: filas.map(f => ({ id: f.id, fuente: f.fuente, titulo: f.titulo || f.fuente, fecha: f.fecha, resumen: f.resumen, url: f.web || f.url })) }, 200, cab);
 }
 
+/* ── /frecuentes ──
+   Las preguntas más repetidas (las que ya están en la caché y se han pedido más de una vez), para enseñarlas como botones:
+   se contestan al instante y sin gastar crédito ni cupo. Solo salen las que siguen siendo válidas con el índice actual. */
+
+async function frecuentes(req, env, cab) {
+  const e = await entrada(req, env, cab);
+  if (e.error) return e.error;
+  const indice = await versionIndice(env);
+  const { results } = await env.DB.prepare(
+    "SELECT texto, usos FROM cache_respuestas WHERE texto IS NOT NULL AND usos > 0 AND indice = ?1 AND creada > datetime('now', '-45 days') " +
+    "ORDER BY usos DESC, creada DESC LIMIT 6").bind(indice).all();
+  return json({ frecuentes: results }, 200, cab);
+}
+
 /* ── Enrutado ── */
 
-const RUTAS = { "/preguntar": preguntar, "/hoja": hoja, "/novedades": novedades };
+const RUTAS = { "/preguntar": preguntar, "/hoja": hoja, "/novedades": novedades, "/frecuentes": frecuentes };
 
 export default {
   async fetch(req, env) {

@@ -24,6 +24,7 @@ const AYUDA = (() => {
   let mensajes = [];       // {rol: "user" | "assistant", texto, fuentes?, guardada?}
   let espera = false, restantes = null, aviso = "";
   let hojas = [], creando = false, avisoHoja = "";     // hojas de consulta creadas en esta sesión
+  let frecuentes = null;                               // preguntas más repetidas que da el servicio (null = aún sin pedir)
 
   /* Llamada al servicio: añade el código y el identificador del dispositivo. Un 401 borra el código guardado. */
   async function api(ruta, cuerpo) {
@@ -78,6 +79,17 @@ const AYUDA = (() => {
     return '<div class="ay-msg ay-ia">' + formato(m.texto, m.fuentes) + (fuentes ? '<div class="ay-fuentes">' + fuentes + '</div>' : '') +
       (fecha ? '<div class="ay-guardada">⚡ Respuesta guardada del ' + fecha + ': los manuales no han cambiado desde entonces.</div>' : '') + '</div>';
   }
+
+  /* ── Preguntas frecuentes ──
+     Las que más se repiten salen como botones. Ya están en la caché del servicio, así que se contestan al instante y sin gastar
+     crédito ni cupo. Si aún hay pocas, se completan con los ejemplos fijos (hasta 6). */
+  async function cargarFrecuentes() {
+    if (frecuentes !== null || !lee(CLAVE_CODIGO)) return;
+    frecuentes = [];
+    try { const r = await api("/frecuentes", {}); if (r.ok) frecuentes = r.datos.frecuentes || []; } catch (e) {}
+    repinta();
+  }
+  const chipsFrecuentes = () => [...new Set([...(frecuentes || []).map(f => f.texto), ...EJEMPLOS])].slice(0, 6);
 
   /* ── Hojas de consulta ── */
   const nombreArchivo = t => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "hoja";
@@ -136,9 +148,10 @@ const AYUDA = (() => {
     if (entra) return cab + '<form class="ay-form ay-codigo" id="ay-codigo"><label for="ay-cod">Código del escuadrón</label>' +
       '<div class="ay-fila"><input id="ay-cod" type="password" autocomplete="off" required><button class="bt" type="submit">Entrar</button></div>' +
       (aviso ? '<p class="ay-error">' + esc(aviso) + '</p>' : '') + '</form>';
-    return cab + '<div class="ay-chat" id="ay-chat">' +
-      (mensajes.length ? mensajes.map(burbuja).join("") :
-        '<p class="ay-ej">Prueba con:</p><div class="ay-ejemplos">' + EJEMPLOS.map(e => '<button type="button" class="ay-chip" data-ay="ejemplo">' + esc(e) + '</button>').join("") + '</div>') +
+    setTimeout(cargarFrecuentes, 0);
+    return cab + '<div class="ay-frec"><span class="ay-ej">⚡ Preguntas frecuentes: respuesta al instante y no gastan tu cupo</span><div class="ay-ejemplos">' +
+      chipsFrecuentes().map(e => '<button type="button" class="ay-chip" data-ay="ejemplo">' + esc(e) + '</button>').join("") + '</div></div>' +
+      '<div class="ay-chat" id="ay-chat">' + mensajes.map(burbuja).join("") +
       (espera ? '<div class="ay-msg ay-ia ay-espera">Buscando en los manuales…</div>' : '') + '</div>' +
       (aviso ? '<p class="ay-error">' + esc(aviso) + '</p>' : '') +
       '<form class="ay-form" id="ay-form"><textarea id="ay-txt" rows="2" maxlength="600" placeholder="Escribe tu duda…  (Enter para enviar)"' + (espera ? ' disabled' : '') + '></textarea>' +

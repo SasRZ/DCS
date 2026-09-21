@@ -32,6 +32,10 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    fuentes, nunca las preguntas de seguimiento, y caducan a los 45 días o en cuanto se indexa algo nuevo o cambiado (así
    ninguna sobrevive a un parche). No se guarda quién preguntó. Si cambias los prompts del Worker, sube `VERSION_CACHE`.
 
+   **Preguntas frecuentes:** las (hasta 6) que más se repiten salen en `#/ayuda` como botones (`/frecuentes`), completadas con los
+   ejemplos fijos de `ayuda.js`. Son respuestas ya guardadas, así que se contestan al instante y no gastan crédito ni cupo. Para
+   poder enseñarlas, la caché guarda el texto de la primera vez que se preguntó (nunca quién) y solo se muestran las que se han
+   repetido y siguen vigentes con el índice actual; si lleva enlaces o correos no se guarda.
 5. **Documentos de la biblioteca.** Los PDF de `data/documentos.json` con texto también se indexan (ids `bib-…`): así la
    ayuda puede contestar con los SOP, procedimientos, la DCS Threats Guide, etc., y los cita como «de la biblioteca».
    Se leen del disco (no se descargan) y se reindexan solos cuando cambia el archivo: `python ayuda/indexar.py --d1 --solo bib-`.
