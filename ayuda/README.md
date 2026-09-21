@@ -62,6 +62,7 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    El plan gratuito de D1 permite unas 100.000 filas escritas al día: por eso el script se detiene a los 15.000
    fragmentos por ejecución (`--max-trozos`) y lo pendiente se hace en la siguiente. Repítelo uno o dos días, o pasa
    Workers al plan de pago (5 $/mes) y sube el tope.
+
 ## Actualización automática
 
 El workflow `.github/workflows/ayuda-indexar.yml` lo hace cada lunes sin que tengas el PC encendido. Para activarlo, en

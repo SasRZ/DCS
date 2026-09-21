@@ -80,7 +80,7 @@ function extraeJson(texto) {
 async function claude(env, modelo, sistema, mensajes, maxTokens) {
   const r = await fetch(API, {
     method: "POST",
-    headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+    headers: { "x-api-key": String(env.ANTHROPIC_API_KEY || "").trim(), "anthropic-version": "2023-06-01", "content-type": "application/json" },
     body: JSON.stringify({ model: modelo, max_tokens: maxTokens, system: sistema, messages: mensajes }),
   });
   if (!r.ok) throw new Error("Anthropic " + r.status + ": " + (await r.text()).slice(0, 300));
