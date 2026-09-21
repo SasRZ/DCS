@@ -48,7 +48,9 @@ const AYUDA = (() => {
     if (m.rol === "user") return '<div class="ay-msg ay-yo">' + esc(m.texto) + '</div>';
     const fuentes = (m.fuentes || []).map(f => '<a href="' + esc(f.url || "#") + '" target="_blank" rel="noopener"><b>' + f.n + '</b> ' +
       esc(f.titulo) + ' · p. ' + f.pagina + ' ↗</a>').join("");
-    return '<div class="ay-msg ay-ia">' + formato(m.texto, m.fuentes) + (fuentes ? '<div class="ay-fuentes">' + fuentes + '</div>' : '') + '</div>';
+    const fecha = m.guardada ? m.guardada.slice(0, 10).split("-").reverse().join("/") : "";
+    return '<div class="ay-msg ay-ia">' + formato(m.texto, m.fuentes) + (fuentes ? '<div class="ay-fuentes">' + fuentes + '</div>' : '') +
+      (fecha ? '<div class="ay-guardada">⚡ Respuesta guardada del ' + fecha + ': los manuales no han cambiado desde entonces.</div>' : '') + '</div>';
   }
 
   function pagina() {
@@ -92,7 +94,7 @@ const AYUDA = (() => {
       const d = await r.json().catch(() => ({}));
       if (r.status === 401) { guarda(CLAVE_CODIGO, null); mensajes.pop(); aviso = "El código no es correcto."; }
       else if (!r.ok) { mensajes.pop(); aviso = d.error || "La ayuda no está disponible ahora mismo."; }
-      else { mensajes.push({rol: "assistant", texto: d.respuesta, fuentes: d.fuentes}); if (d.restantes != null) restantes = d.restantes; }
+      else { mensajes.push({rol: "assistant", texto: d.respuesta, fuentes: d.fuentes, guardada: d.cache ? d.guardada : ""}); if (d.restantes != null) restantes = d.restantes; }
     } catch (e) {
       mensajes.pop();
       aviso = navigator.onLine === false ? "Sin conexión: la ayuda con IA necesita internet." : "No se ha podido contactar con la ayuda. Inténtalo de nuevo.";

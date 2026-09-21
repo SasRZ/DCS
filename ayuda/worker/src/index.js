@@ -77,6 +77,31 @@ function extraeJson(texto) {
   try { return JSON.parse(texto.slice(a, b + 1)); } catch { return null; }
 }
 
+/* ── Caché de respuestas ──
+   Una primera pregunta ya respondida se sirve desde D1: sin llamar a la IA, sin gasto y sin gastar cupo. Solo se guarda lo que
+   cita fuentes. Caduca al indexarse algo nuevo o cambiado (versión del índice) y a los 45 días. No se guarda quién preguntó. */
+const VERSION_CACHE = "v1";     // súbela si cambias los prompts, para descartar las respuestas guardadas
+const VACIAS = new Set(("de del la el los las un una unos unas en con para por que como cual cuales me mi te tu su y o al es son ser se lo le les " +
+  "hago hacer hace uso usar usa puedo puede quiero necesito the of to in on for how do to is are with").split(" "));
+
+/* Pregunta -> palabras clave normalizadas: sin acentos ni palabras vacías, "F-16" y "f16" iguales, y ordenadas.
+   Dos formas de preguntar lo mismo dan la misma clave. */
+function palabrasClave(pregunta) {
+  const t = pregunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/(?<=[a-z0-9])[-\/.](?=[a-z0-9])/g, "");
+  return [...new Set(t.split(/[^a-z0-9]+/).filter(w => w.length > 1 && !VACIAS.has(w)))].sort();
+}
+
+async function claveCache(palabras, modelo) {
+  const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${VERSION_CACHE}|${modelo}|${palabras.join(" ")}`));
+  return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* Cambia cuando se indexa algo nuevo o actualizado: con ella caducan las respuestas guardadas */
+async function versionIndice(env) {
+  const r = await env.DB.prepare("SELECT MAX(actualizada) AS v, COUNT(*) AS c FROM fuentes WHERE firma IS NOT NULL").first();
+  return `${(r && r.v) || ""}|${(r && r.c) || 0}`;
+}
+
 async function claude(env, modelo, sistema, mensajes, maxTokens) {
   const r = await fetch(API, {
     method: "POST",
@@ -108,16 +133,38 @@ async function preguntar(req, env, cab) {
     .filter(m => m && (m.rol === "user" || m.rol === "assistant") && typeof m.texto === "string" && m.texto.trim())
     .map(m => ({ role: m.rol, content: m.texto.slice(0, 1500) }));
 
-  /* límites diarios (se cuentan antes de llamar al modelo) */
   const dia = new Date().toISOString().slice(0, 10);
-  const ip = req.headers.get("CF-Connecting-IP") || "?";
   const lim = (v, d) => parseInt(v, 10) || d;
+
+  /* caché: solo la primera pregunta de una conversación (las de seguimiento dependen del contexto) */
+  const palabras = historial.length ? [] : palabrasClave(pregunta);
+  let clave = null, indice = null;
+  if (palabras.length >= 2) {
+    try {
+      clave = await claveCache(palabras, env.MODELO_RESPUESTA || "claude-sonnet-5");
+      indice = await versionIndice(env);
+      const hit = await env.DB.prepare(
+        "SELECT respuesta, fuentes, creada FROM cache_respuestas WHERE clave = ?1 AND indice = ?2 AND creada > datetime('now', '-45 days')").bind(clave, indice).first();
+      if (hit) {
+        await env.DB.prepare("UPDATE cache_respuestas SET usos = usos + 1 WHERE clave = ?1").bind(clave).run();
+        const u = await env.DB.prepare("SELECT n FROM uso WHERE dia = ?1 AND clave = ?2").bind(dia, "d:" + dispositivo).first();
+        return json({ respuesta: hit.respuesta, fuentes: JSON.parse(hit.fuentes), cache: true, guardada: hit.creada,
+          restantes: Math.max(0, lim(env.LIMITE_DISPOSITIVO, 20) - ((u && u.n) || 0)) }, 200, cab);
+      }
+    } catch (e) { console.error("caché:", String(e)); clave = null; }
+  }
+
+  /* límites diarios (se cuentan antes de llamar al modelo; un acierto de caché no gasta cupo) */
+  const ip = req.headers.get("CF-Connecting-IP") || "?";
   const [g, d, i] = [await contar(env, dia, "g"), await contar(env, dia, "d:" + dispositivo), await contar(env, dia, "ip:" + ip)];
   if (g > lim(env.LIMITE_GLOBAL, 300))
     return json({ error: "Hoy se ha alcanzado el límite de preguntas del escuadrón. Vuelve a intentarlo mañana." }, 429, cab);
   if (d > lim(env.LIMITE_DISPOSITIVO, 20) || i > lim(env.LIMITE_IP, 40))
     return json({ error: "Has alcanzado tu límite de preguntas de hoy. Vuelve a intentarlo mañana." }, 429, cab);
-  if (Math.random() < 0.02) await env.DB.prepare("DELETE FROM uso WHERE dia < ?1").bind(dia).run();   // limpieza ocasional
+  if (Math.random() < 0.02) {   // limpieza ocasional
+    await env.DB.prepare("DELETE FROM uso WHERE dia < ?1").bind(dia).run();
+    await env.DB.prepare("DELETE FROM cache_respuestas WHERE creada < datetime('now', '-45 days')").run();
+  }
 
   try {
     /* 1) el modelo pequeño traduce la pregunta a términos de búsqueda y elige las fuentes probables */
@@ -159,6 +206,12 @@ async function preguntar(req, env, cab) {
 
     /* solo se devuelven las fuentes que la respuesta cita */
     const usadas = citas.filter(c => new RegExp(`\\[${c.n}\\]`).test(respuesta));
+    if (clave && usadas.length) {
+      try {
+        await env.DB.prepare("INSERT OR REPLACE INTO cache_respuestas(clave,pregunta,respuesta,fuentes,indice,creada,usos) VALUES(?1,?2,?3,?4,?5,datetime('now'),0)")
+          .bind(clave, palabras.join(" "), respuesta, JSON.stringify(usadas), indice).run();
+      } catch (e) { console.error("caché:", String(e)); }
+    }
     return json({ respuesta, fuentes: usadas.length ? usadas : citas.slice(0, 3), restantes: Math.max(0, lim(env.LIMITE_DISPOSITIVO, 20) - d) }, 200, cab);
   } catch (e) {
     console.error(String(e));

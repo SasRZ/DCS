@@ -25,6 +25,11 @@ Mientras `URL_SERVICIO` esté vacía en `ayuda.js`, la ayuda no aparece en la we
    del módulo. Busca en el índice (SQLite FTS5) y pasa los mejores fragmentos a Claude Sonnet, que redacta la respuesta
    solo con ellos. Si no hay nada, lo dice. Enlaza la página exacta de la fuente.
 3. Límites por día: 20 preguntas por dispositivo, 40 por IP y 300 en total (se cambian en `worker/wrangler.toml`).
+4. **Caché de respuestas.** La primera pregunta de una conversación se guarda en D1 con una clave hecha de sus palabras clave
+   normalizadas (sin acentos ni palabras vacías, «F-16» = «f16», sin importar el orden). Si alguien pregunta lo mismo, se
+   sirve al instante (0,2 s en vez de unos 13), sin llamar a la IA y sin gastar cupo. Solo se guardan respuestas que citan
+   fuentes, nunca las preguntas de seguimiento, y caducan a los 45 días o en cuanto se indexa algo nuevo o cambiado (así
+   ninguna sobrevive a un parche). No se guarda quién preguntó. Si cambias los prompts del Worker, sube `VERSION_CACHE`.
 
 ## Puesta en marcha (una vez)
 

@@ -31,3 +31,15 @@ CREATE TABLE IF NOT EXISTS uso (
   n     INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (dia, clave)
 );
+
+-- Caché de respuestas: una primera pregunta ya contestada se sirve sin llamar a la IA.
+-- "pregunta" guarda solo las palabras clave normalizadas (nunca quién preguntó); "indice" es la versión del índice con la que se generó.
+CREATE TABLE IF NOT EXISTS cache_respuestas (
+  clave     TEXT PRIMARY KEY,
+  pregunta  TEXT NOT NULL,
+  respuesta TEXT NOT NULL,
+  fuentes   TEXT NOT NULL,
+  indice    TEXT NOT NULL,
+  creada    TEXT NOT NULL,
+  usos      INTEGER NOT NULL DEFAULT 0
+);
