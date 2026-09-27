@@ -1181,5 +1181,25 @@
     "refs": ["modulos/mirf1"],
     "etiquetas": ["armamento", "bombas", "aire-tierra", "perfiles de ataque", "kneeboard"],
     "autor": "Ootoito (Wladimir Cova)"
+  },
+  {
+    "id": "f15e-modern-sit-guide",
+    "titulo": "Modern F-15E · guía del SIT (situational awareness)",
+    "tipo": "PDF",
+    "nota": "Manual del mod Modern F-15E: página de conciencia situacional (SIT) en el MFD con contactos, anillos de amenaza y datalink de vuelo, y el HMD. Instalación, primeros pasos, controles y solución de problemas. Versión 1.60.2.",
+    "url": "docs/modulos/f15e/modern-f15e-user-guide.pdf",
+    "refs": ["modulos/f15e"],
+    "etiquetas": ["SIT", "datalink", "HMD", "mod", "situational awareness"],
+    "autor": "65thhaack"
+  },
+  {
+    "id": "portaaviones-operaciones-embarcadas",
+    "titulo": "Operaciones en portaaviones · guía embarcada",
+    "tipo": "PDF",
+    "nota": "Guía para operaciones embarcadas en DCS: zonas y elementos de cubierta, puesta en marcha, rodaje, salidas, reunión, llegadas, luces y AAR. Casos de salida y recuperación I, II y III con procedimientos y comunicaciones. Pensada para aviones de ala fija, especialmente el F/A-18C, y adaptada de los procedimientos NATOPS reales. Versión 6.0.",
+    "url": "docs/modulos/fa18c/operaciones-portaaviones.pdf",
+    "refs": ["modulos/fa18c", "general/sop"],
+    "etiquetas": ["portaaviones", "CASE I", "CASE II", "CASE III", "cubierta", "SOP"],
+    "autor": "Antonio Molina «ATo» (Arink)"
   }
 ]

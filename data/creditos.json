@@ -65,5 +65,14 @@
     "nombre": "Ootoito (Wladimir Cova)",
     "url": "https://www.taskpilotai.es/dcs/",
     "desc": "Misiones DCS World en español: cursos de vuelo progresivos, campañas con briefing y misiones sueltas, y hojas de consulta de armamento. La portada de esta biblioteca enlaza a su web."
+  },
+  {
+    "nombre": "65thhaack",
+    "url": "https://github.com/65thhaack/Modern-F15E-Mod",
+    "desc": "Modern F-15E: mod y página de conciencia situacional (SIT) para el F-15E, con HMD."
+  },
+  {
+    "nombre": "Antonio Molina «ATo» (Arink)",
+    "desc": "Guía de operaciones embarcadas en portaaviones para DCS World, adaptada de los procedimientos NATOPS reales."
   }
 ]
