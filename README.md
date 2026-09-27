@@ -15,6 +15,7 @@ misión y general. Sin backend — solo HTML, CSS y JSON.
 │   ├── modulos/f16c/…
 │   ├── mapas/caucaso/…
 │   └── misiones/sead/…
+├── VERSION                       número de versión de la web (ver «Visor de versión»)
 ├── kneeboard.js / kneeboard.css  guardados sin conexión y visor de PDF
 ├── sw.js, manifest.webmanifest   modo sin conexión y app instalable (+ icons/)
 ├── vendor/pdfjs/                 PDF.js, el visor de PDF (Apache 2.0)
@@ -129,6 +130,20 @@ vuelve a ocultar. Se recuerda en ese navegador.
 oficiales de ED y las guías de Chuck. Es privada: el texto de los manuales vive en Cloudflare, nunca en este
 repositorio, y el servicio exige un código del escuadrón. No aparece en la web hasta que se configura
 `URL_SERVICIO` en `ayuda.js`. Instrucciones completas en [`ayuda/README.md`](ayuda/README.md).
+
+## Visor de versión
+
+Junto a Créditos hay siempre una pastilla («v1.0») que, al pulsarla, abre un panel con la versión, el commit y la
+fecha de la última publicación, y dos botones: **Comprobar de nuevo** (vuelve a leer `data/version.json` sin caché,
+por si se acaba de publicar algo mientras tenías la pestaña abierta) y **Actualizar página** (quita el service
+worker y su caché de la app y recarga, sin tocar lo guardado en Mi kneeboard). Sirve para confirmar que lo que ves
+es lo último publicado, sobre todo si algo se ve raro en el modo sin conexión.
+
+- El número de versión sale del archivo `VERSION` (un texto como `1.0`); súbelo a mano cuando quieras marcar un
+  cambio importante como una nueva versión.
+- El workflow de publicación (`.github/workflows/paginas.yml`) genera `data/version.json` en cada despliegue, con
+  ese número, el commit y la fecha; por eso no está en el repositorio y en local (`python3 -m http.server`) el
+  panel avisa de que no lo encuentra.
 
 ## Validar antes de subir
 

@@ -39,6 +39,14 @@ jobs:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
 
+      - name: Generar data/version.json (qué versión y qué commit se está publicando)
+        run: |
+          version=$(tr -d '[:space:]' < VERSION)
+          commit=$(git rev-parse --short HEAD)
+          fecha=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          printf '{"version":"%s","commit":"%s","fecha":"%s"}\n' "$version" "$commit" "$fecha" > data/version.json
+          cat data/version.json
+
       - name: Preparar Pages
         uses: actions/configure-pages@v5
 

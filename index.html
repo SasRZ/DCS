@@ -214,6 +214,22 @@ a.arma:hover,a.arma:focus-visible{border-color:var(--ambar);color:var(--ambar);o
 .cabnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
 .creditos{color:var(--tenue);font-size:14px;border:1px solid var(--linea);border-radius:3px;padding:6px 12px}
 .creditos:hover,.creditos:focus-visible{color:var(--ambar);border-color:var(--ambar);outline:none}
+
+/* Visor de versión: pastilla siempre visible en la cabecera; al pulsarla, un panel con el detalle (ver VERSION y el paso
+   "Generar data/version.json" del workflow de publicación) */
+.verwrap{position:relative}
+.verbadge{font:600 12.5px/1 "Barlow Condensed",sans-serif;letter-spacing:.04em;color:var(--tenue);background:transparent;
+ border:1px solid var(--linea);border-radius:999px;padding:7px 13px;cursor:pointer}
+.verbadge:hover,.verbadge:focus-visible,.verbadge[aria-expanded="true"]{color:var(--ambar);border-color:var(--ambar);outline:none}
+.verpanel{position:absolute;right:0;top:calc(100% + 8px);z-index:30;width:min(320px,88vw);padding:14px 16px;
+ background:var(--acero2);border:1px solid var(--linea);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.5);font-size:13.5px}
+.verpanel[hidden]{display:none}
+.verfila{padding:5px 0;border-bottom:1px solid var(--linea)}
+.verfila:last-of-type{border-bottom:none}
+.verfila b{color:var(--texto)}
+.ver-tenue{color:var(--tenue)}
+.verbotones{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.verbotones .bt{font-size:13px;padding:6px 12px;min-height:0}
 .intro{color:var(--tenue);max-width:68ch;margin:18px 0 0}
 .autor{padding:22px 4px;border-bottom:1px solid var(--linea)}
 .autor h3{font:600 26px/1.1 "Barlow Condensed",sans-serif;margin:0}
@@ -235,7 +251,10 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 <header>
   <div class="cab">
     <h1><a href="#/">Biblioteca DCS</a></h1>
-    <nav class="cabnav"><a class="creditos" id="ayudanav" href="#/ayuda" hidden>Ayuda IA</a><a class="creditos" id="kbnav" href="#/kneeboard">Mi kneeboard</a><a class="creditos" href="#/creditos">Créditos</a></nav>
+    <nav class="cabnav"><a class="creditos" id="ayudanav" href="#/ayuda" hidden>Ayuda IA</a><a class="creditos" id="kbnav" href="#/kneeboard">Mi kneeboard</a><a class="creditos" href="#/creditos">Créditos</a>
+      <span class="verwrap"><button type="button" class="verbadge" id="verbtn" aria-haspopup="true" aria-expanded="false">v…</button>
+      <div class="verpanel" id="verpanel" hidden></div></span>
+    </nav>
   </div>
   <p class="lema">Manuales, cartas, checklists y briefings. Ordenado como vuelas: por aparato, por teatro y por tipo de misión.</p>
   <div class="barra">
@@ -259,7 +278,7 @@ code{background:var(--acero2);padding:1px 5px;border-radius:2px;font-size:.92em}
 const $ = id => document.getElementById(id);
 const esc = t => { const e = document.createElement("div"); e.textContent = t ?? ""; return e.innerHTML; };
 
-let arbol = {}, documentos = [], todos = [], creditos = [], datosMod = {}, datosMapa = {}, datosMision = {}, datosPortada = {}, idx = {}, porRef = new Map(), filtro = "";
+let arbol = {}, documentos = [], todos = [], creditos = [], datosMod = {}, datosMapa = {}, datosMision = {}, datosPortada = {}, datosVersion = {}, idx = {}, porRef = new Map(), filtro = "";
 /* ?todo en la dirección enseña también los apartados vacíos (atenuados) y los grupos ocultos, para revisar el catálogo */
 const VER_TODO = /[?&]todo\b/.test(location.search);
 
@@ -271,9 +290,12 @@ Promise.all([
   fetch("data/modulos.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("data/mapas.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
   fetch("data/misiones.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-  fetch("data/portada.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
-]).then(([t, d, c, dm, dp, di, po]) => {
-  arbol = t; todos = d; creditos = c; datosMod = dm || {}; datosMapa = dp || {}; datosMision = di || {}; datosPortada = po || {};
+  fetch("data/portada.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+  /* generado por el workflow de publicación (ver .github/workflows/paginas.yml) en cada despliegue; en local no existe */
+  fetch("data/version.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+]).then(([t, d, c, dm, dp, di, po, ve]) => {
+  arbol = t; todos = d; creditos = c; datosMod = dm || {}; datosMapa = dp || {}; datosMision = di || {}; datosPortada = po || {}; datosVersion = ve || {};
+  pintarVersion();
   /* un grupo con "oculto": true no se pinta, y sus documentos no salen en búsqueda, recuentos ni créditos (siguen en los JSON) */
   const ocultos = new Set();
   if (!VER_TODO) for (const k in arbol) for (const g of arbol[k].grupos)
@@ -630,6 +652,55 @@ function pintarVista(ruta){
   });
   v.innerHTML = '<div class="cats">' + cats.join("") + '</div>' + reto() + fox3();
 }
+
+/* ── Visor de versión: pastilla siempre visible en la cabecera («v1.0»), con un panel de detalle al pulsarla.
+   Sirve para comprobar que lo que se ve es lo último publicado (útil tras hacer push, o si algo se ve raro en el
+   modo sin conexión). VERSION_FALLBACK solo se usa si no se pudo leer data/version.json (por ejemplo, en local). */
+const VERSION_FALLBACK = "1.0";
+const pintarVersion = () => { $("verbtn").textContent = "v" + esc(datosVersion.version || VERSION_FALLBACK); };
+
+function panelVersion(){
+  const d = datosVersion;
+  const fecha = d.fecha ? new Date(d.fecha).toLocaleString("es-ES", {day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"}) : null;
+  const filas = ['<div class="verfila"><b>Biblioteca DCS</b> · v' + esc(d.version || VERSION_FALLBACK) + '</div>'];
+  filas.push(d.commit
+    ? '<div class="verfila">Publicada el ' + esc(fecha) + ' · commit <code>' + esc(d.commit) + '</code></div>'
+    : '<div class="verfila ver-tenue">No se ha podido comprobar la versión publicada (¿estás en local o sin conexión?).</div>');
+  filas.push('<div class="verfila">' + (navigator.onLine === false ? "Sin conexión ahora mismo" : "Conectado") + '</div>');
+  if (typeof KB !== "undefined" && KB.activo) filas.push('<div class="verfila">Modo kneeboard: ' +
+    ("serviceWorker" in navigator && navigator.serviceWorker.controller ? "sin conexión activo en este dispositivo" : "todavía no activo (recarga la página)") + '</div>');
+  filas.push('<div class="verbotones"><button type="button" class="bt" id="vercomprobar">Comprobar de nuevo</button>' +
+    '<button type="button" class="bt" id="veractualizar">Actualizar página</button></div>');
+  $("verpanel").innerHTML = filas.join("");
+}
+
+const abrirVersion = () => { panelVersion(); $("verpanel").hidden = false; $("verbtn").setAttribute("aria-expanded", "true"); };
+const cerrarVersion = () => { $("verpanel").hidden = true; $("verbtn").setAttribute("aria-expanded", "false"); };
+
+async function comprobarVersion(boton){
+  boton.disabled = true; boton.textContent = "Comprobando…";
+  try { const r = await fetch("data/version.json", {cache: "reload"}); datosVersion = r.ok ? await r.json() : datosVersion; } catch (e) {}
+  pintarVersion(); panelVersion();
+}
+
+/* Vuelve a poner la web como recién publicada: quita el service worker y su caché de la app (SHELL), sin tocar lo
+   guardado en Mi kneeboard (esa caché es aparte) ni las preferencias guardadas en este dispositivo. */
+async function actualizarAhora(boton){
+  boton.disabled = true; boton.textContent = "Actualizando…";
+  try {
+    if ("serviceWorker" in navigator) for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister();
+    if ("caches" in window) for (const k of await caches.keys()) if (k.startsWith("shell-")) await caches.delete(k);
+  } catch (e) {}
+  location.reload();
+}
+
+$("verbtn").onclick = () => { $("verpanel").hidden ? abrirVersion() : cerrarVersion(); };
+$("verpanel").addEventListener("click", e => {
+  if (e.target.id === "vercomprobar") comprobarVersion(e.target);
+  else if (e.target.id === "veractualizar") actualizarAhora(e.target);
+});
+addEventListener("click", e => { if (!$("verpanel").hidden && !e.target.closest(".verwrap")) cerrarVersion(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && !$("verpanel").hidden) cerrarVersion(); });
 
 $("buscar").oninput = e => { filtro = e.target.value.trim().toLowerCase(); pintar(); };
 $("rapidas").onclick = e => { const b = e.target.closest("button[data-q]"); if (!b) return;
