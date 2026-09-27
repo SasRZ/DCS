@@ -664,7 +664,7 @@ function panelVersion(){
   const fecha = d.fecha ? new Date(d.fecha).toLocaleString("es-ES", {day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"}) : null;
   const filas = ['<div class="verfila"><b>Biblioteca DCS</b> · v' + esc(d.version || VERSION_FALLBACK) + '</div>'];
   filas.push(d.commit
-    ? '<div class="verfila">Publicada el ' + esc(fecha) + ' · commit <code>' + esc(d.commit) + '</code></div>'
+    ? '<div class="verfila">Publicada el ' + esc(fecha) + '</div>'
     : '<div class="verfila ver-tenue">No se ha podido comprobar la versión publicada (¿estás en local o sin conexión?).</div>');
   filas.push('<div class="verfila">' + (navigator.onLine === false ? "Sin conexión ahora mismo" : "Conectado") + '</div>');
   if (typeof KB !== "undefined" && KB.activo) filas.push('<div class="verfila">Modo kneeboard: ' +
