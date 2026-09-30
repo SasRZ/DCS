@@ -74,5 +74,10 @@
   {
     "nombre": "Antonio Molina «ATo» (Arink)",
     "desc": "Guía de operaciones embarcadas en portaaviones para DCS World, adaptada de los procedimientos NATOPS reales."
+  },
+  {
+    "nombre": "Requiem's Air Combat Tutorial Library",
+    "url": "https://www.youtube.com/requiembos",
+    "desc": "Cockpit Workflows: fichas de una fase de vuelo cada una, con el cockpit anotado y triggers de cuándo aplicarlas."
   }
 ]

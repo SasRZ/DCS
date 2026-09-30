@@ -1201,5 +1201,42 @@
     "refs": ["modulos/fa18c", "general/sop"],
     "etiquetas": ["portaaviones", "CASE I", "CASE II", "CASE III", "cubierta", "SOP"],
     "autor": "Antonio Molina «ATo» (Arink)"
+  },
+  {
+    "id": "sinai-llhs-cartas",
+    "titulo": "Hatzor (LLHS) · cartas de aeródromo",
+    "tipo": "PDF",
+    "nota": "Diagrama del aeródromo y carta de rodaje y aparcamiento de Hatzor (Israel), recopiladas en un único PDF.",
+    "url": "docs/mapas/sinai/llhs/cartas.pdf",
+    "refs": [
+      "mapas/sinai"
+    ],
+    "etiquetas": [
+      "cartas",
+      "llhs",
+      "Hatzor",
+      "aeródromo",
+      "rodaje"
+    ]
+  },
+  {
+    "id": "f5e3-cockpit-workflows",
+    "titulo": "Cockpit Workflows · F-5E-3 Tiger II",
+    "tipo": "PDF",
+    "nota": "23 fichas de una fase de vuelo cada una: antes de arrancar, arranque de cada motor y cruzado, rodaje, despegue, ascenso, fence in/out, combate aire-aire (AIM-9 y cañón) y aire-tierra (bombas, cohetes y cañón), descenso, aterrizaje, motor y al aire, y parada. Cockpit anotado con los pasos numerados y el disparador de cuándo aplicar cada flujo; varias enlazan a un vídeo de ejemplo.",
+    "url": "docs/modulos/f5e/cockpit-workflows.pdf",
+    "refs": [
+      "modulos/f5e"
+    ],
+    "etiquetas": [
+      "F-5E",
+      "Tiger II",
+      "cockpit flow",
+      "arranque",
+      "checklist",
+      "AIM-9",
+      "aire-tierra"
+    ],
+    "autor": "Requiem's Air Combat Tutorial Library"
   }
 ]
