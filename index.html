@@ -85,22 +85,18 @@ header{padding:38px 0 22px;border-bottom:1px solid var(--linea)}
  font:600 clamp(120px,22vw,250px)/1 "Barlow Condensed",sans-serif;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2px rgba(224,167,60,.22)}
 @media (max-width:760px){.fox{padding:32px 22px 30px 26px}.fmarca{display:none}.fb a{flex:1 1 auto;text-align:center}}
 
-/* Cabecera de la portada: más grande, con anillos de radar de fondo */
+/* Cabecera de la portada: más grande, con el escudo del escuadrón de fondo */
 header{position:relative;isolation:isolate}
 .cab{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .rapidas{display:none}
 .inicio header{padding:60px 0 34px}
-.inicio header::before{content:"";position:absolute;inset:0 -20px;z-index:-1;pointer-events:none;
- background:radial-gradient(circle at 86% 40%,rgba(105,166,160,.20),transparent 46%),
-  repeating-radial-gradient(circle at 86% 40%,transparent 0 44px,rgba(105,166,160,.085) 44px 45px);
- -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 65%);mask-image:linear-gradient(90deg,transparent 8%,#000 65%)}
-/* Escudo del escuadrón, como marca de agua en el centro de los anillos de radar */
+/* Escudo del escuadrón, como marca de agua a la derecha de la cabecera */
 .inicio header::after{content:"";position:absolute;inset:0 -20px;z-index:-1;pointer-events:none;
  background:url(img/escudo-fox3.png) no-repeat 87% 47%/230px;opacity:.13;
  -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 65%);mask-image:linear-gradient(90deg,transparent 8%,#000 65%)}
 .inicio h1{font-size:clamp(46px,10vw,78px);letter-spacing:.01em}
 .inicio .lema{font-size:18px;max-width:56ch;margin-top:12px}
-.inicio .barra{margin-top:28px}
+.inicio .barra{margin-top:28px;max-width:640px}
 .inicio #buscar{padding:15px 18px;font-size:17px;border-radius:8px}
 .inicio .rapidas{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .rapidas button{font:inherit;font-size:13.5px;color:var(--tenue);background:transparent;border:1px solid var(--linea);
