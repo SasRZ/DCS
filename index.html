@@ -94,6 +94,10 @@ header{position:relative;isolation:isolate}
  background:radial-gradient(circle at 86% 40%,rgba(105,166,160,.20),transparent 46%),
   repeating-radial-gradient(circle at 86% 40%,transparent 0 44px,rgba(105,166,160,.085) 44px 45px);
  -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 65%);mask-image:linear-gradient(90deg,transparent 8%,#000 65%)}
+/* Escudo del escuadrón, como marca de agua en el centro de los anillos de radar */
+.inicio header::after{content:"";position:absolute;inset:0 -20px;z-index:-1;pointer-events:none;
+ background:url(img/escudo-fox3.png) no-repeat 87% 47%/230px;opacity:.13;
+ -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 65%);mask-image:linear-gradient(90deg,transparent 8%,#000 65%)}
 .inicio h1{font-size:clamp(46px,10vw,78px);letter-spacing:.01em}
 .inicio .lema{font-size:18px;max-width:56ch;margin-top:12px}
 .inicio .barra{margin-top:28px}
@@ -122,7 +126,7 @@ header{position:relative;isolation:isolate}
 .cm{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;color:var(--texto)}
 .cm b{font-weight:600;color:var(--c)}
 .cm .flecha{margin-left:auto;font-size:20px;color:var(--c)}
-@media (max-width:640px){.cat{min-height:230px}.ctx{padding:18px 18px 16px 24px}.inicio header{padding:38px 0 26px}}
+@media (max-width:640px){.cat{min-height:230px}.ctx{padding:18px 18px 16px 24px}.inicio header{padding:38px 0 26px}.inicio header::after{display:none}}
 
 /* Categorías: cabecera de grupo y tarjetas con franja de color (--c lo fija cada grupo) */
 .gcab{position:relative;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 16px;
